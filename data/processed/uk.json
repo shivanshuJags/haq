@@ -2,7 +2,7 @@
   {
     "id": "uk:benefits-calculators",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Benefits calculators",
     "summary": "Find out what benefits you could get, how much you could get and how to claim.",
     "categories": [
@@ -27,12 +27,12 @@
     "source_url": "https://www.gov.uk/benefits-calculators",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:01+00:00"
+    "fetched_at": "2026-10-11T16:05:54+00:00"
   },
   {
     "id": "uk:apply-free-school-meals",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Apply for free school meals",
     "summary": "Check if your child can get free school meals - and find out how to apply on your local authority’s website.",
     "categories": [
@@ -51,12 +51,12 @@
     "source_url": "https://www.gov.uk/apply-free-school-meals",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:01+00:00"
+    "fetched_at": "2026-10-11T16:05:54+00:00"
   },
   {
     "id": "uk:child-maintenance-service",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Child Maintenance Service",
     "summary": "How to set up or manage a child maintenance arrangement, including what to do if a parent does not pay, how to contact the Child Maintenance Service, and signing in to your account.",
     "categories": [
@@ -75,12 +75,12 @@
     "source_url": "https://www.gov.uk/child-maintenance-service",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:01+00:00"
+    "fetched_at": "2026-10-11T16:05:55+00:00"
   },
   {
     "id": "uk:child-benefit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Child Benefit",
     "summary": "Child Benefit - child benefit rates, eligibility, how to claim, child benefit claim form CH2.",
     "categories": [
@@ -99,12 +99,12 @@
     "source_url": "https://www.gov.uk/child-benefit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:01+00:00"
+    "fetched_at": "2026-10-11T16:05:55+00:00"
   },
   {
     "id": "uk:child-benefit-16-19",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Child Benefit when your child turns 16",
     "summary": "Child Benefit for 16 to 19 year olds - when payments stop or continue, approved education or training, extensions.",
     "categories": [
@@ -123,12 +123,12 @@
     "source_url": "https://www.gov.uk/child-benefit-16-19",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:02+00:00"
+    "fetched_at": "2026-10-11T16:05:56+00:00"
   },
   {
     "id": "uk:child-benefit-tax-charge",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "High Income Child Benefit Charge",
     "summary": "High Income Child Benefit Charge - check if you're affected, how and when to pay this tax charge, opt out, restart Child Benefit payments or tell HMRC about a change in your circumstances.",
     "categories": [
@@ -147,12 +147,12 @@
     "source_url": "https://www.gov.uk/child-benefit-tax-charge",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:02+00:00"
+    "fetched_at": "2026-10-11T16:05:56+00:00"
   },
   {
     "id": "uk:disability-living-allowance-children",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Disability Living Allowance (DLA) for children",
     "summary": "Help for children under 16 with disabilities - DLA rate, eligibility, how to apply, claim form.",
     "categories": [
@@ -172,12 +172,12 @@
     "source_url": "https://www.gov.uk/disability-living-allowance-children",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:02+00:00"
+    "fetched_at": "2026-10-11T16:05:56+00:00"
   },
   {
     "id": "uk:sure-start-maternity-grant",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Sure Start Maternity Grant",
     "summary": "Sure Start Maternity Grant is a £500 payment to help with the costs of a new baby: what you'll get, eligibility and how to apply (claim form SF100). ",
     "categories": [
@@ -196,12 +196,12 @@
     "source_url": "https://www.gov.uk/sure-start-maternity-grant",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:03+00:00"
+    "fetched_at": "2026-10-11T16:05:57+00:00"
   },
   {
     "id": "uk:disabled-facilities-grants",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Disabled Facilities Grants",
     "summary": "Disabled Facilities Grants help towards the costs of making changes to your home so you can continue to live there",
     "categories": [
@@ -222,12 +222,12 @@
     "source_url": "https://www.gov.uk/disabled-facilities-grants",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:03+00:00"
+    "fetched_at": "2026-10-11T16:05:57+00:00"
   },
   {
     "id": "uk:help-with-childcare-costs",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Help paying for childcare",
     "summary": "Help with the cost of paying for approved childcare - Tax-Free Childcare, 15 and 30 hours childcare, Early Learning for 2 year olds, childcare vouchers, Learner Support.",
     "categories": [
@@ -246,12 +246,12 @@
     "source_url": "https://www.gov.uk/help-with-childcare-costs",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:03+00:00"
+    "fetched_at": "2026-10-11T16:05:58+00:00"
   },
   {
     "id": "uk:maternity-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Maternity Allowance",
     "summary": "Maternity Allowance is paid to pregnant women who do not get Statutory Maternity Pay - rate, eligibility, apply, form MA1",
     "categories": [
@@ -270,12 +270,12 @@
     "source_url": "https://www.gov.uk/maternity-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:04+00:00"
+    "fetched_at": "2026-10-11T16:05:59+00:00"
   },
   {
     "id": "uk:paternity-pay-leave",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Paternity pay and leave",
     "summary": "Your Statutory Paternity Pay and Leave - eligibility, what you get, how to claim.  ",
     "categories": [
@@ -294,12 +294,12 @@
     "source_url": "https://www.gov.uk/paternity-pay-leave",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:04+00:00"
+    "fetched_at": "2026-10-11T16:05:59+00:00"
   },
   {
     "id": "uk:healthy-start",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Healthy Start",
     "summary": "Healthy Start is an NHS scheme that helps women who are pregnant or have young children and are receiving benefits buy foods such as milk or fruit. \r\n",
     "categories": [
@@ -318,12 +318,12 @@
     "source_url": "https://www.gov.uk/healthy-start",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:04+00:00"
+    "fetched_at": "2026-10-11T16:06:00+00:00"
   },
   {
     "id": "uk:maternity-pay-leave",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Maternity pay and leave",
     "summary": "Your Statutory Maternity Pay (SMP) and Leave - what you get, how to claim, maternity rights and extra help",
     "categories": [
@@ -342,12 +342,12 @@
     "source_url": "https://www.gov.uk/maternity-pay-leave",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:04+00:00"
+    "fetched_at": "2026-10-11T16:06:00+00:00"
   },
   {
     "id": "uk:get-childcare",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get childcare: step by step",
     "summary": "How to find childcare, get help paying for it and what to do if your circumstances change.",
     "categories": [
@@ -366,12 +366,12 @@
     "source_url": "https://www.gov.uk/get-childcare",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:05+00:00"
+    "fetched_at": "2026-10-11T16:06:01+00:00"
   },
   {
     "id": "uk:childcare-grant",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Childcare Grant",
     "summary": "Childcare Grants for full-time students in higher education - grants, CCG1, CCG2 forms, how to apply, eligibility.",
     "categories": [
@@ -390,12 +390,12 @@
     "source_url": "https://www.gov.uk/childcare-grant",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:05+00:00"
+    "fetched_at": "2026-10-11T16:06:01+00:00"
   },
   {
     "id": "uk:shared-parental-leave-and-pay",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Shared Parental Leave and Pay",
     "summary": "You can start Shared Parental Leave (SPL) and Statutory Shared Parental Pay (ShPP) if you're eligible and you or your partner ends your maternity or adoption leave early - eligibility, entitlement, starting SPL and splitting blocks of leave",
     "categories": [
@@ -414,12 +414,12 @@
     "source_url": "https://www.gov.uk/shared-parental-leave-and-pay",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:05+00:00"
+    "fetched_at": "2026-10-11T16:06:02+00:00"
   },
   {
     "id": "uk:parental-leave",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Unpaid parental leave",
     "summary": "Employer and employee guide to unpaid parental leave - eligibility, how much leave can be taken and notice periods, postponing leave",
     "categories": [
@@ -438,12 +438,12 @@
     "source_url": "https://www.gov.uk/parental-leave",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:06+00:00"
+    "fetched_at": "2026-10-11T16:06:02+00:00"
   },
   {
     "id": "uk:support-visit-benefit-claim",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Support visits if you need help to claim benefits",
     "summary": "Reasons for a support visit from the Department for Work and Pensions (DWP) Visiting Team, what to expect and how to check if the visitor is genuine",
     "categories": [
@@ -467,12 +467,12 @@
     "source_url": "https://www.gov.uk/support-visit-benefit-claim",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:06+00:00"
+    "fetched_at": "2026-10-11T16:06:03+00:00"
   },
   {
     "id": "uk:parents-learning-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Parents' Learning Allowance",
     "summary": "Parents' Learning Allowance for full-time students with children - funding, apply, eligibility.",
     "categories": [
@@ -491,12 +491,12 @@
     "source_url": "https://www.gov.uk/parents-learning-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:06+00:00"
+    "fetched_at": "2026-10-11T16:06:03+00:00"
   },
   {
     "id": "uk:help-for-disabled-child",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Help if you have a disabled child",
     "summary": "Your rights and the support you can get if you have a disabled child, including childcare, car costs, house adaptations and education",
     "categories": [
@@ -516,12 +516,12 @@
     "source_url": "https://www.gov.uk/help-for-disabled-child",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:07+00:00"
+    "fetched_at": "2026-10-11T16:06:04+00:00"
   },
   {
     "id": "uk:neonatal-care-pay-leave",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Neonatal Care Pay and Leave",
     "summary": "Your Neonatal Care Leave and Statutory Neonatal Care Pay: what you can get, eligibility, how to claim and how to cancel.",
     "categories": [
@@ -540,12 +540,12 @@
     "source_url": "https://www.gov.uk/neonatal-care-pay-leave",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:07+00:00"
+    "fetched_at": "2026-10-11T16:06:05+00:00"
   },
   {
     "id": "uk:guardians-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Guardian's Allowance",
     "summary": "Guardian's Allowance help if you're looking after a child who is not your own - rates, eligibility, how to claim, appeal a decision.",
     "categories": [
@@ -565,12 +565,12 @@
     "source_url": "https://www.gov.uk/guardians-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:07+00:00"
+    "fetched_at": "2026-10-11T16:06:05+00:00"
   },
   {
     "id": "uk:tax-credits-have-ended",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Tax credits ended on 5 April 2025",
     "summary": "What to do now that tax credits have ended: what your 'annual review' letter is, checking your details",
     "categories": [
@@ -589,12 +589,12 @@
     "source_url": "https://www.gov.uk/tax-credits-have-ended",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:07+00:00"
+    "fetched_at": "2026-10-11T16:06:06+00:00"
   },
   {
     "id": "uk:adoption-pay-leave",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Adoption pay and leave",
     "summary": "Your Statutory Adoption Pay and Leave - what you get, how to claim and eligibility",
     "categories": [
@@ -613,12 +613,12 @@
     "source_url": "https://www.gov.uk/adoption-pay-leave",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:08+00:00"
+    "fetched_at": "2026-10-11T16:06:07+00:00"
   },
   {
     "id": "uk:care-to-learn",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Care to Learn",
     "summary": "Care to Learn helps pay for childcare while you're studying - how to apply, money you get, courses that qualify, eligibility ",
     "categories": [
@@ -637,12 +637,12 @@
     "source_url": "https://www.gov.uk/care-to-learn",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:08+00:00"
+    "fetched_at": "2026-10-11T16:06:07+00:00"
   },
   {
     "id": "uk:bereaved-partners-paternity-leave",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Bereaved Partner’s Paternity Leave",
     "summary": "Employee guide to unpaid paternity leave for bereaved partners: what you're entitled to, eligibility, how to claim, how to cancel and other help available.\r\n",
     "categories": [
@@ -661,12 +661,12 @@
     "source_url": "https://www.gov.uk/bereaved-partners-paternity-leave",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:08+00:00"
+    "fetched_at": "2026-10-11T16:06:08+00:00"
   },
   {
     "id": "uk:universal-credit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Universal Credit",
     "summary": "Universal Credit is replacing 6 other benefits with a single monthly payment if you're out of work or on a low income - eligibility, how to prepare.",
     "categories": [
@@ -689,12 +689,12 @@
     "source_url": "https://www.gov.uk/universal-credit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:09+00:00"
+    "fetched_at": "2026-10-11T16:06:08+00:00"
   },
   {
     "id": "uk:pension-credit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Pension Credit",
     "summary": "Pension Credit is extra money for pensioners to bring your weekly income up to a minimum amount - what you'll get, apply, eligibility.",
     "categories": [
@@ -715,12 +715,12 @@
     "source_url": "https://www.gov.uk/pension-credit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:09+00:00"
+    "fetched_at": "2026-10-11T16:06:09+00:00"
   },
   {
     "id": "uk:carers-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Carer's Allowance",
     "summary": "Apply for Carer's Allowance - money to help you look after someone who needs to be cared for. Apply online or use form DS700.",
     "categories": [
@@ -739,12 +739,12 @@
     "source_url": "https://www.gov.uk/carers-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:09+00:00"
+    "fetched_at": "2026-10-11T16:06:09+00:00"
   },
   {
     "id": "uk:attendance-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Attendance Allowance",
     "summary": "Attendance Allowance helps with extra costs if you're State Pension age and disabled: rates, eligibility, claim form AA1, claiming due to a terminal illness.",
     "categories": [
@@ -764,12 +764,12 @@
     "source_url": "https://www.gov.uk/attendance-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:10+00:00"
+    "fetched_at": "2026-10-11T16:06:10+00:00"
   },
   {
     "id": "uk:carers-allowance-unit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Contact the Carer's Allowance Unit",
     "summary": "Contact information for Carer's Allowance Unit, telephone number and address",
     "categories": [
@@ -789,12 +789,12 @@
     "source_url": "https://www.gov.uk/carers-allowance-unit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:10+00:00"
+    "fetched_at": "2026-10-11T16:06:10+00:00"
   },
   {
     "id": "uk:carers-credit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Carer's Credit",
     "summary": "Carer's Credit helps carers fill gaps in your National Insurance record to help you qualify for the State Pensions and other benefits - what you'll get, eligibility and how to claim",
     "categories": [
@@ -813,12 +813,12 @@
     "source_url": "https://www.gov.uk/carers-credit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:10+00:00"
+    "fetched_at": "2026-10-11T16:06:10+00:00"
   },
   {
     "id": "uk:become-appointee-for-someone-claiming-benefits",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Become an appointee for someone claiming benefits",
     "summary": "Apply to become an appointee for someone claiming benefits - how to apply or stop being an appointee.",
     "categories": [
@@ -837,12 +837,12 @@
     "source_url": "https://www.gov.uk/become-appointee-for-someone-claiming-benefits",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:10+00:00"
+    "fetched_at": "2026-10-11T16:06:11+00:00"
   },
   {
     "id": "uk:universal-credit-reviews",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "If your Universal Credit is reviewed",
     "summary": "Find out what happens if your Universal Credit claim is reviewed. ",
     "categories": [
@@ -866,12 +866,12 @@
     "source_url": "https://www.gov.uk/universal-credit-reviews",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:11+00:00"
+    "fetched_at": "2026-10-11T16:06:11+00:00"
   },
   {
     "id": "uk:pip",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Personal Independence Payment (PIP)",
     "summary": "Personal Independence Payment (PIP) - how and when to claim, rates, eligibility, change of circumstances, claiming due to a terminal illness.",
     "categories": [
@@ -890,12 +890,12 @@
     "source_url": "https://www.gov.uk/pip",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:11+00:00"
+    "fetched_at": "2026-10-11T16:06:12+00:00"
   },
   {
     "id": "uk:employment-support-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Employment and Support Allowance (ESA)",
     "summary": "Employment and Support Allowance (ESA) money if you cannot work because of illness or disability - rates, eligibility, apply, assessment.",
     "categories": [
@@ -915,12 +915,12 @@
     "source_url": "https://www.gov.uk/employment-support-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:11+00:00"
+    "fetched_at": "2026-10-11T16:06:13+00:00"
   },
   {
     "id": "uk:disability-service-centre",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Contact the Disability Service Centre",
     "summary": "Contact information for queries about claims that have been made for Disability Living Allowance, Personal Independence Payment and Attendance Allowance",
     "categories": [
@@ -939,12 +939,12 @@
     "source_url": "https://www.gov.uk/disability-service-centre",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:12+00:00"
+    "fetched_at": "2026-10-11T16:06:13+00:00"
   },
   {
     "id": "uk:access-to-work",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Access to Work: get support if you have a disability or health condition",
     "summary": "Get help at work, including an Access to Work grant, if you have a disability or health condition - eligibility, how to apply.",
     "categories": [
@@ -964,12 +964,12 @@
     "source_url": "https://www.gov.uk/access-to-work",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:12+00:00"
+    "fetched_at": "2026-10-11T16:06:14+00:00"
   },
   {
     "id": "uk:disabled-students-allowance-dsa",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Help if you're a student with a learning difficulty, health problem or disability",
     "summary": "Disabled Students' Allowance is extra money for higher education students - DSA1 forms, eligibility, how to apply, needs assessment.",
     "categories": [
@@ -988,12 +988,12 @@
     "source_url": "https://www.gov.uk/disabled-students-allowance-dsa",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:12+00:00"
+    "fetched_at": "2026-10-11T16:06:14+00:00"
   },
   {
     "id": "uk:health-conditions-disability-universal-credit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Health conditions, disability and Universal Credit",
     "summary": "If you have a health condition or disability, you’ll have an assessment to work out how much Universal Credit you can get and what you need to do in return.",
     "categories": [
@@ -1012,12 +1012,12 @@
     "source_url": "https://www.gov.uk/health-conditions-disability-universal-credit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:13+00:00"
+    "fetched_at": "2026-10-11T16:06:14+00:00"
   },
   {
     "id": "uk:financial-help-disabled",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Financial help if you're disabled",
     "summary": "Financial help if you're disabled - benefits, housing costs, council tax, vehicle tax exemption, TV Licence, motability schemes, VAT relief",
     "categories": [
@@ -1036,12 +1036,12 @@
     "source_url": "https://www.gov.uk/financial-help-disabled",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:13+00:00"
+    "fetched_at": "2026-10-11T16:06:15+00:00"
   },
   {
     "id": "uk:industrial-injuries-disablement-benefit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Industrial Injuries Disablement Benefit",
     "summary": "Industrial Injuries Disablement Benefit is help if you're ill or disabled from an accident or disease caused by work - eligibility, how to claim.",
     "categories": [
@@ -1060,12 +1060,12 @@
     "source_url": "https://www.gov.uk/industrial-injuries-disablement-benefit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:13+00:00"
+    "fetched_at": "2026-10-11T16:06:15+00:00"
   },
   {
     "id": "uk:benefits-end-of-life",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get benefits if you're nearing the end of life",
     "summary": "If you're terminally ill and might not live longer than 12 months, you may be able to get some benefits at a higher rate. \r\n",
     "categories": [
@@ -1084,12 +1084,12 @@
     "source_url": "https://www.gov.uk/benefits-end-of-life",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:13+00:00"
+    "fetched_at": "2026-10-11T16:06:16+00:00"
   },
   {
     "id": "uk:blind-persons-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Blind Person's Allowance",
     "summary": "Blind Person's Allowance is an extra amount you can earn before paying tax - what you'll get, eligibility, how to apply and how to transfer your allowance",
     "categories": [
@@ -1108,12 +1108,12 @@
     "source_url": "https://www.gov.uk/blind-persons-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:14+00:00"
+    "fetched_at": "2026-10-11T16:06:16+00:00"
   },
   {
     "id": "uk:vaccine-damage-payment",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Vaccine Damage Payment",
     "summary": "A Vaccine Damage Payment is a one-off tax-free payment of £120,000 if you're severely disabled as a result of vaccination against certain diseases - what you'll get, eligibility and applying.  \r\n",
     "categories": [
@@ -1132,12 +1132,12 @@
     "source_url": "https://www.gov.uk/vaccine-damage-payment",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:14+00:00"
+    "fetched_at": "2026-10-11T16:06:16+00:00"
   },
   {
     "id": "uk:guidance/apply-for-communication-support-at-a-job-interview-if-you-have-a-disability-or-health-condition-access-to-work",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Apply for communication support at a job interview if you have a disability or health condition (Access to Work)",
     "summary": "You can apply to Access to Work to get money for communication support at a job interview.",
     "categories": [
@@ -1157,12 +1157,12 @@
     "source_url": "https://www.gov.uk/guidance/apply-for-communication-support-at-a-job-interview-if-you-have-a-disability-or-health-condition-access-to-work",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:14+00:00"
+    "fetched_at": "2026-10-11T16:06:17+00:00"
   },
   {
     "id": "uk:if-you-become-disabled",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "What to do if you become disabled",
     "summary": "What happens if you become disabled - benefits, your rights, help from your council and your employer's responsibilities",
     "categories": [
@@ -1181,12 +1181,12 @@
     "source_url": "https://www.gov.uk/if-you-become-disabled",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:15+00:00"
+    "fetched_at": "2026-10-11T16:06:17+00:00"
   },
   {
     "id": "uk:diffuse-mesothelioma-payment",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Diffuse mesothelioma payments",
     "summary": "You may be able to get a one-off payment if you've been diagnosed with diffuse mesothelioma, and your exposure to asbestos happened in the UK",
     "categories": [
@@ -1205,12 +1205,12 @@
     "source_url": "https://www.gov.uk/diffuse-mesothelioma-payment",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:15+00:00"
+    "fetched_at": "2026-10-11T16:06:17+00:00"
   },
   {
     "id": "uk:coal-health-compensation-claims",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get compensation for health problems caused by mining",
     "summary": "Claim compensation for coal workers' pneumoconiosis (‘black lung’) if you worked as a miner for the British Coal or National Coal Board - find out how to claim for other conditions such as vibration white finger (VWF), chronic obstructive pulmonary disease (COPD), mesothelioma and noise induced hearing loss. ",
     "categories": [
@@ -1229,12 +1229,12 @@
     "source_url": "https://www.gov.uk/coal-health-compensation-claims",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:15+00:00"
+    "fetched_at": "2026-10-11T16:06:18+00:00"
   },
   {
     "id": "uk:reduced-earnings-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Reduced Earnings Allowance",
     "summary": "Reduced Earnings Allowance can help if your income falls because of a work-related accident or disease - what you'll get, eligibility and how to claim",
     "categories": [
@@ -1253,12 +1253,12 @@
     "source_url": "https://www.gov.uk/reduced-earnings-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:16+00:00"
+    "fetched_at": "2026-10-11T16:06:18+00:00"
   },
   {
     "id": "uk:claim-for-injury-received-while-serving",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Claim if you were injured while serving in the armed forces",
     "summary": "Compensation schemes you can apply to if you've been injured or became ill while serving in the armed forces - who can claim, how to claim, how long it takes, complaining about decisions",
     "categories": [
@@ -1277,12 +1277,12 @@
     "source_url": "https://www.gov.uk/claim-for-injury-received-while-serving",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:16+00:00"
+    "fetched_at": "2026-10-11T16:06:19+00:00"
   },
   {
     "id": "uk:extra-help-benefits-pension",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get extra help and support to manage your benefits or pension",
     "summary": "You can get extra help and support from DWP to claim and manage your benefits or pension - for example if you have a disability or health condition.",
     "categories": [
@@ -1301,12 +1301,12 @@
     "source_url": "https://www.gov.uk/extra-help-benefits-pension",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:16+00:00"
+    "fetched_at": "2026-10-11T16:06:19+00:00"
   },
   {
     "id": "uk:find-a-job",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Find a job",
     "summary": "Search and apply for jobs in Great Britain using ‘Find a job’. ",
     "categories": [
@@ -1325,12 +1325,12 @@
     "source_url": "https://www.gov.uk/find-a-job",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:16+00:00"
+    "fetched_at": "2026-10-11T16:06:19+00:00"
   },
   {
     "id": "uk:jobseekers-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Jobseeker's Allowance (JSA)",
     "summary": "Jobseeker's Allowance (JSA) is an unemployment benefit you can claim while looking for work - how to apply online, New Style Jobseeker's Allowance (JSA), eligibility, rates, rapid reclaim, JSA interview, when payment can be stopped",
     "categories": [
@@ -1349,12 +1349,12 @@
     "source_url": "https://www.gov.uk/jobseekers-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:17+00:00"
+    "fetched_at": "2026-10-11T16:06:20+00:00"
   },
   {
     "id": "uk:get-help-savings-low-income",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get help with savings if you’re on a low income (Help to Save)",
     "summary": "Get help with savings if you're on a low income (Help to Save) - how it works, what you'll get, eligibility, how it affects your benefits and how to apply online.",
     "categories": [
@@ -1373,12 +1373,12 @@
     "source_url": "https://www.gov.uk/get-help-savings-low-income",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:17+00:00"
+    "fetched_at": "2026-10-11T16:06:21+00:00"
   },
   {
     "id": "uk:budgeting-help-benefits",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Budgeting Loans",
     "summary": "Interest-free loans from the government for some people on benefits: how to apply, check if you're eligible",
     "categories": [
@@ -1397,12 +1397,12 @@
     "source_url": "https://www.gov.uk/budgeting-help-benefits",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:17+00:00"
+    "fetched_at": "2026-10-11T16:06:21+00:00"
   },
   {
     "id": "uk:guidance/redundancy-help-finding-work-and-claiming-benefits",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Being made redundant: finding work, claiming benefits and managing debts",
     "summary": "Guidance on finding work, claiming benefits, managing debts and pensions if you’re being made redundant.",
     "categories": [
@@ -1421,12 +1421,12 @@
     "source_url": "https://www.gov.uk/guidance/redundancy-help-finding-work-and-claiming-benefits",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:18+00:00"
+    "fetched_at": "2026-10-11T16:06:21+00:00"
   },
   {
     "id": "uk:moving-from-benefits-to-work",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Help with moving from benefits to work",
     "summary": "Find out about help you can get moving from benefits to work - training, work trials, starting your own business, help with drug or alcohol problems, carer support",
     "categories": [
@@ -1445,12 +1445,12 @@
     "source_url": "https://www.gov.uk/moving-from-benefits-to-work",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:18+00:00"
+    "fetched_at": "2026-10-11T16:06:21+00:00"
   },
   {
     "id": "uk:the-warm-home-discount-scheme",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Warm Home Discount Scheme",
     "summary": "The Warm Home Discount Scheme could take £150 off your winter electricity bill - eligibility, how to get your discount, deadlines.",
     "categories": [
@@ -1469,12 +1469,12 @@
     "source_url": "https://www.gov.uk/the-warm-home-discount-scheme",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:18+00:00"
+    "fetched_at": "2026-10-11T16:06:22+00:00"
   },
   {
     "id": "uk:winter-fuel-payment",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Winter Fuel Payment",
     "summary": "Winter Fuel Payment helps older people with their heating bills - claim form, how much you get, eligibility",
     "categories": [
@@ -1493,12 +1493,12 @@
     "source_url": "https://www.gov.uk/winter-fuel-payment",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:19+00:00"
+    "fetched_at": "2026-10-11T16:06:22+00:00"
   },
   {
     "id": "uk:apply-council-tax-reduction",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Apply for Council Tax Reduction",
     "summary": "Apply to your local council for Council Tax Reduction if you're on a low income or benefits - this replaced Council Tax Benefit",
     "categories": [
@@ -1517,12 +1517,12 @@
     "source_url": "https://www.gov.uk/apply-council-tax-reduction",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:19+00:00"
+    "fetched_at": "2026-10-11T16:06:23+00:00"
   },
   {
     "id": "uk:housing-benefit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Housing Benefit",
     "summary": "Housing Benefit or Local Housing Allowance (LHA) - rates, eligibility, claim form, calculator, appeals, 'Discretionary Housing Payment'.",
     "categories": [
@@ -1541,12 +1541,12 @@
     "source_url": "https://www.gov.uk/housing-benefit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:19+00:00"
+    "fetched_at": "2026-10-11T16:06:23+00:00"
   },
   {
     "id": "uk:cost-living-help-local-council",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get help with the cost of living from your local council",
     "summary": "Help you can get from your council’s Crisis and Resilience Fund if you cannot afford to pay for essentials like energy bills and food.",
     "categories": [
@@ -1565,12 +1565,12 @@
     "source_url": "https://www.gov.uk/cost-living-help-local-council",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:19+00:00"
+    "fetched_at": "2026-10-11T16:06:23+00:00"
   },
   {
     "id": "uk:cost-of-living",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Cost of living support",
     "summary": "Find out what support is available to help with the cost of living: income and disability benefits, bills and allowances, childcare, housing and travel.",
     "categories": [
@@ -1589,12 +1589,12 @@
     "source_url": "https://www.gov.uk/cost-of-living",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:20+00:00"
+    "fetched_at": "2026-10-11T16:06:24+00:00"
   },
   {
     "id": "uk:self-employment-and-universal-credit",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Self-employment and Universal Credit",
     "summary": "Claiming Universal Credit if you're self-employed - eligibility, reporting your earnings, start up periods",
     "categories": [
@@ -1613,12 +1613,12 @@
     "source_url": "https://www.gov.uk/self-employment-and-universal-credit",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:20+00:00"
+    "fetched_at": "2026-10-11T16:06:24+00:00"
   },
   {
     "id": "uk:get-a-ppc",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get a prescription prepayment certificate",
     "summary": "NHS Business Services Authority contact number for ordering prepaid prescriptions for 3 or 12 months at a cheaper rate than single prescriptions",
     "categories": [
@@ -1637,12 +1637,12 @@
     "source_url": "https://www.gov.uk/get-a-ppc",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:20+00:00"
+    "fetched_at": "2026-10-11T16:06:25+00:00"
   },
   {
     "id": "uk:support-for-mortgage-interest",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Support for Mortgage Interest (SMI)",
     "summary": "Support for Mortgage Interest (SMI) helps homeowners on certain benefits pay interest on loans or mortgages - what you'll get, eligibility and how to claim.",
     "categories": [
@@ -1661,12 +1661,12 @@
     "source_url": "https://www.gov.uk/support-for-mortgage-interest",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:21+00:00"
+    "fetched_at": "2026-10-11T16:06:26+00:00"
   },
   {
     "id": "uk:free-discount-tv-licence",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get a free or discounted TV licence",
     "summary": "You can get a free TV licence if you're 75 or over and you get Pension Credit, or a discount if you're blind or in residential care - who qualifies, how to apply",
     "categories": [
@@ -1685,12 +1685,12 @@
     "source_url": "https://www.gov.uk/free-discount-tv-licence",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:21+00:00"
+    "fetched_at": "2026-10-11T16:06:26+00:00"
   },
   {
     "id": "uk:apply-housing-benefit-from-council",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Housing Benefit information from your council",
     "summary": "Information about Housing Benefit from your local council - apply to help pay your rent ",
     "categories": [
@@ -1709,12 +1709,12 @@
     "source_url": "https://www.gov.uk/apply-housing-benefit-from-council",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:21+00:00"
+    "fetched_at": "2026-10-11T16:06:27+00:00"
   },
   {
     "id": "uk:help-nhs-costs",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get help with NHS prescriptions and health costs",
     "summary": "Check if you can get free NHS prescriptions, dental treatment or eye tests - or help with other NHS costs",
     "categories": [
@@ -1733,12 +1733,12 @@
     "source_url": "https://www.gov.uk/help-nhs-costs",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:22+00:00"
+    "fetched_at": "2026-10-11T16:06:27+00:00"
   },
   {
     "id": "uk:bills-benefits",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Manage deductions from your benefits to pay debts and bills",
     "summary": "Debts you owe (for example court fines, rent or Council Tax) can be deducted from your benefits – sometimes called third party deductions or Fuel Direct",
     "categories": [
@@ -1757,12 +1757,12 @@
     "source_url": "https://www.gov.uk/bills-benefits",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:22+00:00"
+    "fetched_at": "2026-10-11T16:06:28+00:00"
   },
   {
     "id": "uk:check-if-youre-eligible-for-warm-home-discount",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Check if you're eligible for the Warm Home Discount",
     "summary": "This service is closed. Find out more about the Warm Home Discount Scheme.",
     "categories": [
@@ -1781,12 +1781,12 @@
     "source_url": "https://www.gov.uk/check-if-youre-eligible-for-warm-home-discount",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:22+00:00"
+    "fetched_at": "2026-10-11T16:06:29+00:00"
   },
   {
     "id": "uk:income-support",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Income Support",
     "summary": "You can no longer claim Income Support.\r\n",
     "categories": [
@@ -1805,12 +1805,12 @@
     "source_url": "https://www.gov.uk/income-support",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:22+00:00"
+    "fetched_at": "2026-10-11T16:06:29+00:00"
   },
   {
     "id": "uk:national-concessionary-fuel-scheme",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "National Concessionary Fuel Scheme",
     "summary": "National Concessionary Fuel Scheme provides free solid fuel to ex-employees of NCB and BCC - what you'll get, eligibility and applying.",
     "categories": [
@@ -1829,12 +1829,12 @@
     "source_url": "https://www.gov.uk/national-concessionary-fuel-scheme",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:23+00:00"
+    "fetched_at": "2026-10-11T16:06:30+00:00"
   },
   {
     "id": "uk:mortgage-interest-run-on",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Mortgage Interest Run On",
     "summary": "Mortgage Interest Run On is extra money you can get towards housing costs for 4 weeks if your benefits are stopping - eligibility, what you'll get, how to claim",
     "categories": [
@@ -1853,12 +1853,12 @@
     "source_url": "https://www.gov.uk/mortgage-interest-run-on",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:23+00:00"
+    "fetched_at": "2026-10-11T16:06:30+00:00"
   },
   {
     "id": "uk:statutory-sick-pay",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Statutory Sick Pay (SSP) ",
     "summary": "Your Statutory Sick Pay (SSP) - how much you get, eligibility, how to claim SSP, fit notes, disputes.",
     "categories": [
@@ -1877,12 +1877,12 @@
     "source_url": "https://www.gov.uk/statutory-sick-pay",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:23+00:00"
+    "fetched_at": "2026-10-11T16:06:31+00:00"
   },
   {
     "id": "uk:bereavement-support-payment",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Bereavement Support Payment",
     "summary": "Bereavement Support Payment is money you can get if your partner dies - how it works, eligibility, what you'll get, how to claim.",
     "categories": [
@@ -1901,12 +1901,12 @@
     "source_url": "https://www.gov.uk/bereavement-support-payment",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:24+00:00"
+    "fetched_at": "2026-10-11T16:06:31+00:00"
   },
   {
     "id": "uk:funeral-payments",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Get help with funeral costs (Funeral Expenses Payment)",
     "summary": "Funeral Expenses Payment (also called Funeral Payment) to help pay funeral costs if you get certain benefits - eligibility, how to claim, form SF200",
     "categories": [
@@ -1925,12 +1925,12 @@
     "source_url": "https://www.gov.uk/funeral-payments",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:24+00:00"
+    "fetched_at": "2026-10-11T16:06:31+00:00"
   },
   {
     "id": "uk:when-someone-dies",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "What to do when someone dies: step by step",
     "summary": "Check what to do after a death - how to register the death, notify government departments and deal with the estate.",
     "categories": [
@@ -1949,12 +1949,12 @@
     "source_url": "https://www.gov.uk/when-someone-dies",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:24+00:00"
+    "fetched_at": "2026-10-11T16:06:32+00:00"
   },
   {
     "id": "uk:death-spouse-benefits-tax-pension",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Your benefits, tax and pension after the death of a partner",
     "summary": "How the death of your partner affects your benefits, tax and pension. What you can claim and who to tell about your change of circumstances.",
     "categories": [
@@ -1973,12 +1973,12 @@
     "source_url": "https://www.gov.uk/death-spouse-benefits-tax-pension",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:25+00:00"
+    "fetched_at": "2026-10-11T16:06:32+00:00"
   },
   {
     "id": "uk:parental-bereavement-pay-leave",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Statutory Parental Bereavement Pay and Leave",
     "summary": "How to claim Statutory Parental Bereavement Pay and Leave: what you're entitled to, check if you're eligible and how to claim it.",
     "categories": [
@@ -1997,12 +1997,12 @@
     "source_url": "https://www.gov.uk/parental-bereavement-pay-leave",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:25+00:00"
+    "fetched_at": "2026-10-11T16:06:33+00:00"
   },
   {
     "id": "uk:widowed-parents-allowance",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Widowed Parent's Allowance",
     "summary": "Widowed Parent's Allowance - what you'll get, eligibility, how to claim, bereavement benefits claim form BB2.",
     "categories": [
@@ -2021,12 +2021,12 @@
     "source_url": "https://www.gov.uk/widowed-parents-allowance",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:25+00:00"
+    "fetched_at": "2026-10-11T16:06:33+00:00"
   },
   {
     "id": "uk:child-funeral-costs",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Support for child funeral costs (Children’s Funeral Fund for England)",
     "summary": "How to apply to the Children’s Funeral Fund for help paying for a funeral for a child under 18",
     "categories": [
@@ -2045,12 +2045,12 @@
     "source_url": "https://www.gov.uk/child-funeral-costs",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:25+00:00"
+    "fetched_at": "2026-10-11T16:06:34+00:00"
   },
   {
     "id": "uk:child-benefit-child-parent-dies",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "Child Benefit if a child or parent dies",
     "summary": "Child Benefit if your child dies or the claimant dies - report the death, when to make a new claim, arrears",
     "categories": [
@@ -2069,12 +2069,12 @@
     "source_url": "https://www.gov.uk/child-benefit-child-parent-dies",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:26+00:00"
+    "fetched_at": "2026-10-11T16:06:34+00:00"
   },
   {
     "id": "uk:war-widow-pension",
     "country": "UK",
-    "region": null,
+    "regions": null,
     "name": "War Widow(er) Pension",
     "summary": "War Widow's or Widower's Pension if your wife, husband or civil partner died as a result of service in HM Armed Forces or during war - eligibility, how to claim, and how to claim funeral expenses\r\n",
     "categories": [
@@ -2093,6 +2093,6 @@
     "source_url": "https://www.gov.uk/war-widow-pension",
     "source": "GOV.UK",
     "license": "Open Government Licence v3.0",
-    "fetched_at": "2026-10-11T13:44:26+00:00"
+    "fetched_at": "2026-10-11T16:06:35+00:00"
   }
 ]

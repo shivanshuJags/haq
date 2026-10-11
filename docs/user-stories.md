@@ -33,13 +33,15 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] `README.md` with setup steps
 - [ ] First git commit
 
-### US-002 · Nebius Token Factory connection · P0 · To do · Oct 11–12
+### US-002 · Nebius Token Factory connection · P0 · Done
 **As a** developer, **I want** to call Nemotron models from Python, **so that** every AI feature has a working base.
-- [ ] API key read from `.env` (never hard-coded, never committed)
-- [ ] Small client module that can call Nano, Super and Ultra by name
-- [ ] Test script confirms: available model names, a reply from each model, tool calling works
-- [ ] Hinglish test: Nano extracts correct facts from a Hinglish sentence
-- [ ] Note in `docs/feedback.md`: what was easy or hard in Token Factory
+- [x] API key read from `.env` (never hard-coded, never committed) — `core/config.py`
+- [x] Small client module that can call Nano, Super and Ultra by name — `core/llm.py`
+- [x] Test script confirms: available model names, a reply from each model, tool calling works — `scripts/check_llm.py`
+- [x] Hinglish test: Nano extracts correct facts from a Hinglish sentence
+- [x] Note in `docs/feedback.md`: what was easy or hard in Token Factory
+
+**Findings:** no NVIDIA embedding model → use `Qwen/Qwen3-Embedding-8B`. No NVIDIA vision model → use `google/gemma-3-27b-it` or `openbmb/MiniCPM-V-4_5` for letter photos (US-501).
 
 ---
 
@@ -53,24 +55,27 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Links are absolute URLs
 - [x] Each record has `source_url` and licence
 
-### US-102 · India state schemes data (UP + Bihar) · P0 · To do · Oct 13–14
+### US-102 · India state schemes data (UP + Bihar) · P0 · Done
 **As a** developer, **I want** all Uttar Pradesh and Bihar schemes from myScheme, **so that** the India pack covers our personas.
-- [ ] Downloads every UP and Bihar scheme (list → detail → documents)
-- [ ] Fixes broken ₹ characters
-- [ ] Saves in the same common format as UK (`data/processed/india.json`)
-- [ ] Each record has `source_url` and myScheme attribution
-- [ ] Rate-limited; raw responses saved so we don't depend on the live API
+- [x] Downloads every UP and Bihar scheme (list → detail → documents) — 47 UP + 113 Bihar
+- [x] ₹ characters display correctly (myScheme sends valid UTF-8; just read it as UTF-8)
+- [x] Saves in the same common format as UK (`data/processed/india.json`)
+- [x] Each record has `source_url` and myScheme attribution
+- [x] Rate-limited; raw responses cached in `data/raw/india/` so re-runs take seconds
 
-### US-103 · India central schemes · P0 · To do · Oct 14
+### US-103 · India central schemes · P0 · Done (one follow-up)
 **As** Priya, **I want** central schemes (PM-Kisan, scholarships, Ayushman Bharat) included, **so that** I'm not missing the biggest benefits.
-- [ ] Top 30–50 central schemes downloaded (most relevant to students, farmers, women, low income)
-- [ ] Marked `region: null` (applies to every state)
+- [x] All central schemes downloaded — 729 kept (746 listed, 5 closed, 12 broken on myScheme)
+- [x] `regions: null` when a scheme applies to every state; list of states when it is restricted
+- [x] Closed schemes (close date in the past) skipped
+- [ ] Follow-up: myScheme's own page for **Ayushman Bharat PM-JAY** is broken. Add it (and other important ones from `data/processed/india_missing.json`) by hand from the official site in US-104's manual review
 
 ### US-104 · Structured eligibility rules · P0 · To do · Oct 15–16
 **As a** developer, **I want** each scheme's eligibility text turned into structured rules, **so that** hard criteria can be checked in code, not guessed by AI.
 - [ ] Rule schema defined (age, income, state, gender, category, occupation, student, disability, etc.)
 - [ ] Nemotron Super extracts rules from eligibility text into that schema
 - [ ] Unclear criteria are kept as free text (`other_conditions`) instead of being invented
+- [ ] Cross-check India rules against myScheme's own search filters (gender, age, caste, isStudent, occupation, isBpl, disability, residence) — query each filter value and record which schemes match
 - [ ] Manual review of the top 30 schemes used in the demo
 - [ ] Rules saved alongside each scheme
 

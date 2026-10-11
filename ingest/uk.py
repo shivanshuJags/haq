@@ -96,7 +96,7 @@ def to_record(content: dict, categories: list[str]) -> dict:
     return {
         "id": f"uk:{base_path.strip('/')}",
         "country": "UK",
-        "region": None,
+        "regions": None,  # None = applies to the whole country
         "name": content["title"],
         "summary": content.get("description"),
         "categories": categories,

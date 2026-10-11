@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "sdaocsg",
+    "name": "Scheme for Dronacharya Award for Outstanding Coaches in Sports and Games",
+    "group": "Central"
+  },
+  {
+    "slug": "visvasi",
+    "name": "Vanchit Ikai Samooh aur Vargon ki Aarthik Sahayata Yojana (VISVAS) for Individual",
+    "group": "Central"
+  },
+  {
+    "slug": "bhmnsp",
+    "name": "Begum Hazrat Mahal National Scholarship Program",
+    "group": "Central"
+  },
+  {
+    "slug": "rkpp",
+    "name": "Rashtriya Khel Protsahan Puraskar",
+    "group": "Central"
+  },
+  {
+    "slug": "saaopsg",
+    "name": "Scheme For Arjuna Awards For Outstanding Performance In Sports And Games",
+    "group": "Central"
+  },
+  {
+    "slug": "isuidai",
+    "name": "Internship Scheme By The Unique Identification Authority Of India (UIDAI)",
+    "group": "Central"
+  },
+  {
+    "slug": "vpby",
+    "name": "Varishtha Pension Bima Yojana",
+    "group": "Central"
+  },
+  {
+    "slug": "mdckra",
+    "name": "Major Dhyan Chand Khel Ratna Award",
+    "group": "Central"
+  },
+  {
+    "slug": "ab-pmjay",
+    "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana",
+    "group": "Central"
+  },
+  {
+    "slug": "aogusysuaptl",
+    "name": "Ayush Oushadhi Gunvatta evam Uttpadan Samvardhan Yojana (AOGUSY): Strengthening and Up-Gradation of Ayush Pharmacies and Drug Testing Laboratories to Achieve Higher Standards",
+    "group": "Central"
+  },
+  {
+    "slug": "aogusypcvasma",
+    "name": "Ayush Oushadhi Gunvatta evam Uttpadan Samvardhan Yojana (AOGUSY): Pharmacovigilance of ASU&H Drugs Including Surveillance of Misleading Advertisements",
+    "group": "Central"
+  },
+  {
+    "slug": "makats",
+    "name": "Maulana Abul Kalam Azad Trophy Scheme",
+    "group": "Central"
+  }
+]
