@@ -12,6 +12,7 @@ import re
 from functools import lru_cache
 
 from openai import OpenAI
+from pydantic import BaseModel
 
 from core import config
 
@@ -38,8 +39,16 @@ def model_id(name: str) -> str:
     return MODELS.get(name, name)  # accept short names or full IDs
 
 
-def complete(model: str, messages: list[dict], **kwargs):
-    """Raw API call. Returns the full response object (useful for tool calls and token usage)."""
+def complete(model: str, messages: list[dict], thinking: bool = True, **kwargs):
+    """Raw API call. Returns the full response object (useful for tool calls and token usage).
+
+    Nemotron 3 models "think" (reason step by step) before answering. That helps hard tasks,
+    but simple ones (short questions, extracting a few facts) are faster and cheaper without it.
+    `thinking=False` turns it off. Thinking tokens also count towards max_tokens, so a long
+    think can use them all and leave an empty answer.
+    """
+    if not thinking:
+        kwargs["extra_body"] = {"chat_template_kwargs": {"enable_thinking": False}}
     return client().chat.completions.create(model=model_id(model), messages=messages, **kwargs)
 
 
@@ -50,9 +59,19 @@ def chat(model: str, messages: list[dict], **kwargs) -> str:
     return THINK_BLOCK.sub("", text).strip()
 
 
-def chat_json(model: str, messages: list[dict], **kwargs) -> dict:
-    """Like chat(), but parses the answer as JSON. Raises ValueError if it isn't valid JSON."""
-    text = chat(model, messages, temperature=0, **kwargs)
+def chat_json(model: str, messages: list[dict], schema: type[BaseModel] | None = None, **kwargs) -> dict:
+    """Like chat(), but parses the answer as JSON. Raises ValueError if it isn't valid JSON.
+
+    Pass a Pydantic `schema` to use structured output: the API then forces the answer
+    to match that exact JSON shape (recommended whenever thinking=False).
+    """
+    if schema is not None:
+        kwargs["response_format"] = {
+            "type": "json_schema",
+            "json_schema": {"name": schema.__name__, "schema": schema.model_json_schema(), "strict": True},
+        }
+    kwargs.setdefault("temperature", 0)
+    text = chat(model, messages, **kwargs)
     fenced = JSON_FENCE.search(text)
     if fenced:
         text = fenced.group(1)

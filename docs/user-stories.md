@@ -99,23 +99,29 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ## Epic 2 — Eligibility conversation
 
-### US-201 · Describe my situation in plain words · P0 · To do · Oct 17–19
+### US-201 · Describe my situation in plain words · P0 · Backend done · Oct 17–19
 **As** Priya, **I want** to describe my life in my own words (English or Hinglish), **so that** I don't have to fill a long form.
-- [ ] Free-text chat input
-- [ ] Nemotron Nano extracts a profile (age, state, income, category, occupation, student, gender, disability, family details)
-- [ ] Extracted profile shown back to the user as editable chips
+- [x] API: `POST /api/profile` accepts a free-text message — `api/routes/profile.py`
+- [x] Nemotron Nano extracts a profile (age, state, income, category, occupation, student, gender, disability, family details) — `core/profile.py`, `core/profile_agent.py`
+- [x] Short answers map to the field we just asked about (`answering`)
+- [ ] Frontend: free-text chat input (US-701)
+- [ ] Frontend: extracted profile shown back as editable chips (US-701)
 
-### US-202 · Follow-up questions · P0 · To do · Oct 17–19
+### US-202 · Follow-up questions · P0 · Backend done · Oct 17–19
 **As** Ramesh, **I want** Haq to ask me only what's missing, **so that** results are accurate without a long questionnaire.
-- [ ] Asks at most 2–3 short follow-up questions
-- [ ] Questions are in the user's language style
-- [ ] User can skip a question
+- [x] At most 3 rounds, max 2 facts per question, never asks the same thing twice
+- [x] Questions in the user's language — decided in code (`detect_language`), kept across short answers
+- [x] Quick-reply options for choices (category, gender)
+- [x] Fast: Nano with thinking off + structured JSON output (~0.5–1.5s)
+- [ ] Frontend: user can skip a question (send the next message without answering)
+- [ ] Polish: Hinglish wording is sometimes clumsy ("parivaar ki poora samasya ki income")
 
-### US-203 · Privacy by default · P0 · To do · Oct 17–19
+### US-203 · Privacy by default · P0 · Backend done · Oct 17–19
 **As** a user, **I want** my personal details not stored, **so that** I feel safe sharing them.
-- [ ] Profile lives only in the session
-- [ ] Never asks for Aadhaar, NI number, bank details
-- [ ] Privacy note visible in the chat
+- [x] Stateless API: the browser holds the profile, the server stores nothing
+- [x] Aadhaar / PAN / NI / account numbers are removed before the text reaches the model — `core/privacy.py` (+ tests)
+- [x] Privacy note returned in the user's language when a number was removed
+- [ ] Frontend: privacy note visible in the chat
 
 ---
 

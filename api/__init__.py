@@ -1,0 +1,1 @@
+"""Haq HTTP API (FastAPI)."""

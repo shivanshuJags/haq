@@ -28,6 +28,15 @@ Running notes for the hackathon feedback section (US-803). Add to this as we bui
   Once told the fields are hard filters, it handled OR-lists and per-group limits correctly.
 - Throughput with 6 parallel requests: ~13 schemes/minute on long texts.
 
+**Nemotron 3 thinking control (important for latency)**
+- Reasoning tokens count towards `max_tokens`. With `max_tokens=800`, Nano sometimes spent all 800 on reasoning
+  and returned an empty answer (`finish_reason=length`) for a simple "write one question" task.
+- `extra_body={"chat_template_kwargs": {"enable_thinking": False}}` turned reasoning off: 1.4s and 34 tokens
+  instead of an empty answer. `reasoning_effort="low"` and a `/no_think` system prefix did NOT stop reasoning.
+- Without reasoning, Nano sometimes answered in YAML-like text instead of JSON. Structured output
+  (`response_format` with `json_schema`, strict) fixed it: 6/6 valid, ~0.5s. Great combo for fast UI calls.
+- Suggestion: document the thinking switch prominently in Token Factory's Nemotron model cards.
+
 **Nemotron 3 Ultra**
 - (to be filled when we use it for eligibility reasoning)
 

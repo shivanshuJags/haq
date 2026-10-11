@@ -27,6 +27,13 @@ python -m ingest.extract_rules   # Nemotron Super: eligibility text -> rules -> 
 python -m db.load                # load into PostgreSQL + embeddings (needs DATABASE_URL)
 ```
 
+## Run the API
+
+```bash
+uvicorn api.main:app --reload    # http://localhost:8000/docs for interactive docs
+pytest                           # unit tests
+```
+
 Checks:
 
 ```bash
