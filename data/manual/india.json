@@ -1,0 +1,35 @@
+[
+  {
+    "id": "in:ab-pmjay",
+    "country": "IN",
+    "regions": null,
+    "name": "Ayushman Bharat - Pradhan Mantri Jan Arogya Yojana (AB PM-JAY)",
+    "summary": "Free health cover of up to ₹5 lakh per family per year for hospital treatment at government and empanelled private hospitals.",
+    "categories": ["Health & Wellness"],
+    "format": "central_scheme",
+    "sections": {
+      "overview": "AB PM-JAY is the Government of India's health assurance scheme. Eligible families get cashless treatment of up to ₹5 lakh per family per year for secondary and tertiary hospitalisation at public and empanelled private hospitals across India. There is no cap on family size or age.",
+      "eligibility": "You may be eligible if any of these apply:\n\n* **Your family is listed as eligible under the scheme's deprivation and occupational criteria** (based on the Socio-Economic Caste Census 2011 for rural and urban households, and lists maintained by your state).\n* **You are aged 70 or above** — since 29 October 2024, all senior citizens aged 70+ are covered regardless of income (Ayushman Vay Vandana card).\n\nCheck whether your family is eligible on the official beneficiary portal or by calling the helpline.",
+      "benefits": "* Cashless treatment up to ₹5,00,000 per family per year\n* Covers hospitalisation, including pre- and post-hospitalisation expenses\n* Usable at government and empanelled private hospitals anywhere in India",
+      "documents": "1. Aadhaar card\n1. Mobile number linked to Aadhaar (for OTP)\n1. Ration card or other family identification, if asked",
+      "how_to_apply": "### Online\n\n**Step 1:** Visit the official [beneficiary portal](https://beneficiary.nha.gov.in) or use the Ayushman Bharat app.\n**Step 2:** Log in with your mobile number and check your eligibility using Aadhaar.\n**Step 3:** Complete Aadhaar e-KYC and download your Ayushman card.\n\n### Offline\n\nVisit an empanelled hospital (ask for the Ayushman Mitra), a Common Service Centre (CSC) or an Ayushman Arogya Mandir with your Aadhaar card.\n\nHelpline: 14555",
+      "other": ""
+    },
+    "apply_url": "https://beneficiary.nha.gov.in",
+    "source_url": "https://pmjay.gov.in",
+    "source": "Government of India (pmjay.gov.in), added manually",
+    "license": "Government of India public information",
+    "fetched_at": "2026-10-11T00:00:00+00:00",
+    "meta": {
+      "level": "Central",
+      "ministry": "Ministry of Health and Family Welfare",
+      "department": "National Health Authority",
+      "benefit_type": "In Kind",
+      "target_beneficiaries": ["Family"],
+      "tags": ["Health Insurance", "Hospitalisation", "Senior Citizens"],
+      "close_date": null,
+      "manual": true,
+      "needs_verification": "myScheme page is broken; written from known public facts. Confirm documents and steps on pmjay.gov.in / beneficiary.nha.gov.in before the demo."
+    }
+  }
+]

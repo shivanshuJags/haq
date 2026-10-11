@@ -1,0 +1,2314 @@
+{
+  "in:aaby": {
+    "bpl_required": true
+  },
+  "in:affdf": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "occupations": [
+      "Ex Servicemen"
+    ],
+    "disability_required": true,
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:affdf-serious-disease-treatment": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "occupations": [
+      "Ex Servicemen"
+    ],
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:ai-tgses": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:akckvy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:alaes": {
+    "bpl_required": true,
+    "disability_required": true
+  },
+  "in:am-gris": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:amptmsy": {
+    "genders": [
+      "Female"
+    ],
+    "marital_status": [
+      "Married",
+      "Divorced",
+      "Separated"
+    ]
+  },
+  "in:apvkc": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:asiim": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:asyadcf": {
+    "occupations": [
+      "Student",
+      "Artists"
+    ]
+  },
+  "in:avowwobc": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:avpay": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "marital_status": [
+      "Never Married",
+      "Married"
+    ]
+  },
+  "in:avy": {
+    "occupations": [
+      "Construction Worker"
+    ]
+  },
+  "in:bcebcgrhs": {
+    "genders": [
+      "Female"
+    ],
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "is_student": true,
+    "residence": [
+      "Rural",
+      "Urban"
+    ],
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:bdps": {
+    "disability_required": true
+  },
+  "in:bdy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:bgcrs": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:bhmnsp": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "is_student": true
+  },
+  "in:biocare": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:bmky": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:bnpfrs": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:bsaavy": {
+    "is_student": true
+  },
+  "in:bsakad": {
+    "occupations": [
+      "Unorganized Worker"
+    ]
+  },
+  "in:bsakai": {
+    "occupations": [
+      "Unorganized Worker"
+    ]
+  },
+  "in:bsakmaid": {
+    "occupations": [
+      "Unorganized Worker"
+    ]
+  },
+  "in:bsaknd": {
+    "occupations": [
+      "Unorganized Worker"
+    ]
+  },
+  "in:bsakppd": {
+    "occupations": [
+      "Unorganized Worker"
+    ]
+  },
+  "in:bsaktpd": {
+    "occupations": [
+      "Unorganized Worker"
+    ]
+  },
+  "in:bsjis": {
+    "occupations": [
+      "Journalist"
+    ]
+  },
+  "in:bslws": {
+    "disability_required": true
+  },
+  "in:bsrfssugc": {
+    "is_student": true
+  },
+  "in:bsrs": {
+    "occupations": [
+      "Teacher / Faculty"
+    ]
+  },
+  "in:bydbta": {
+    "occupations": [
+      "Artists"
+    ]
+  },
+  "in:cbssc-msy": {
+    "genders": [
+      "Female"
+    ],
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Other Backward Class (OBC)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ]
+  },
+  "in:ccsnfpfscsmap": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:cdpnercc": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:cdpnerqucdy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:cdpnerqucsbp": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:cdpnerqucsecoc": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:cdpnersgn": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:cdpnerwa": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:cegssc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:chobcbg": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:clssmig": {
+    "residence": [
+      "Urban"
+    ]
+  },
+  "in:cmbccay": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "bpl_required": true
+  },
+  "in:cmbky": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:cmbkyii": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:cmhtp-crwtp-smile": {
+    "genders": [
+      "Transgender"
+    ]
+  },
+  "in:cmkuy": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:cmnsy": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:cnspnaw": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:cpis": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:csmsu": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Other Backward Class (OBC)"
+    ],
+    "is_student": true
+  },
+  "in:css-nos-st": {
+    "caste_categories": [
+      "Scheduled Tribe (ST)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:css-umscs": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ],
+    "is_student": true
+  },
+  "in:cssipcra1scstpaa1": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ]
+  },
+  "in:csspostmsossi": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:csspremsobcsi": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:csss-cus": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:cvy-emps": {
+    "occupations": [
+      "Coir Worker"
+    ]
+  },
+  "in:cvy-sumcy": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:cvyb": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:dacssiselosobcebc": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:dacsspostmsebcs": {
+    "caste_categories": [
+      "General"
+    ]
+  },
+  "in:ddugku": {
+    "genders": [
+      "Female",
+      "Male",
+      "Transgender"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:deisrs": {
+    "disability_required": true
+  },
+  "in:dky": {
+    "disability_required": true
+  },
+  "in:dpbbocwwb": {
+    "occupations": [
+      "Unorganized Worker",
+      "Construction Worker"
+    ],
+    "disability_required": true
+  },
+  "in:dpiit-is": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:dpyup": {
+    "bpl_required": true,
+    "disability_required": true
+  },
+  "in:dsctaecc": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:dsctar": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:dsctassgcsccm": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:dsctawa": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:ekri-aswc": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:els": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:els-nsfdc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ],
+    "is_student": true
+  },
+  "in:epcmrs": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:fafspup": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:faishl": {
+    "occupations": [
+      "Ex Servicemen"
+    ]
+  },
+  "in:fambbocwwb": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "occupations": [
+      "Unorganized Worker",
+      "Construction Worker"
+    ],
+    "marital_status": [
+      "Never Married",
+      "Married"
+    ]
+  },
+  "in:fasbbocwwb": {
+    "occupations": [
+      "Unorganized Worker",
+      "Construction Worker"
+    ],
+    "marital_status": [
+      "Married",
+      "Divorced",
+      "Separated",
+      "Widowed"
+    ]
+  },
+  "in:favct": {
+    "occupations": [
+      "Teacher / Faculty"
+    ],
+    "disability_required": true
+  },
+  "in:fcfswd": {
+    "disability_required": true
+  },
+  "in:fcssos": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:fesmwpnie": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:fmtsfpwd": {
+    "disability_required": true
+  },
+  "in:freecoach": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:frs": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:fssaiis": {
+    "is_student": true
+  },
+  "in:fssdu": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:fvy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:gbsy": {
+    "occupations": [
+      "Construction Worker"
+    ]
+  },
+  "in:gghas": {
+    "disability_required": true
+  },
+  "in:gispw": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:gobardhan": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:gpaiscw": {
+    "disability_required": true
+  },
+  "in:gpbbbocwwb": {
+    "occupations": [
+      "Unorganized Worker",
+      "Construction Worker"
+    ]
+  },
+  "in:gpmsup": {
+    "caste_categories": [
+      "General"
+    ]
+  },
+  "in:gptbbocwwb": {
+    "occupations": [
+      "Unorganized Worker",
+      "Construction Worker"
+    ]
+  },
+  "in:grhbbocwwb": {
+    "occupations": [
+      "Unorganized Worker",
+      "Construction Worker"
+    ]
+  },
+  "in:gstecs": {
+    "disability_required": true
+  },
+  "in:gws": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "General"
+    ]
+  },
+  "in:hmcpf": {
+    "bpl_required": true
+  },
+  "in:hrds-ekritpswccc": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:hriday": {
+    "residence": [
+      "Urban"
+    ]
+  },
+  "in:icar-jrf-pgs": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:icar-pms-scstc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:icar-srf-pgs": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:icare": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:igndps": {
+    "bpl_required": true,
+    "disability_required": true,
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:igndpsb": {
+    "bpl_required": true,
+    "disability_required": true
+  },
+  "in:ignoapsb": {
+    "bpl_required": true
+  },
+  "in:ignwps": {
+    "genders": [
+      "Female"
+    ],
+    "bpl_required": true,
+    "residence": [
+      "Rural",
+      "Urban"
+    ],
+    "marital_status": [
+      "Widowed",
+      "Divorced"
+    ]
+  },
+  "in:ignwpsb": {
+    "genders": [
+      "Female"
+    ],
+    "bpl_required": true,
+    "marital_status": [
+      "Widowed"
+    ]
+  },
+  "in:ipmwcd": {
+    "genders": [
+      "Female"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:ipwccb": {
+    "is_student": true
+  },
+  "in:isec": {
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:isepqisrdceoplccn": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:isfepqiisar": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:isfepqiisaradoceoplcrnp": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:isfepqiisaradocofcovu": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "General"
+    ]
+  },
+  "in:isfepqiisaradocphiiflcinkdd": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:isfepqiisaradocphissm": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:isfepqiisaradocrssoss": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "General"
+    ]
+  },
+  "in:isfepqiisaradocscildiwss": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "General"
+    ]
+  },
+  "in:isfepqiisaradocscildrwhs": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "General"
+    ]
+  },
+  "in:isfepqisaradocphilcd": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:ispgrsdgtr": {
+    "is_student": true
+  },
+  "in:iu-sss-ner": {
+    "is_student": true
+  },
+  "in:jdrcs": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:jds": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:jiyo-parsi": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "marital_status": [
+      "Married"
+    ]
+  },
+  "in:jjm": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:jnktkhs": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "is_student": true
+  },
+  "in:jnpedak": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "disability_required": true,
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:jrfrafn": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:jrfst": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:jrpsa": {
+    "genders": [
+      "Female",
+      "Male"
+    ]
+  },
+  "in:jssk": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:jsy1": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:kaay": {
+    "bpl_required": true
+  },
+  "in:kiay": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:kjmpampky": {
+    "occupations": [
+      "Fishermen"
+    ]
+  },
+  "in:kkjby": {
+    "occupations": [
+      "Khadi Artisan"
+    ]
+  },
+  "in:ksy": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:kvsy": {
+    "genders": [
+      "Female",
+      "Male"
+    ]
+  },
+  "in:kvy": {
+    "occupations": [
+      "Construction Worker"
+    ]
+  },
+  "in:ky-smsp": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:larlbas": {
+    "genders": [
+      "Female",
+      "Male"
+    ]
+  },
+  "in:larlbasdaap": {
+    "genders": [
+      "Female",
+      "Male"
+    ]
+  },
+  "in:lbssf-els": {
+    "genders": [
+      "Female",
+      "Male",
+      "Transgender"
+    ],
+    "occupations": [
+      "Student",
+      "Safai Karamchari"
+    ],
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:lbssf-gtl": {
+    "occupations": [
+      "Safai Karamchari"
+    ],
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:lbssk-sms": {
+    "occupations": [
+      "Safai Karamchari"
+    ]
+  },
+  "in:lbssk-spuct": {
+    "occupations": [
+      "Safai Karamchari"
+    ]
+  },
+  "in:lbssk-suy": {
+    "occupations": [
+      "Safai Karamchari"
+    ]
+  },
+  "in:lbsspy": {
+    "genders": [
+      "Female"
+    ],
+    "bpl_required": true
+  },
+  "in:lcildie": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:lcildrh": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:lpsup": {
+    "bpl_required": true
+  },
+  "in:lws-h": {
+    "occupations": [
+      "Unorganized Worker"
+    ]
+  },
+  "in:majajuy": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:majeajcay": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:mapvmy": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "is_student": true,
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:mapvuy": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:mauyb": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:mbcyb": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true
+  },
+  "in:mbpyip": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true,
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:mbpym": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true
+  },
+  "in:mbsbbocwwb": {
+    "genders": [
+      "Female"
+    ],
+    "marital_status": [
+      "Married"
+    ]
+  },
+  "in:mbspy": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:mbyavy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mbyavyb": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mbyb": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mbydfvy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mbykvy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mbypvy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mbysvy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mcfnsfdc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:mcms-ugsvb-aass": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:mdckra": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:mdscy": {
+    "disability_required": true
+  },
+  "in:mdvpay": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "disability_required": true,
+    "marital_status": [
+      "Never Married",
+      "Married"
+    ]
+  },
+  "in:mesy": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:mgawb": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:mgnrega": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:mgpny": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:mgpy": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:mgs": {
+    "genders": [
+      "Female"
+    ],
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:mi-hma-nhdp": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:midh": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:mirs": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "disability_required": true
+  },
+  "in:mksybb": {
+    "genders": [
+      "Female"
+    ],
+    "bpl_required": true
+  },
+  "in:mksybs": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true
+  },
+  "in:mkvb": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mkvy": {
+    "genders": [
+      "Female"
+    ],
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:mmacy": {
+    "is_student": true
+  },
+  "in:mmajeajcspy": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:mmapvcspy": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:mmbpybb": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true
+  },
+  "in:mmppy": {
+    "caste_categories": [
+      "Other Backward Class (OBC)",
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "General"
+    ]
+  },
+  "in:mmpveapvkvpy": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:mmscvy": {
+    "caste_categories": [
+      "Other Backward Class (OBC)",
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "General"
+    ],
+    "occupations": [
+      "Farmer",
+      "Fishermen"
+    ]
+  },
+  "in:mmuyb": {
+    "genders": [
+      "Female",
+      "Transgender"
+    ]
+  },
+  "in:mmvpy": {
+    "is_student": true
+  },
+  "in:mmvsksy": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:mnny": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:mpppy": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "occupations": [
+      "Farmer"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:mpss": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:msdst": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:msgsy": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "occupations": [
+      "Farmer"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:mssc": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:msssgc": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:msvy": {
+    "genders": [
+      "Female",
+      "Male"
+    ]
+  },
+  "in:mvcppsacws": {
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:mvpmeuy": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:mvyb": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:myuyb": {
+    "genders": [
+      "Male"
+    ]
+  },
+  "in:nafie": {
+    "disability_required": true
+  },
+  "in:nap-sdp": {
+    "disability_required": true
+  },
+  "in:naps": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:nari-adalat": {
+    "genders": [
+      "Female"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:nat": {
+    "occupations": [
+      "Teacher / Faculty"
+    ]
+  },
+  "in:nbcfdc-gls": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:ncscscst": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:ndd": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:necms": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:nfbs": {
+    "bpl_required": true
+  },
+  "in:nfbsb": {
+    "bpl_required": true
+  },
+  "in:nfbsup": {
+    "bpl_required": true
+  },
+  "in:nfos": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ],
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:nhdp-dba-saic": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:nhdp-iandts-emporia": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:nhdp-iandts-uh": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:nhdpccwms": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:nhdpsc": {
+    "is_student": true
+  },
+  "in:nhis": {
+    "disability_required": true
+  },
+  "in:niti-i": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:nkmds": {
+    "occupations": [
+      "Construction Worker"
+    ]
+  },
+  "in:nmmss": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:nos-sc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:nos-swd": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ],
+    "disability_required": true
+  },
+  "in:npvy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:nsap-ignoaps": {
+    "bpl_required": true
+  },
+  "in:nsigse": {
+    "genders": [
+      "Female"
+    ],
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Other Backward Class (OBC)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ],
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:nssfp": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:nssw": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:ntkjky": {
+    "caste_categories": [
+      "Other Backward Class (OBC)",
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ],
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:nts-pg": {
+    "is_student": true
+  },
+  "in:obcpms": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:pbsbbocwwb": {
+    "genders": [
+      "Female",
+      "Male"
+    ]
+  },
+  "in:pby": {
+    "occupations": [
+      "Farmer"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:pdfscstc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ]
+  },
+  "in:pdfwc": {
+    "genders": [
+      "Female",
+      "Transgender"
+    ]
+  },
+  "in:pg-igssgc": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:pgmssurhula": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:pgspcscstc": {
+    "is_student": true
+  },
+  "in:pgssgategpatqsaicte": {
+    "is_student": true
+  },
+  "in:pktnampy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:pm-daksh": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Other Backward Class (OBC)"
+    ],
+    "occupations": [
+      "Safai Karamchari"
+    ]
+  },
+  "in:pm-kisan": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:pm-mkssy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:pm-poshan": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:pm-svanidhi": {
+    "occupations": [
+      "Unorganized Worker",
+      "Street Vendor"
+    ]
+  },
+  "in:pm-sym": {
+    "occupations": [
+      "Unorganized Worker"
+    ]
+  },
+  "in:pm-uspycsiss": {
+    "is_student": true
+  },
+  "in:pm-vikas": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:pm-yasasvipmsobcebcdnts": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:pm-yasasvitcceobcebcdnts": {
+    "is_student": true
+  },
+  "in:pm-yasasvitcseobcebcdnts": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:pmaagy": {
+    "caste_categories": [
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:pmagy": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:pmajay-ag": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:pmay-g": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:pmay-u": {
+    "residence": [
+      "Urban"
+    ]
+  },
+  "in:pmcup": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:pmfby": {
+    "occupations": [
+      "Farmer"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:pmgkp": {
+    "occupations": [
+      "Health Worker"
+    ]
+  },
+  "in:pmgsy": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:pmjvm": {
+    "caste_categories": [
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:pmkmdy": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:pmksypdmc": {
+    "occupations": [
+      "Farmer"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:pmkvy-sp": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ],
+    "bpl_required": true
+  },
+  "in:pmmkssy-1b": {
+    "occupations": [
+      "Fishermen"
+    ]
+  },
+  "in:pmmsy": {
+    "occupations": [
+      "Fishermen"
+    ]
+  },
+  "in:pmmvy": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:pmrs": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:pmsby": {
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:pmsma": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:pmss": {
+    "is_student": true
+  },
+  "in:pmssb": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:pmsscstb": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:pmsssc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:pmsy": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:pmuy": {
+    "genders": [
+      "Female"
+    ],
+    "bpl_required": true
+  },
+  "in:pmuy2": {
+    "genders": [
+      "Female"
+    ],
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Other Backward Class (OBC)"
+    ],
+    "bpl_required": true
+  },
+  "in:pmv": {
+    "occupations": [
+      "Artisans, Spinners & Weavers"
+    ]
+  },
+  "in:pmvky": {
+    "caste_categories": [
+      "Scheduled Tribe (ST)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ]
+  },
+  "in:pmyasasvipmsobcebcdnts": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:post-dis": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ],
+    "disability_required": true
+  },
+  "in:post-st": {
+    "caste_categories": [
+      "Scheduled Tribe (ST)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:ppma": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Other Backward Class (OBC)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ]
+  },
+  "in:pppk": {
+    "caste_categories": [
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:pre-dis": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ],
+    "disability_required": true
+  },
+  "in:pre-sc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:pre-st": {
+    "caste_categories": [
+      "Scheduled Tribe (ST)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ],
+    "bpl_required": true
+  },
+  "in:prowis-i": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:prowis-ii": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:psgs-deg": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:psgs-dip": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:pybihar": {
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:qip": {
+    "occupations": [
+      "Teacher / Faculty"
+    ]
+  },
+  "in:rgnfscc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)",
+      "Particularly Vulnerable Tribal Group (PVTG)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:rkpp": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:rkvp": {
+    "genders": [
+      "Female",
+      "Male"
+    ]
+  },
+  "in:rkvyshfvlstl": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:rmewf": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "bpl_required": true
+  },
+  "in:rmewf-disabled-child": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "occupations": [
+      "Ex Servicemen"
+    ],
+    "disability_required": true,
+    "marital_status": [
+      "Widowed"
+    ]
+  },
+  "in:rmewf-education": {
+    "residence": [
+      "Rural",
+      "Urban"
+    ],
+    "marital_status": [
+      "Widowed",
+      "Divorced",
+      "Married",
+      "Separated"
+    ]
+  },
+  "in:rmewf-faocesm": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "occupations": [
+      "Ex Servicemen"
+    ]
+  },
+  "in:rmewf-penury": {
+    "genders": [
+      "Female",
+      "Male"
+    ],
+    "occupations": [
+      "Ex Servicemen"
+    ],
+    "bpl_required": true,
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:rmewf-vocational-training": {
+    "genders": [
+      "Female"
+    ],
+    "occupations": [
+      "Ex Servicemen"
+    ],
+    "marital_status": [
+      "Widowed"
+    ]
+  },
+  "in:rmfgp": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:rpsy": {
+    "bpl_required": true
+  },
+  "in:saaopsg": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:sadppfaa": {
+    "disability_required": true
+  },
+  "in:sagb": {
+    "genders": [
+      "Female"
+    ],
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:sak-deg": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ],
+    "disability_required": true
+  },
+  "in:sak-dip": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ],
+    "disability_required": true
+  },
+  "in:sasscdc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:sbm-g-i": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:sbm-g-ii": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:sbm-u": {
+    "residence": [
+      "Urban"
+    ]
+  },
+  "in:sbvcydpsc": {
+    "marital_status": [
+      "Never Married"
+    ]
+  },
+  "in:sclcss": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:scsfr": {
+    "disability_required": true
+  },
+  "in:sdaocsg": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:seed-ee": {
+    "caste_categories": [
+      "Scheduled Tribe (ST)",
+      "De-Notified, Nomadic, and Semi-Nomadic (DNT) communities"
+    ]
+  },
+  "in:serbpowerf": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:serbpowerrg": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:sfava": {
+    "occupations": [
+      "Artists"
+    ]
+  },
+  "in:sfsmttpotc": {
+    "genders": [
+      "Transgender"
+    ]
+  },
+  "in:sga": {
+    "occupations": [
+      "Artisans, Spinners & Weavers",
+      "Artists"
+    ]
+  },
+  "in:sgiavoowsc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:sgrcsl": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:shrds-amocsp": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:shrds-fp": {
+    "occupations": [
+      "Sportsperson"
+    ]
+  },
+  "in:shreshta-m2-ngoos": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:shrestha-m1-ssbcprs": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:sisdrdolept": {
+    "is_student": true
+  },
+  "in:sjpfsgc": {
+    "genders": [
+      "Female"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:sjy": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ],
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:sl": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:smbdlp": {
+    "residence": [
+      "Rural"
+    ]
+  },
+  "in:smile": {
+    "genders": [
+      "Transgender"
+    ],
+    "bpl_required": true,
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:smile-scholarship": {
+    "genders": [
+      "Transgender"
+    ],
+    "is_student": true
+  },
+  "in:smile-skill-and-training": {
+    "genders": [
+      "Transgender"
+    ]
+  },
+  "in:sn2408": {
+    "disability_required": true
+  },
+  "in:spdmtfptantner": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:srcs": {
+    "disability_required": true
+  },
+  "in:srms": {
+    "occupations": [
+      "Safai Karamchari"
+    ]
+  },
+  "in:ssfgcojmmw": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:ssyup": {
+    "occupations": [
+      "Construction Worker"
+    ]
+  },
+  "in:sui": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:suman": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:svsgcfrss": {
+    "genders": [
+      "Female",
+      "Transgender"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:tare": {
+    "occupations": [
+      "Teacher / Faculty"
+    ]
+  },
+  "in:tce-sc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ],
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ]
+  },
+  "in:tce-swd": {
+    "is_student": true,
+    "occupations": [
+      "Student"
+    ],
+    "disability_required": true,
+    "residence": [
+      "Rural",
+      "Urban"
+    ]
+  },
+  "in:tdpspdstgmisg": {
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:tdupw": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:tfrs": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ]
+  },
+  "in:tloiis": {
+    "is_student": true
+  },
+  "in:tls-nmdfc": {
+    "caste_categories": [
+      "General"
+    ]
+  },
+  "in:tmvsy-ajjap": {
+    "caste_categories": [
+      "Other Backward Class (OBC)",
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ],
+    "occupations": [
+      "Farmer"
+    ]
+  },
+  "in:vajra": {
+    "occupations": [
+      "Teacher / Faculty"
+    ]
+  },
+  "in:vcf-sc": {
+    "caste_categories": [
+      "Scheduled Caste (SC)"
+    ]
+  },
+  "in:vdcspds": {
+    "disability_required": true
+  },
+  "in:visvas": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Other Backward Class (OBC)"
+    ]
+  },
+  "in:whl-181": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:widushi": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:wise-pdf": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:wise-phd": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:wise-scope-fellowship": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:wiser": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:wmcl": {
+    "caste_categories": [
+      "Scheduled Caste (SC)",
+      "Scheduled Tribe (ST)"
+    ],
+    "is_student": true
+  },
+  "in:wos-a": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:wos-b": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:wos-c": {
+    "genders": [
+      "Female"
+    ]
+  },
+  "in:wpup": {
+    "genders": [
+      "Female"
+    ],
+    "marital_status": [
+      "Widowed"
+    ]
+  },
+  "in:yfrf": {
+    "occupations": [
+      "Teacher / Faculty"
+    ]
+  }
+}

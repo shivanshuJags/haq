@@ -1,0 +1,2507 @@
+[
+  {
+    "id": "in:aaby",
+    "field": "residence",
+    "nemotron": [
+      "rural"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:aby-mojs",
+    "field": "residence",
+    "nemotron": [
+      "rural"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:aicte-ssss",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:amapbbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:amptmsy",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:amptmsy",
+    "field": "marital_status",
+    "nemotron": [
+      "divorced",
+      "unmarried"
+    ],
+    "myscheme": [
+      "divorced",
+      "married",
+      "separated"
+    ]
+  },
+  {
+    "id": "in:apvkc",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:atbwt",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:bby",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:bcebcgrhs",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:bdy",
+    "field": "occupations",
+    "nemotron": [
+      "fisherman"
+    ],
+    "myscheme": [
+      "farmer"
+    ]
+  },
+  {
+    "id": "in:brfsy",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:bsaavy",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:bsakai",
+    "field": "occupations",
+    "nemotron": [
+      "artisan_weaver",
+      "unorganised_worker"
+    ],
+    "myscheme": [
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:bsaknd",
+    "field": "occupations",
+    "nemotron": [
+      "artisan_weaver",
+      "unorganised_worker"
+    ],
+    "myscheme": [
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:bsakppd",
+    "field": "disability_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:bsaktpd",
+    "field": "occupations",
+    "nemotron": [
+      "artisan_weaver",
+      "unorganised_worker"
+    ],
+    "myscheme": [
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:bsaktpd",
+    "field": "disability_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:bsccs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:bsp",
+    "field": "occupations",
+    "nemotron": [
+      "entrepreneur"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:bsrfssugc",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cbssc-tl",
+    "field": "caste_categories",
+    "nemotron": [
+      "SC"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cbssc-tl",
+    "field": "occupations",
+    "nemotron": [
+      "entrepreneur"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ccsnfpfscsmap",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:cdpnercc",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cdpnerec",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cdpnerec",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cdpnerqucdy",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cdpnerqucsbp",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cdpnerqucsecoc",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cdpnerwa",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:chobcbg",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:chobcbg",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:cmbccay",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:cmbccay",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cmbccay",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:cmdes",
+    "field": "disability_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:cmfbs",
+    "field": "bpl_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:cpsbocwwb",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:crs",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:css-nos-st",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": [
+      "PVTG",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:css-umscs",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cssipcra1scstpaa1",
+    "field": "caste_categories",
+    "nemotron": [
+      "SC",
+      "ST"
+    ],
+    "myscheme": [
+      "PVTG",
+      "SC",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:csspostmsossi",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:csspremsobcsi",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:cts",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cvcis",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:cvcis",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:dacssiselosobcebc",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:dacssiselosobcebc",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:dacssiselosobcebc",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:dacsspostmsebcs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:dapjsss",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:dcpf",
+    "field": "occupations",
+    "nemotron": [
+      "retired"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ddskpdfs",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ddskrgnrfm",
+    "field": "occupations",
+    "nemotron": [
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ddsy",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ddsy",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:deswinternship",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:deswinternship",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:doctoral-fellowship",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:dpbbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": [
+      "construction_worker",
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:dsrupdf",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:e-yuvasbirace-yuvafugs",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:e-yuvasbirace-yuvafugs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:eebdrp",
+    "field": "residence",
+    "nemotron": [
+      "rural"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ef",
+    "field": "occupations",
+    "nemotron": [
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ekri-aswc",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "salaried_employee",
+      "sportsperson",
+      "teacher"
+    ],
+    "myscheme": [
+      "sportsperson"
+    ]
+  },
+  {
+    "id": "in:els",
+    "field": "caste_categories",
+    "nemotron": [
+      "SC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:els",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:els",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:els-nmdfc",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:essstj",
+    "field": "occupations",
+    "nemotron": [
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:faewbcilw-ppm",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:fambbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": [
+      "construction_worker",
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:fapgsprg",
+    "field": "occupations",
+    "nemotron": [
+      "artist"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:fasbbocwwb",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:fcfswd",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:fcfswd",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:freecoach",
+    "field": "caste_categories",
+    "nemotron": [
+      "DNT"
+    ],
+    "myscheme": [
+      "OBC",
+      "SC",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:frs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:fssaiis",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:fssdu",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:fssdu",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:gpbbbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": [
+      "construction_worker",
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:gptbbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": [
+      "construction_worker",
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:grhbbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": [
+      "construction_worker",
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:gvyoj",
+    "field": "occupations",
+    "nemotron": [
+      "artisan_weaver"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:hoapssa",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:hr-hrr",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:iaris",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:iaris",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:icar-ep",
+    "field": "occupations",
+    "nemotron": [
+      "retired"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:icar-es",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:icare",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": [
+      "artisan_weaver"
+    ]
+  },
+  {
+    "id": "in:iceasd-iced",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:ignwps",
+    "field": "marital_status",
+    "nemotron": [
+      "widowed"
+    ],
+    "myscheme": [
+      "divorced",
+      "widowed"
+    ]
+  },
+  {
+    "id": "in:igstcif-pdif",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:igstcifphdief",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:igstcifphdief",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:iibbe",
+    "field": "occupations",
+    "nemotron": [
+      "self_employed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:iirps",
+    "field": "occupations",
+    "nemotron": [
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:inspire-i",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:inspire-she",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:inspire-she",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:ipdop",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ipdop",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:ipiist",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ipiist",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:ipwccb",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:is-dea",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:isepfo",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:isepfo",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:isfepqiisar",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:isfepqiisaradocofocg",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:isfepqiisaradocphisst",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:isfepqiisaradocscildie",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:isfepqiisaradocscildiwss",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:isfepqisaradochfiotpeset",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:isfepqisaradocnswbisfsc",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ispgrsdgtr",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ivri-is",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:jbsyb",
+    "field": "genders",
+    "nemotron": [
+      "female"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:jcbs",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:jnktkhs",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:jnktkhs",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:jnpedak",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:jpsky",
+    "field": "genders",
+    "nemotron": [
+      "female"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:jrfrafn",
+    "field": "occupations",
+    "nemotron": [
+      "student",
+      "teacher"
+    ],
+    "myscheme": [
+      "student"
+    ]
+  },
+  {
+    "id": "in:jrfshss",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:kcc",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:kdky",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:kdky",
+    "field": "disability_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:kvpy",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:kvsy",
+    "field": "genders",
+    "nemotron": [
+      "female"
+    ],
+    "myscheme": [
+      "female",
+      "male"
+    ]
+  },
+  {
+    "id": "in:lbsspy",
+    "field": "marital_status",
+    "nemotron": [
+      "widowed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:lcildie",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:lcildrh",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:llbip",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:lpaiis",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:lpaiis",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:lpsup",
+    "field": "disability_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:majeajcay",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:mapvmy",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:mapvuy",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:marry",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:mauyb",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:mbsbbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:mdiis",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:mdiis",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:mesy",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:mgawb",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "SC",
+      "ST"
+    ],
+    "myscheme": [
+      "SC",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:mmacy",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:mmapvcspy",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:mmppy",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "General",
+      "Minority",
+      "OBC",
+      "SC",
+      "ST"
+    ],
+    "myscheme": [
+      "General",
+      "OBC",
+      "SC",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:mmpveapvkvpy",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:mmssy",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:mmvpy",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:mnssby",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:moefccis",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:mpss",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:msdst",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:msssgc",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:msssgc",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:mvpmeuy",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:mvspkdpy",
+    "field": "genders",
+    "nemotron": [
+      "female"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:myuyb",
+    "field": "caste_categories",
+    "nemotron": [
+      "General",
+      "OBC"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nacoip",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:nai",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:natthe",
+    "field": "occupations",
+    "nemotron": [
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nbcfdc-gls",
+    "field": "occupations",
+    "nemotron": [
+      "entrepreneur"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nbm",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nccsis",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nccsis",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:ncessis",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ncessis",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:ncscscst",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ndriis",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:nfos",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:nfsmcss",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nielitip",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:nift",
+    "field": "occupations",
+    "nemotron": [
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nmnf",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nos-sc",
+    "field": "caste_categories",
+    "nemotron": [
+      "DNT",
+      "SC"
+    ],
+    "myscheme": [
+      "SC"
+    ]
+  },
+  {
+    "id": "in:npcsip",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:npcsip",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:nps-tsep",
+    "field": "occupations",
+    "nemotron": [
+      "self_employed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nrefhrdnre",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nsc-se",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nsc-sl",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nsfpgs",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nsfpgs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:nssc",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:nssfp",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": [
+      "student"
+    ]
+  },
+  {
+    "id": "in:nssw",
+    "field": "occupations",
+    "nemotron": [
+      "entrepreneur"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nswf",
+    "field": "occupations",
+    "nemotron": [
+      "fisherman"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nswf",
+    "field": "bpl_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:nts-ug",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:nts-ug",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:ovdf",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ovdf",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pbsbbocwwb",
+    "field": "genders",
+    "nemotron": [
+      "male"
+    ],
+    "myscheme": [
+      "female",
+      "male"
+    ]
+  },
+  {
+    "id": "in:pbsbbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pdfscstc",
+    "field": "caste_categories",
+    "nemotron": [
+      "SC",
+      "ST"
+    ],
+    "myscheme": [
+      "PVTG",
+      "SC",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:pdfscstc",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pdfwc",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pfifllesrs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pgsgategpatqspmtmempugc",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pgsgategpatqspmtmempugc",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pgspcscstc",
+    "field": "caste_categories",
+    "nemotron": [
+      "SC",
+      "ST"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pgssgategpatqsaicte",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pm-janman",
+    "field": "caste_categories",
+    "nemotron": [
+      "PVTG"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pm-svanidhi",
+    "field": "occupations",
+    "nemotron": [
+      "street_vendor"
+    ],
+    "myscheme": [
+      "street_vendor",
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:pm-sym",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker",
+      "unorganised_worker"
+    ],
+    "myscheme": [
+      "unorganised_worker"
+    ]
+  },
+  {
+    "id": "in:pm-uspycsiss",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pm-yasasvipmsobcebcdnts",
+    "field": "caste_categories",
+    "nemotron": [
+      "DNT",
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:pm-yasasvipmsobcebcdnts",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pm-yasasvitcceobcebcdnts",
+    "field": "caste_categories",
+    "nemotron": [
+      "DNT",
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pm-yasasvitcceobcebcdnts",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pm-yasasvitcseobcebcdnts",
+    "field": "caste_categories",
+    "nemotron": [
+      "DNT",
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:pm-yasasvitcseobcebcdnts",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pm-yasasvitcseobcebcdnts",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmay-u",
+    "field": "marital_status",
+    "nemotron": [
+      "married"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pmcup",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmecrg",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pmfdr",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmrs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmscteoicphh",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmsfss",
+    "field": "caste_categories",
+    "nemotron": [
+      "SC"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pmsfss",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmss",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pmssb",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:pmssb",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmsscstb",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmssrpf",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pmssrpf",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmsssc",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmsswcapfar",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmsswsutpp",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmvky",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": [
+      "PVTG",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:pmvs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pmyasasvipmsobcebcdnts",
+    "field": "caste_categories",
+    "nemotron": [
+      "DNT",
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:pmyasasvipmsobcebcdnts",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pmyasasvipmsobcebcdnts",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:poesoisincong",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:post-st",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": [
+      "PVTG",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:pppk",
+    "field": "caste_categories",
+    "nemotron": [
+      "EBC",
+      "OBC"
+    ],
+    "myscheme": [
+      "OBC"
+    ]
+  },
+  {
+    "id": "in:pppk",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:pre-st",
+    "field": "caste_categories",
+    "nemotron": [
+      "ST"
+    ],
+    "myscheme": [
+      "PVTG",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:prla",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:prowis-ii",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:psbbocwwb",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:pvss",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:qipfu",
+    "field": "occupations",
+    "nemotron": [
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:r-cf",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:rad",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:rgnfscc",
+    "field": "caste_categories",
+    "nemotron": [
+      "SC",
+      "ST"
+    ],
+    "myscheme": [
+      "PVTG",
+      "SC",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:rgsaip",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:rkvp",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:rkvyshfshc",
+    "field": "occupations",
+    "nemotron": [
+      "farmer"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:rmewf-education",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:rrcs",
+    "field": "occupations",
+    "nemotron": [
+      "retired"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:rrf",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sasscdc",
+    "field": "bpl_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:sclcss",
+    "field": "occupations",
+    "nemotron": [
+      "self_employed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sebiitdip",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:secoii",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:secoii",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:seed-ee",
+    "field": "caste_categories",
+    "nemotron": [
+      "DNT"
+    ],
+    "myscheme": [
+      "DNT",
+      "ST"
+    ]
+  },
+  {
+    "id": "in:sefasmea",
+    "field": "occupations",
+    "nemotron": [
+      "entrepreneur"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:serbpowerf",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:serbpowerrg",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:shrestha-m1-ssbcprs",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:shreyas",
+    "field": "caste_categories",
+    "nemotron": [
+      "OBC"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:shreyas",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:shreyas",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:sipgrs-mospi",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sipgrs-mospi",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:sipocagi",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:sisdgft",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sisdgft",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:sisdrdolept",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sitare-ag",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sitare-ag",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:sjfs",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sjy",
+    "field": "bpl_required",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:sksptyy",
+    "field": "occupations",
+    "nemotron": [
+      "construction_worker"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:smile",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:smile-scholarship",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sn2408",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sn2408",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:sr",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:srspy",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:srtccst",
+    "field": "occupations",
+    "nemotron": [
+      "entrepreneur"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ssscstsssu",
+    "field": "caste_categories",
+    "nemotron": [
+      "SC",
+      "ST"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:ssscstsssu",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:sstpwa",
+    "field": "occupations",
+    "nemotron": [
+      "agricultural_labourer",
+      "salaried_employee"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:swsvy",
+    "field": "residence",
+    "nemotron": [
+      "urban"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:tare",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "teacher"
+    ],
+    "myscheme": [
+      "teacher"
+    ]
+  },
+  {
+    "id": "in:tfrs",
+    "field": "occupations",
+    "nemotron": [
+      "self_employed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:tls-nmdfc",
+    "field": "caste_categories",
+    "nemotron": [
+      "Minority"
+    ],
+    "myscheme": [
+      "General"
+    ]
+  },
+  {
+    "id": "in:tnscr",
+    "field": "occupations",
+    "nemotron": [
+      "artist",
+      "researcher",
+      "teacher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:vaibhav",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:vajra",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": [
+      "teacher"
+    ]
+  },
+  {
+    "id": "in:vcis",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:vcis",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:vetls",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:vphdseitftphdc",
+    "field": "occupations",
+    "nemotron": [
+      "student"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:vphdseitftphdc",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:wise-pdf",
+    "field": "occupations",
+    "nemotron": [
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:wise-phd",
+    "field": "occupations",
+    "nemotron": [
+      "unemployed"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:wise-phd",
+    "field": "is_student",
+    "nemotron": true,
+    "myscheme": null
+  },
+  {
+    "id": "in:wiser",
+    "field": "occupations",
+    "nemotron": [
+      "entrepreneur",
+      "researcher"
+    ],
+    "myscheme": null
+  },
+  {
+    "id": "in:yfrf",
+    "field": "occupations",
+    "nemotron": [
+      "researcher",
+      "teacher"
+    ],
+    "myscheme": [
+      "teacher"
+    ]
+  }
+]

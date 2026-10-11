@@ -70,14 +70,16 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Closed schemes (close date in the past) skipped
 - [ ] Follow-up: myScheme's own page for **Ayushman Bharat PM-JAY** is broken. Add it (and other important ones from `data/processed/india_missing.json`) by hand from the official site in US-104's manual review
 
-### US-104 · Structured eligibility rules · P0 · To do · Oct 15–16
+### US-104 · Structured eligibility rules · P0 · Done (demo review pending)
 **As a** developer, **I want** each scheme's eligibility text turned into structured rules, **so that** hard criteria can be checked in code, not guessed by AI.
-- [ ] Rule schema defined (age, income, state, gender, category, occupation, student, disability, etc.)
-- [ ] Nemotron Super extracts rules from eligibility text into that schema
-- [ ] Unclear criteria are kept as free text (`other_conditions`) instead of being invented
-- [ ] Cross-check India rules against myScheme's own search filters (gender, age, caste, isStudent, occupation, isBpl, disability, residence) — query each filter value and record which schemes match
-- [ ] Manual review of the top 30 schemes used in the demo
-- [ ] Rules saved alongside each scheme
+- [x] Rule schema defined (age, income, state, gender, category, occupation, student, disability, etc.) — `core/rules.py`
+- [x] Nemotron Super extracts rules from eligibility text into that schema — `ingest/extract_rules.py`, 976/976, 0 failed
+- [x] Unclear criteria are kept as free text (`other_conditions`) instead of being invented
+- [x] Hard rules never wrongly exclude: OR-lists → `other_conditions`, loosest limit when it varies by group, `false` only when explicitly excluded, `sanitize()` cleanup
+- [x] Cross-check India rules against myScheme's own search filters — `ingest/india_tags.py` + `scripts/compare_rules.py`: 92.8% agreement; sampled conflicts were mostly missing myScheme tags, not Nemotron errors
+- [x] Ayushman Bharat PM-JAY added by hand — `data/manual/india.json` (**verify on pmjay.gov.in before demo**)
+- [x] Rules saved alongside each scheme — `data/processed/rules.json`
+- [ ] Manual review of the ~30 schemes used in the demo — do on Oct 23–24 once demo personas' results are known
 
 ### US-105 · Database and search · P0 · To do · Oct 17
 **As a** developer, **I want** schemes stored in PostgreSQL with vector search, **so that** the agent can find relevant schemes quickly.
