@@ -18,13 +18,21 @@ pip install -r requirements.txt
 cp .env.example .env          # then add your Nebius API key
 ```
 
-## Data ingestion
+## Data pipeline
 
 ```bash
-python -m ingest.uk           # UK benefits from the GOV.UK Content API
+python -m ingest.uk              # UK benefits from the GOV.UK Content API   -> data/processed/uk.json
+python -m ingest.india           # UP, Bihar + central schemes from myScheme -> data/processed/india.json
+python -m ingest.extract_rules   # Nemotron Super: eligibility text -> rules -> data/processed/rules.json
+python -m db.load                # load into PostgreSQL + embeddings (needs DATABASE_URL)
 ```
 
-Output: `data/processed/uk.json`
+Checks:
+
+```bash
+python -m scripts.check_llm      # Nemotron models reachable, Hinglish + tool calling
+python -m scripts.try_search     # vector search with sample queries
+```
 
 ## Data sources and attribution
 

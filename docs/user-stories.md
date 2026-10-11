@@ -81,11 +81,14 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Rules saved alongside each scheme — `data/processed/rules.json`
 - [ ] Manual review of the ~30 schemes used in the demo — do on Oct 23–24 once demo personas' results are known
 
-### US-105 · Database and search · P0 · To do · Oct 17
+### US-105 · Database and search · P0 · Done
 **As a** developer, **I want** schemes stored in PostgreSQL with vector search, **so that** the agent can find relevant schemes quickly.
-- [ ] Tables for schemes and rules
-- [ ] Embeddings stored with pgvector
-- [ ] Load script imports `data/processed/*.json`
+- [x] Tables for schemes and rules — `db/schema.sql` on Neon (single `schemes` table, rules as jsonb)
+- [x] Embeddings stored with pgvector — Qwen3-Embedding-8B @ 1024 dims, HNSW cosine index
+- [x] Load script imports `data/processed/*.json` + `data/manual/` — `db/load.py` (upsert, removes stale, embeds only changed)
+- [x] Search by meaning works in Hinglish and English — `core/search.py`, `scripts/try_search.py`
+
+**Finding:** a vague query ("padhai ke liye paise") ranks the 729 central schemes above state ones; Bihar's Post-Matric Scholarship wasn't in the top 40. With the full profile in the query it rose to #9 and the top result was the right OBC scholarship. → see US-301 design.
 
 ### US-106 · Weekly data refresh · P1 · To do · Oct 27
 **As a** user, **I want** scheme data to stay current, **so that** I don't act on outdated rules.
@@ -120,7 +123,9 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ### US-301 · See schemes I'm eligible for · P0 · To do · Oct 20–22
 **As** Sarah, **I want** a list of benefits I qualify for, **so that** I know what to claim.
-- [ ] Hard rules checked in code first, then Nemotron Ultra reasons about unclear criteria
+- [ ] Candidates = every scheme for the person's country/state that passes the hard rules (code, deterministic — so a matching state scheme can never be missed because of search ranking)
+- [ ] Rank candidates by vector similarity to a query built from the FULL profile + need (not the raw message); reserve some slots for state schemes
+- [ ] Top ~25 go to Nemotron Ultra, which reasons about `other_conditions` and unclear criteria
 - [ ] Result cards: name, short description, amount (₹/£ where known)
 - [ ] Sorted by relevance / value
 - [ ] Total estimated benefit shown at top

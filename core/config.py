@@ -18,3 +18,9 @@ def require(name: str) -> str:
 
 NEBIUS_API_KEY = require("NEBIUS_API_KEY")
 NEBIUS_BASE_URL = os.environ.get("NEBIUS_BASE_URL", "").strip() or "https://api.tokenfactory.nebius.com/v1/"
+
+
+def database_url() -> str:
+    # A function, not a constant: scripts that don't touch the database
+    # shouldn't fail just because DATABASE_URL isn't set yet.
+    return require("DATABASE_URL")
