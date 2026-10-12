@@ -38,7 +38,12 @@ Running notes for the hackathon feedback section (US-803). Add to this as we bui
 - Suggestion: document the thinking switch prominently in Token Factory's Nemotron model cards.
 
 **Nemotron 3 Ultra**
-- (to be filled when we use it for eligibility reasoning)
+- Final eligibility judge: reads official text + profile + our rule-engine checks, returns a structured verdict with
+  per-criterion explanations in Hinglish or English (strict json_schema). 0 failures across ~60 judgements.
+- Fast for its size: ~1–2s per scheme; 20 schemes in parallel in ~8–15s.
+- Caught subtle conditions from long official text, e.g. "the two-sons limit doesn't apply to daughters",
+  monthly-to-yearly conversion per child for Universal Credit.
+- Verdicts can vary between identical runs (likely_eligible vs need_more_info) even at temperature 0.
 
 **Nemotron 3.5 Lightning**
 - Available; slower than Super/Ultra on our first single test (2.8s). Re-check with more samples.

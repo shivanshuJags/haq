@@ -1,7 +1,7 @@
 """Find schemes whose meaning is closest to what the person said (vector search)."""
 from pgvector import Vector
 
-from core.db import connect
+from core.db import pooled
 from core.embeddings import embed_query
 
 SEARCH_SQL = """
@@ -17,7 +17,7 @@ LIMIT %(limit)s
 
 def search(query: str, country: str, region: str | None = None, limit: int = 10) -> list[dict]:
     vector = Vector(embed_query(query))
-    with connect() as conn:
+    with pooled() as conn:
         return conn.execute(SEARCH_SQL, {
             "vector": vector, "country": country, "region": region, "limit": limit,
         }).fetchall()

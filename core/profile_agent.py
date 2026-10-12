@@ -28,6 +28,8 @@ Rules:
 - region: the Indian state name in English, properly capitalised (e.g. "Uttar Pradesh"). Null for UK.
 - occupation must be one of the allowed values; a person in school/college is occupation "student" and is_student true.
 - needs: one short English sentence describing the help they want (e.g. "money for college fees").
+- land_acres in acres: 1 hectare = 2.47 acres; "bigha" varies by state — for Uttar Pradesh/Bihar use 1 bigha ≈ 0.6 acre.
+  "Zameen nahi hai" / "no land" -> 0.
 - "single" / "single mum" says nothing about marital_status (could be unmarried, divorced, widowed): leave it null.
 - If the person is answering our question (see "They are answering"), map a bare answer to THAT field:
   e.g. answering "the whole family's yearly income" with "80 hazaar" -> annual_family_income 80000.
@@ -57,6 +59,7 @@ FIELD_LABELS = {
     "personal_annual_income": "how much they earn",
     "savings": "roughly how much savings they have",
     "has_disability": "whether they have a disability or long-term health condition",
+    "land_acres": "how much farm land is in their own name (0 if none)",
 }
 
 

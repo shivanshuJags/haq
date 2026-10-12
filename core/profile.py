@@ -32,6 +32,7 @@ class Profile(BaseModel):
     has_disability: bool | None = None
     disability_percent: int | None = None
     has_children: bool | None = None
+    children_count: int | None = Field(None, description="Number of children they look after")
     is_pregnant: bool | None = None
     is_carer: bool | None = None
     receives_benefits: list[str] = Field(default_factory=list, description="Schemes/benefits already received")
@@ -54,6 +55,12 @@ IMPORTANT_FIELDS: dict[str, list[str]] = {
     "UK": ["age", "has_children", "personal_annual_income", "savings", "has_disability"],
 }
 
+# Extra facts that matter only for certain people, e.g. land for farmers (PM-Kisan needs land in their name)
+SITUATIONAL_FIELDS: dict[str, list[str]] = {
+    "farmer": ["land_acres"],
+    "agricultural_labourer": ["land_acres"],
+}
+
 MAX_FOLLOW_UP_ROUNDS = 3
 
 
@@ -61,7 +68,8 @@ def missing_fields(profile: Profile, country: Country, already_asked: list[str])
     """Important fields we still don't know and haven't asked about yet.
     A student's occupation is already known, so is_student counts as filling `occupation`."""
     missing = []
-    for name in IMPORTANT_FIELDS[country]:
+    wanted = IMPORTANT_FIELDS[country] + SITUATIONAL_FIELDS.get(profile.occupation or "", [])
+    for name in wanted:
         if name in already_asked:
             continue  # asked before: the person skipped it or didn't know — don't nag
         if name == "occupation" and profile.is_student:

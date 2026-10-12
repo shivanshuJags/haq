@@ -28,6 +28,12 @@ def test_student_counts_as_known_occupation():
     assert missing_fields(profile, "IN", already_asked=[]) == []
 
 
+def test_farmer_is_asked_about_land():
+    profile = Profile(region="Uttar Pradesh", age=58, gender="male", annual_family_income=80000,
+                      caste_category="General", occupation="farmer")
+    assert missing_fields(profile, "IN", already_asked=[]) == ["land_acres"]
+
+
 def test_does_not_ask_twice():
     profile = Profile(region="Bihar")
     missing = missing_fields(profile, "IN", already_asked=["age", "gender"])

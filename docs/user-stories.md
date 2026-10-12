@@ -114,6 +114,7 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Quick-reply options for choices (category, gender)
 - [x] Fast: Nano with thinking off + structured JSON output (~0.5–1.5s)
 - [ ] Frontend: user can skip a question (send the next message without answering)
+- [x] Situational questions: farmers are asked about land (PM-Kisan needs land in their name)
 - [ ] Polish: Hinglish wording is sometimes clumsy ("parivaar ki poora samasya ki income")
 
 ### US-203 · Privacy by default · P0 · Backend done · Oct 17–19
@@ -127,29 +128,35 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ## Epic 3 — Results
 
-### US-301 · See schemes I'm eligible for · P0 · To do · Oct 20–22
+### US-301 · See schemes I'm eligible for · P0 · Backend done
 **As** Sarah, **I want** a list of benefits I qualify for, **so that** I know what to claim.
-- [ ] Candidates = every scheme for the person's country/state that passes the hard rules (code, deterministic — so a matching state scheme can never be missed because of search ranking)
-- [ ] Rank candidates by vector similarity to a query built from the FULL profile + need (not the raw message); reserve some slots for state schemes
-- [ ] Top ~25 go to Nemotron Ultra, which reasons about `other_conditions` and unclear criteria
-- [ ] Result cards: name, short description, amount (₹/£ where known)
-- [ ] Sorted by relevance / value
-- [ ] Total estimated benefit shown at top
+- [x] Candidates = every scheme for the person's country/state that passes the hard rules — `core/eligibility.py` (pass/fail/unknown, "fail only when sure", 10 tests), `core/candidates.py`
+- [x] Rank by vector similarity to a query built from the FULL profile; 15 best + 5 reserved state slots
+- [x] Shortlist judged by Nemotron Ultra in parallel (20 at once) — `core/verdict.py`: verdict (eligible / likely / need_more_info / not_eligible) + fit (strong / possible / weak)
+- [x] Result cards with benefit line + yearly cash amount (only real cash; not insurance cover or loans) — `core/results.py`, `POST /api/results`
+- [x] Sorted by verdict, then relevance; weak matches in a separate `other_cards` list
+- [x] Totals: `total_yearly` (eligible + likely) and `potential_yearly` (+ need more info)
+- [x] Fast enough: DB connection pool + in-memory catalog (`core/db.py`, `core/catalog.py`) — candidates ~1.5s warm; Ultra ~8–15s
+- [ ] Frontend: cards, totals, progress while Ultra works (US-701)
+- [ ] Known: Ultra's verdict can vary between runs (likely ↔ need_more_info), which changes the total. Consider temperature/consistency check before demo
 
-### US-302 · Why am I eligible? · P0 · To do · Oct 23–24
+### US-302 · Why am I eligible? · P0 · Backend done
 **As** Priya, **I want** to see why I qualify, **so that** I can trust the result.
-- [ ] Each card lists criteria with ✓ / ✗ / ? against my profile
-- [ ] Link to the official source page on every card
+- [x] Each card has 2–5 reasons with met / not_met / unknown, in the user's language
+- [x] `to_confirm`: what the person should check or provide
+- [x] Link to the official source page on every card (`source_url`)
+- [ ] Frontend: show ✓ / ✗ / ? list
 
-### US-303 · What documents do I need? · P0 · To do · Oct 20–22
+### US-303 · What documents do I need? · P0 · Backend done
 **As** Ramesh, **I want** a list of documents for each scheme, **so that** I carry the right papers.
-- [ ] Documents shown on each card
+- [x] Documents list on each card (cleaned of HTML entities)
 - [ ] Combined, de-duplicated checklist across all eligible schemes (P1)
+- [ ] Frontend
 
-### US-304 · How do I apply? · P0 · To do · Oct 20–22
+### US-304 · How do I apply? · P0 · Backend done
 **As** Sarah, **I want** clear steps and the apply link, **so that** I can apply right away.
-- [ ] Application steps shown
-- [ ] Online apply link when available; offline steps otherwise
+- [x] Application steps (`how_to_apply` markdown) + `apply_url` when available
+- [ ] Frontend
 
 ### US-305 · Almost eligible · P1 · To do · Oct 23–24
 **As** Priya, **I want** to know which schemes I could get with one more step, **so that** I can unlock more benefits.
