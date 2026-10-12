@@ -22,6 +22,9 @@ MODELS = {
     "super": "nvidia/nemotron-3-super-120b-a12b",           # balanced: rules extraction
     "ultra": "nvidia/Nemotron-3-Ultra-550b-a55b",           # strongest reasoning: eligibility, appeals
     "lightning": "nvidia/Nemotron-3_5-Lightning",           # newest, low latency (evaluating)
+    # Helper, not a Nemotron: no NVIDIA vision model is on Token Factory yet. Only used to read
+    # text off a photo of a letter; all understanding and decisions stay with Nemotron.
+    "vision": "google/gemma-3-27b-it",
 }
 
 # Some reasoning models put their "thinking" inside <think>...</think> in the reply.

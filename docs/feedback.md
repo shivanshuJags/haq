@@ -12,7 +12,10 @@ Running notes for the hackathon feedback section (US-803). Add to this as we bui
 
 **Friction / suggestions**
 - No NVIDIA embedding model in the catalogue at the time of testing — we used `Qwen/Qwen3-Embedding-8B` for vector search.
-- No NVIDIA vision model — for reading rejection-letter photos we need a non-NVIDIA vision model.
+- No NVIDIA vision model — for reading rejection-letter photos we used `google/gemma-3-27b-it` (accurate on a
+  tilted test photo, ~3.4s). `openbmb/MiniCPM-V-4_5` put its reasoning inside the transcription. A Nemotron VL model
+  on Token Factory would let the whole pipeline stay NVIDIA.
+- The OpenAI-style multimodal `image_url` with a base64 data URL worked out of the box.
 
 ## NVIDIA Nemotron
 
@@ -49,6 +52,10 @@ Running notes for the hackathon feedback section (US-803). Add to this as we bui
 - Caught subtle conditions from long official text, e.g. "the two-sons limit doesn't apply to daughters",
   monthly-to-yearly conversion per child for Universal Credit.
 - Verdicts can vary between identical runs (likely_eligible vs need_more_info) even at temperature 0.
+- Rejection Rescue: from a rejection letter + candidate schemes, Ultra identified the scheme, explained each reason,
+  judged it against official rules, computed the deadline from the letter date, and wrote a complete, correctly
+  addressed appeal / mandatory-reconsideration letter in ~9–20s. Initially it guessed a specific scheme variant
+  (SC scholarship) from a generic letter; telling it to return null when ambiguous fixed that.
 
 **Nemotron 3.5 Lightning**
 - Available; slower than Super/Ultra on our first single test (2.8s). Re-check with more samples.

@@ -5,12 +5,13 @@ import { Chat, type ChatMessage } from './components/Chat'
 import { Footer } from './components/Footer'
 import { Loading } from './components/Loading'
 import { ProfileChips } from './components/ProfileChips'
+import { RescueView } from './components/RescueView'
 import { ResultsView } from './components/ResultsView'
 import { Welcome } from './components/Welcome'
 import { t } from './i18n'
 import type { Country, Language, Profile, Progress, Results } from './types'
 
-type Screen = 'welcome' | 'chat' | 'loading' | 'results' | 'error'
+type Screen = 'welcome' | 'chat' | 'loading' | 'results' | 'error' | 'rescue'
 
 export default function App() {
   // All app state lives here and flows down to components as props
@@ -118,13 +119,17 @@ export default function App() {
             Haq
           </button>
           <span className="text-sm text-muted">
-            {country === 'IN' ? `₹ India${profile.region ? ` · ${profile.region}` : ''}` : '£ United Kingdom'}
+            {screen === 'rescue'
+              ? '📄 Rejection Rescue'
+              : country === 'IN'
+                ? `₹ India${profile.region ? ` · ${profile.region}` : ''}`
+                : '£ United Kingdom'}
           </span>
         </header>
       )}
 
       <main ref={mainRef} className="flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
-        {screen === 'welcome' && <Welcome onStart={start} />}
+        {screen === 'welcome' && <Welcome onStart={start} onRescue={() => setScreen('rescue')} />}
 
         {screen === 'chat' && (
           <div className="mx-auto flex min-h-0 w-full max-w-2xl flex-1 flex-col">
@@ -142,7 +147,9 @@ export default function App() {
           </div>
         )}
 
-        {screen === 'loading' && <Loading strings={strings} />}
+        {screen === 'loading' && <Loading steps={strings.loadingSteps} />}
+
+        {screen === 'rescue' && <RescueView initialCountry={country} />}
 
         {screen === 'results' && results && (
           <ResultsView results={results} progress={progress} strings={strings} onStartOver={startOver} />

@@ -98,6 +98,36 @@ export type StreamEvent =
   | { type: 'done'; total_yearly: number; potential_yearly: number; currency: 'INR' | 'GBP'; stats: Record<string, number> }
   | { type: 'error' }
 
+// POST /api/rescue (core/rescue.py)
+export interface RejectionReason {
+  reason: string
+  meaning: string
+  fixable: boolean
+  how_to_fix: string
+}
+
+export interface Rescue {
+  scheme_id: string | null
+  scheme_name: string | null
+  summary: string
+  reasons: RejectionReason[]
+  rejection_looks_correct: 'yes' | 'no' | 'unclear'
+  assessment: string
+  recommendation: 'reapply' | 'appeal' | 'reapply_or_appeal' | 'not_eligible'
+  recommendation_reason: string
+  deadline: string | null
+  documents_to_gather: string[]
+  appeal_letter: string
+}
+
+export interface RescueOutcome {
+  letter_text: string
+  removed_ids: string[]
+  rescue: Rescue
+  scheme_source_url: string | null
+  scheme_apply_url: string | null
+}
+
 export interface Progress {
   checking: number
   judged: number

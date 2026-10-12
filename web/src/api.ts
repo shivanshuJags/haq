@@ -1,5 +1,5 @@
 // Small typed client for the Haq API — like an Angular service wrapping HttpClient.
-import type { Country, Language, Profile, ProfileReply, ProfileTurn, StreamEvent } from './types'
+import type { Country, Language, Profile, ProfileReply, ProfileTurn, RescueOutcome, StreamEvent } from './types'
 
 async function post<T>(path: string, body: unknown): Promise<T> {
   const response = await fetch(path, {
@@ -15,6 +15,15 @@ async function post<T>(path: string, body: unknown): Promise<T> {
 
 export function sendProfileTurn(turn: ProfileTurn): Promise<ProfileReply> {
   return post<ProfileReply>('/api/profile', turn)
+}
+
+export function sendRescue(request: {
+  country: Country
+  language: Language
+  letter_text?: string
+  image?: string // data URL of a photo of the letter
+}): Promise<RescueOutcome> {
+  return post<RescueOutcome>('/api/rescue', request)
 }
 
 /**

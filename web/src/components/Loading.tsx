@@ -1,22 +1,21 @@
 import { useEffect, useState } from 'react'
-import type { Strings } from '../i18n'
 
-// Ultra takes ~10–15 seconds. Show what's happening, one step at a time, so the wait feels purposeful.
-export function Loading({ strings }: { strings: Strings }) {
+// Long AI steps (~10–25s): show what's happening, one step at a time, so the wait feels purposeful.
+export function Loading({ steps }: { steps: string[] }) {
   const [step, setStep] = useState(0)
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setStep((current) => Math.min(current + 1, strings.loadingSteps.length - 1))
+      setStep((current) => Math.min(current + 1, steps.length - 1))
     }, 3500)
     return () => clearInterval(timer) // cleanup when the component disappears (like ngOnDestroy)
-  }, [strings])
+  }, [steps])
 
   return (
     <div className="mx-auto flex min-h-full max-w-md flex-col justify-center px-6 py-10">
       <div className="h-12 w-12 animate-spin rounded-full border-4 border-brand-soft border-t-brand" />
-      <ol className="mt-8 space-y-3">
-        {strings.loadingSteps.map((text, index) => (
+      <ol className="mt-8 space-y-3" role="status" aria-live="polite">
+        {steps.map((text, index) => (
           <li
             key={text}
             className={`flex items-start gap-3 transition-opacity duration-500 ${

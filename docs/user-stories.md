@@ -178,17 +178,20 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ## Epic 5 — Rejection Rescue
 
-### US-501 · Understand my rejection · P1 · To do · Oct 25–26
+### US-501 · Understand my rejection · P1 · Done
 **As** Tom, **I want** to upload or paste my rejection letter, **so that** I understand why I was rejected.
-- [ ] Accepts pasted text; image upload with OCR if a vision model is available
-- [ ] Nemotron Ultra explains the reason in simple words
-- [ ] Matches the reason against the scheme's rules
+- [x] Accepts pasted text or a photo (resized in the browser to ≤1600px); photo read by `google/gemma-3-27b-it` (no NVIDIA vision model on Token Factory) — `core/rescue.py`, `POST /api/rescue`
+- [x] ID numbers removed before the letter is analysed; nothing stored
+- [x] Finds the scheme with vector search (national + UP + Bihar candidates); Ultra picks it or says "none" instead of guessing a variant
+- [x] Nemotron Ultra explains each reason simply, says if it's fixable, and checks it against the official rules (looks correct: yes / no / unclear)
+- [x] Entry point on the welcome screen; fictional sample letters for India and UK (`web/src/samples.ts`)
 
-### US-502 · Fix and appeal · P1 · To do · Oct 25–26
+### US-502 · Fix and appeal · P1 · Done
 **As** Tom, **I want** a ready appeal letter and a fix list, **so that** I can challenge the decision.
-- [ ] Lists what to fix or which evidence to add
-- [ ] Generates an editable appeal letter
-- [ ] Copy / download the letter
+- [x] Recommendation (re-apply / appeal / either / not eligible) + reason, deadline from the letter, documents to gather
+- [x] Editable formal appeal letter with [placeholders], addressed to the office that rejected
+- [x] Copy / download the letter
+- [x] Verified in browser (India sample: Bihar Post-Matric Scholarship, deadline 05/10/2026, letter to District Welfare Officer Patna); UK sample (PIP) → mandatory reconsideration letter in ~9s
 
 ---
 

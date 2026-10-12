@@ -10,7 +10,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.routes import profile, results
+from api.routes import profile, rescue, results
 from core.catalog import catalog
 from core.db import pool
 
@@ -43,6 +43,7 @@ app.add_middleware(
 
 app.include_router(profile.router)
 app.include_router(results.router)
+app.include_router(rescue.router)
 
 
 @app.get("/api/health", tags=["system"])

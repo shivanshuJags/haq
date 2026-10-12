@@ -5,9 +5,10 @@ const INDIA_STATES = ['Uttar Pradesh', 'Bihar']
 
 interface Props {
   onStart: (country: Country, region: string | null) => void
+  onRescue: () => void
 }
 
-export function Welcome({ onStart }: Props) {
+export function Welcome({ onStart, onRescue }: Props) {
   // Which country button was tapped. India needs one more step (state).
   const [country, setCountry] = useState<Country | null>(null)
 
@@ -58,6 +59,20 @@ export function Welcome({ onStart }: Props) {
           </p>
         </>
       )}
+
+      {/* US-501: second way in — for people who already applied and were rejected */}
+      <button
+        onClick={onRescue}
+        className="mt-10 flex items-center gap-4 rounded-2xl border border-line bg-white p-4 text-left transition hover:border-brand"
+      >
+        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent-soft text-2xl" aria-hidden>
+          📄
+        </span>
+        <span>
+          <span className="block font-semibold">Got a rejection letter? · Rejection letter mila?</span>
+          <span className="block text-sm text-muted">Rejection Rescue: understand why, and appeal →</span>
+        </span>
+      </button>
     </div>
   )
 }
