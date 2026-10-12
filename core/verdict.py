@@ -7,8 +7,8 @@ criterion in plain words, so the person can see WHY (US-302).
 Each scheme is judged in its own call (in parallel), so one slow or failed answer
 never blocks the rest.
 """
-from concurrent.futures import ThreadPoolExecutor
-from typing import Literal
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from typing import Iterator, Literal
 
 from pydantic import BaseModel, Field
 
@@ -110,8 +110,11 @@ Code checks:
         return None  # one failed scheme shouldn't break the whole result page
 
 
-def judge_all(candidates: list[Candidate], profile: Profile, country: Country,
-              language: Language) -> list[tuple[Candidate, Verdict | None]]:
+def judge_as_completed(candidates: list[Candidate], profile: Profile, country: Country,
+                       language: Language) -> Iterator[tuple[Candidate, Verdict | None]]:
+    """Judge all candidates in parallel and yield each result the moment it's ready
+    (fastest first) — so the UI can show cards while the slow ones are still running."""
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        verdicts = pool.map(lambda c: judge(c, profile, country, language), candidates)
-        return list(zip(candidates, verdicts))
+        futures = {pool.submit(judge, c, profile, country, language): c for c in candidates}
+        for future in as_completed(futures):
+            yield futures[future], future.result()

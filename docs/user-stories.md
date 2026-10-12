@@ -104,8 +104,9 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] API: `POST /api/profile` accepts a free-text message — `api/routes/profile.py`
 - [x] Nemotron Nano extracts a profile (age, state, income, category, occupation, student, gender, disability, family details) — `core/profile.py`, `core/profile_agent.py`
 - [x] Short answers map to the field we just asked about (`answering`)
-- [ ] Frontend: free-text chat input (US-701)
-- [ ] Frontend: extracted profile shown back as editable chips (US-701)
+- [x] Frontend: free-text chat input (US-701)
+- [x] Frontend: extracted profile shown back as chips; × removes a wrong fact so Haq can ask again
+- [x] "single mum" no longer becomes "unmarried" (code check after Nano)
 
 ### US-202 · Follow-up questions · P0 · Backend done · Oct 17–19
 **As** Ramesh, **I want** Haq to ask me only what's missing, **so that** results are accurate without a long questionnaire.
@@ -113,7 +114,7 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Questions in the user's language — decided in code (`detect_language`), kept across short answers
 - [x] Quick-reply options for choices (category, gender)
 - [x] Fast: Nano with thinking off + structured JSON output (~0.5–1.5s)
-- [ ] Frontend: user can skip a question (send the next message without answering)
+- [x] Frontend: user can skip a question
 - [x] Situational questions: farmers are asked about land (PM-Kisan needs land in their name)
 - [ ] Polish: Hinglish wording is sometimes clumsy ("parivaar ki poora samasya ki income")
 
@@ -122,7 +123,7 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Stateless API: the browser holds the profile, the server stores nothing
 - [x] Aadhaar / PAN / NI / account numbers are removed before the text reaches the model — `core/privacy.py` (+ tests)
 - [x] Privacy note returned in the user's language when a number was removed
-- [ ] Frontend: privacy note visible in the chat
+- [x] Frontend: privacy note visible in the chat (always, plus 🔒 note when a number was removed)
 
 ---
 
@@ -137,7 +138,7 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Sorted by verdict, then relevance; weak matches in a separate `other_cards` list
 - [x] Totals: `total_yearly` (eligible + likely) and `potential_yearly` (+ need more info)
 - [x] Fast enough: DB connection pool + in-memory catalog (`core/db.py`, `core/catalog.py`) — candidates ~1.5s warm; Ultra ~8–15s
-- [ ] Frontend: cards, totals, progress while Ultra works (US-701)
+- [x] Frontend: cards, totals, progress while Ultra works (US-701)
 - [ ] Known: Ultra's verdict can vary between runs (likely ↔ need_more_info), which changes the total. Consider temperature/consistency check before demo
 
 ### US-302 · Why am I eligible? · P0 · Backend done
@@ -145,18 +146,18 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Each card has 2–5 reasons with met / not_met / unknown, in the user's language
 - [x] `to_confirm`: what the person should check or provide
 - [x] Link to the official source page on every card (`source_url`)
-- [ ] Frontend: show ✓ / ✗ / ? list
+- [x] Frontend: show ✓ / ✗ / ? list
 
 ### US-303 · What documents do I need? · P0 · Backend done
 **As** Ramesh, **I want** a list of documents for each scheme, **so that** I carry the right papers.
 - [x] Documents list on each card (cleaned of HTML entities)
 - [ ] Combined, de-duplicated checklist across all eligible schemes (P1)
-- [ ] Frontend
+- [x] Frontend (links inside document names are clickable)
 
 ### US-304 · How do I apply? · P0 · Backend done
 **As** Sarah, **I want** clear steps and the apply link, **so that** I can apply right away.
 - [x] Application steps (`how_to_apply` markdown) + `apply_url` when available
-- [ ] Frontend
+- [x] Frontend
 
 ### US-305 · Almost eligible · P1 · To do · Oct 23–24
 **As** Priya, **I want** to know which schemes I could get with one more step, **so that** I can unlock more benefits.
@@ -167,11 +168,11 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ## Epic 4 — Countries
 
-### US-401 · Switch country · P0 · To do · Oct 20–22
+### US-401 · Switch country · P0 · Done
 **As a** judge, **I want** to switch between UK and India, **so that** I can see the same engine working for both.
-- [ ] Country selector (UK / India)
-- [ ] India asks for state (UP / Bihar)
-- [ ] Currency, examples and wording change with the country
+- [x] Country selector (UK / India) on the welcome screen; "Haq" logo returns to it
+- [x] India asks for state (UP / Bihar / other → central schemes only)
+- [x] Currency, greeting and wording change with the country
 
 ---
 
@@ -193,10 +194,11 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ## Epic 6 — Trust and safety
 
-### US-601 · Disclaimers and attribution · P0 · To do · Oct 20–22
+### US-601 · Disclaimers and attribution · P0 · Done
 **As a** user, **I want** to know this is guidance, not an official decision, **so that** I verify before applying.
-- [ ] "Guidance only" disclaimer visible
-- [ ] Footer attribution: myScheme.gov.in, GOV.UK (Open Government Licence)
+- [x] "Guidance only" disclaimer visible on every screen — `web/src/components/Footer.tsx`
+- [x] Footer attribution: myScheme.gov.in, GOV.UK (Open Government Licence)
+- [x] Manually added schemes show "please verify on the official website"
 
 ### US-602 · No made-up answers · P0 · To do · Oct 23–24
 **As a** user, **I want** answers grounded in official text, **so that** I'm not misled.
@@ -207,10 +209,19 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ## Epic 7 — App and deployment
 
-### US-701 · Mobile-friendly web app (PWA) · P0 · To do · Oct 20–22
+### US-701 · Mobile-friendly web app (PWA) · P0 · In progress
 **As** Ramesh, **I want** Haq to work well on my phone, **so that** I can use it without a laptop.
-- [ ] React app, mobile-first layout
-- [ ] Installable as a PWA
+- [x] React app (`web/`: Vite + React + TypeScript + Tailwind), mobile-first layout
+- [x] Screens: welcome (₹ India + UP/Bihar/other, £ UK) → chat → loading steps → results → error/retry
+- [x] Chat: bubbles, quick replies, skip, "show my results", privacy note, removable profile chips (one swipeable row on phones)
+- [x] Results: total hero (+ "up to"), scheme cards with verdict, amount, ✓/✗/? reasons, to-confirm, documents, how to apply (markdown), apply + source links, weak matches collapsed
+- [x] UI follows the conversation language (English / Hinglish)
+- [x] Verified in browser at 375px (Priya: Bihar Post-Matric Scholarship on top, ₹70,520/yr; Sarah: Universal Credit £12,393/yr), no horizontal overflow
+- [ ] Installable as a PWA (manifest + icons + service worker)
+- [ ] Polish: footer takes ~90px on phones — make it smaller / scroll with content
+- [x] Latency: chat replies now ~1–4s (was 6–15s) — Nano thinking off + "grounded extraction" (`core/grounded.py`): every fact needs a quote from the message that code verifies, numbers must appear in the quote, code does all unit maths (lakh/hazaar/month/week/bigha), Hindi-grammar safety net for gender/student
+- [x] Results stream (`POST /api/results/stream`, NDJSON start → card/progress → done): results page opens after the rules engine, cards appear as Ultra finishes each, live total + progress bar
+- [x] One choice question at a time (gender / category / occupation) so quick-reply buttons match the question
 
 ### US-702 · Live deployment · P0 · To do · Oct 27
 **As a** judge, **I want** a public demo URL, **so that** I can try Haq myself.

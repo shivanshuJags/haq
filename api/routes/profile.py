@@ -12,6 +12,9 @@ from core.profile_agent import FollowUp, Language, detect_language, extract_prof
 
 router = APIRouter(prefix="/api", tags=["profile"])
 
+# Fields answered by picking an option (they get quick-reply buttons)
+CHOICE_FIELDS = {"gender", "caste_category", "occupation", "has_children", "has_disability"}
+
 PRIVACY_NOTE = {
     "hinglish": "Aapka number hata diya gaya hai. Haq ko Aadhaar, PAN ya bank details ki zaroorat nahi hai.",
     "english": "We removed that number. Haq never needs ID numbers (Aadhaar, PAN, National Insurance) or bank details.",
@@ -46,7 +49,12 @@ def profile_turn(turn: ProfileTurn) -> ProfileReply:
     missing = missing_fields(profile, turn.country, turn.asked)
     follow_up, asking = None, []
     if missing and turn.rounds < MAX_FOLLOW_UP_ROUNDS:
-        asking = missing[:2]  # at most two facts per question
+        # A choice question (with quick-reply buttons) is asked on its own, so the buttons
+        # clearly answer it. Other facts can be paired: at most two per question.
+        if missing[0] in CHOICE_FIELDS:
+            asking = missing[:1]
+        else:
+            asking = [name for name in missing[:2] if name not in CHOICE_FIELDS] or missing[:1]
         follow_up = follow_up_question(asking, message, language)
 
     return ProfileReply(

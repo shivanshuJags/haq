@@ -12,6 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.routes import profile, results
 from core.catalog import catalog
+from core.db import pool
 
 
 @asynccontextmanager
@@ -20,6 +21,9 @@ async def lifespan(app: FastAPI):
     # so the first user doesn't wait for it.
     catalog()
     yield
+    # Runs when the server stops (or --reload restarts it): close DB connections,
+    # otherwise the pool's background threads keep the old process alive on Windows.
+    pool().close()
 
 
 app = FastAPI(

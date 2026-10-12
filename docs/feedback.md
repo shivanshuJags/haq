@@ -36,6 +36,11 @@ Running notes for the hackathon feedback section (US-803). Add to this as we bui
 - Without reasoning, Nano sometimes answered in YAML-like text instead of JSON. Structured output
   (`response_format` with `json_schema`, strict) fixed it: 6/6 valid, ~0.5s. Great combo for fast UI calls.
 - Suggestion: document the thinking switch prominently in Token Factory's Nemotron model cards.
+- Profile extraction benchmark (6 Hinglish/English messages, 25 facts):
+  Nano + thinking 20/20 but ~11s; Nano no-thinking 19/20 at ~2s but invented facts and did wrong arithmetic
+  (£900/month -> £108,000); Super no-thinking ~1s but missed half the facts; Lightning with thinking was accurate
+  but broke the JSON format 3/4 times. Our fix: no-thinking Nano + structured output + "quote your evidence"
+  (code verifies quotes and does the arithmetic) -> ~2s with no invented facts.
 
 **Nemotron 3 Ultra**
 - Final eligibility judge: reads official text + profile + our rule-engine checks, returns a structured verdict with

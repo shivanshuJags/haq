@@ -1,39 +1,74 @@
 """US-201 / US-202: Nemotron Nano turns what a person says into a profile,
 and writes short follow-up questions for what's still missing.
 
-Nano is used here because these calls happen on every chat message:
-they must be fast and cheap.
+Nano is used here because these calls happen on every chat message: they must be fast.
+Both calls run with thinking OFF + structured output (~1–2s instead of ~11s).
+Extraction stays accurate because every fact must carry a quote from the message,
+which code verifies, and code does all the arithmetic (see core/grounded.py).
 """
+import re
 from typing import Literal
 
-from pydantic import BaseModel, ValidationError
+from pydantic import BaseModel
 
+from core.grounded import Extraction, facts_to_update
 from core.llm import chat_json
 from core.profile import Country, Profile
 
 MODEL = "nano"
 
-EXTRACT_PROMPT = """You extract facts about a person from what they say, to check which government schemes they qualify for.
+GROUNDED_PROMPT = """You extract facts about a person from their message, to check which government schemes they qualify for.
 Country: {country}
 
-You get the profile known so far and the person's new message. Return ONLY a JSON object with the facts
-stated or clearly implied in the NEW message, using these keys (omit or null if not mentioned):
+Return JSON: {{"facts": [{{"field", "value", "unit", "quote"}}], "needs": "..."}}
+
+Each fact:
+- field: one of these profile fields:
 {fields}
+- value: the value in the field's type. For money and land give the number EXACTLY as the person said it
+  (e.g. 900, 1.5, 80000, 2) and put the unit in `unit` — never convert or multiply yourself.
+- unit: money -> "per_year" | "per_month" | "per_week" | "lakh_per_year" (for "1.5 lakh" -> value 1.5)
+  | "thousand_per_year" (for "80 hazaar"/"80k" -> value 80);
+  savings amounts are totals -> "none" (or "lakh_per_year" if said in lakh); land -> "acre" | "bigha" | "hectare";
+  everything else -> "none".
+- quote: copy the EXACT words from the message that state this fact (a few words). If you can't quote it, don't include the fact.
 
 Rules:
-- Only facts about the person applying (if they ask on behalf of someone, e.g. "my mother", describe THAT person).
-- Money as plain integers in local currency (INR for India, GBP for UK). "1.5 lakh" = 150000. Monthly -> multiply by 12.
-- Hindi grammar implies gender ("main padhti hoon", "20 saal ki hoon" -> female; "karta hoon" -> male).
-- India: "BC"/"backward class" -> "OBC"; "extremely backward" -> "EBC"; "dalit" -> "SC"; "adivasi"/"tribal" -> "ST".
-- region: the Indian state name in English, properly capitalised (e.g. "Uttar Pradesh"). Null for UK.
-- occupation must be one of the allowed values; a person in school/college is occupation "student" and is_student true.
-- needs: one short English sentence describing the help they want (e.g. "money for college fees").
-- land_acres in acres: 1 hectare = 2.47 acres; "bigha" varies by state — for Uttar Pradesh/Bihar use 1 bigha ≈ 0.6 acre.
-  "Zameen nahi hai" / "no land" -> 0.
-- "single" / "single mum" says nothing about marital_status (could be unmarried, divorced, widowed): leave it null.
-- If the person is answering our question (see "They are answering"), map a bare answer to THAT field:
-  e.g. answering "the whole family's yearly income" with "80 hazaar" -> annual_family_income 80000.
-- Never invent facts. If the message has no new facts, return {{}}.
+- Only facts the person actually states about the person applying (if asking for someone else, e.g. "my mother", that person).
+- Never guess: no residence, education, carer status, disability, marital status, occupation unless stated.
+- "single" / "single mum" is NOT a marital status.
+- Hindi grammar shows gender: "20 saal ki hoon", "padh rahi hoon" -> female (quote those words); "karta hoon" -> male.
+  Words also show gender: mum/mom/mother/wife/widow/maa -> female; dad/father/husband/papa -> male (for the person applying).
+- India: "BC"/"backward class" -> "OBC"; "extremely backward" -> "EBC"; "dalit" -> "SC"; "adivasi" -> "ST".
+- region: Indian state in English, e.g. "UP" -> "Uttar Pradesh".
+- A person in school/college: occupation "student" AND is_student true. "BA"/"BSc"/"B.Com" -> education_level "graduate".
+- Occupation words: "kisan"/"kheti" -> "farmer"; "majdoor"/"mazdoori" -> "unorganised_worker"; "berozgaar"/"out of work" -> "unemployed".
+- If they are answering our question (see "They are answering"), a bare answer belongs to THAT field.
+- needs: one short English sentence on the help they want, or null.
+- Extract EVERY stated fact — check each field in the list above against the message.
+
+Example 1 (Country: IN)
+Message: "Main 19 saal ki hoon, BSc kar rahi hoon, Bihar se, ghar ki kamai 2 lakh"
+{{"facts": [
+  {{"field": "age", "value": 19, "unit": "none", "quote": "19 saal"}},
+  {{"field": "gender", "value": "female", "unit": "none", "quote": "saal ki hoon"}},
+  {{"field": "is_student", "value": true, "unit": "none", "quote": "BSc kar rahi hoon"}},
+  {{"field": "occupation", "value": "student", "unit": "none", "quote": "BSc kar rahi hoon"}},
+  {{"field": "education_level", "value": "graduate", "unit": "none", "quote": "BSc"}},
+  {{"field": "region", "value": "Bihar", "unit": "none", "quote": "Bihar"}},
+  {{"field": "annual_family_income", "value": 2, "unit": "lakh_per_year", "quote": "kamai 2 lakh"}}
+ ], "needs": null}}
+
+Example 2 (Country: UK)
+Message: "I'm a dad of three, 40, out of work, and I get £300 a week from my partner's job"
+{{"facts": [
+  {{"field": "gender", "value": "male", "unit": "none", "quote": "dad"}},
+  {{"field": "has_children", "value": true, "unit": "none", "quote": "dad of three"}},
+  {{"field": "children_count", "value": 3, "unit": "none", "quote": "dad of three"}},
+  {{"field": "age", "value": 40, "unit": "none", "quote": "40"}},
+  {{"field": "occupation", "value": "unemployed", "unit": "none", "quote": "out of work"}},
+  {{"field": "annual_family_income", "value": 300, "unit": "per_week", "quote": "£300 a week"}}
+ ], "needs": null}}
 """
 
 FOLLOW_UP_PROMPT = """You are Haq, a friendly assistant that helps people find government benefits.
@@ -54,7 +89,7 @@ FIELD_LABELS = {
     "gender": "their gender",
     "annual_family_income": "the whole family's yearly income",
     "caste_category": "their social category (General, OBC, EBC, SC or ST)",
-    "occupation": "what they do (student, farmer, labourer, job, unemployed...)",
+    "occupation": "what they mainly do for work or study",
     "has_children": "whether they have children",
     "personal_annual_income": "how much they earn",
     "savings": "roughly how much savings they have",
@@ -93,6 +128,11 @@ def detect_language(message: str, country: Country, previous: Language | None) -
     return "hinglish" if hinglish_hits else "english"
 
 
+UNMARRIED_WORDS = re.compile(
+    r"\b(unmarried|never married|not married|kunwar[ai]?|avivahit|shaadi nahi|shadi nahi)\b", re.IGNORECASE
+)
+
+
 class FollowUp(BaseModel):
     question: str
     options: list[str] = []
@@ -118,19 +158,19 @@ def extract_profile(message: str, known: Profile, country: Country, answering: l
         asked = "; ".join(f"{name} ({FIELD_LABELS.get(name, name)})" for name in answering)
         context += f"They are answering our question about: {asked}\n\n"
     raw = chat_json(MODEL, [
-        {"role": "system", "content": EXTRACT_PROMPT.format(country=country, fields=FIELDS_TEXT)},
+        {"role": "system", "content": GROUNDED_PROMPT.format(country=country, fields=FIELDS_TEXT)},
         {"role": "user", "content": context + f"New message: {message}"},
-    ], max_tokens=4000)  # thinking stays on: inferring facts from Hinglish benefits from reasoning
-    # Drop keys the model invented that aren't in our Profile, then validate field by field,
-    # so one bad value (e.g. an unknown occupation) doesn't throw away every other fact.
-    update = {}
-    for name, value in raw.items():
-        if name in Profile.model_fields and value not in (None, "", []):
-            try:
-                Profile.model_validate({name: value})
-                update[name] = value
-            except ValidationError:
-                pass
+    ], schema=Extraction, max_tokens=1500, thinking=False)
+    # Keeps only facts whose quote is really in the message, converts units in code,
+    # and validates each field on its own so one bad value doesn't drop the rest.
+    update, _rejected = facts_to_update(Extraction.model_validate(raw), message)
+
+    # Nano tends to read "single mum" as "unmarried", despite the prompt. Single could also mean
+    # divorced, separated or widowed, and a wrong marital status can exclude people — so only keep
+    # "unmarried" when the person actually said so.
+    if update.get("marital_status") == "unmarried" and not UNMARRIED_WORDS.search(message):
+        del update["marital_status"]
+
     return known.merged_with(Profile(**update))
 
 
