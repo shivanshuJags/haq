@@ -10,7 +10,7 @@ Wrong facts can wrongly exclude people from benefits. So:
      ("900", "per_month"; "2", "bigha"); code converts to yearly amounts / acres.
 """
 import re
-from typing import Literal
+from typing import Literal, get_args
 
 from pydantic import BaseModel, Field, ValidationError
 
@@ -66,6 +66,18 @@ def number_in_quote(value, quote: str) -> bool:
     return any(NUMBER_WORDS.get(word) == value for word in re.findall(r"[a-z]+", text))
 
 
+def _match_choice(field: str, value):
+    """Fix the case of choice values ("general" -> "General", "Female" -> "female"),
+    so a correct answer isn't rejected just for its capitalisation."""
+    if not isinstance(value, str):
+        return value
+    annotation = Profile.model_fields[field].annotation
+    for allowed in get_args(get_args(annotation)[0]) if get_args(annotation) else ():
+        if isinstance(allowed, str) and allowed.lower() == value.strip().lower():
+            return allowed
+    return value
+
+
 def convert(fact: Fact):
     """Do the arithmetic in code, never in the model."""
     if fact.field in MONEY_FIELDS:
@@ -78,7 +90,7 @@ def convert(fact: Fact):
         return int(round(amount * multiplier))
     if fact.field == "land_acres":
         return round(float(fact.value) * ACRES_PER.get(fact.unit, 1.0), 2)
-    return fact.value
+    return _match_choice(fact.field, fact.value)
 
 
 # Safety net for facts the fast model sometimes misses, but which certain Hindi phrasings
@@ -93,9 +105,24 @@ STUDYING = re.compile(
 )
 
 
+# "general category", "OBC caste", "category: SC", "hum OBC hain" — the category word must sit next to
+# "category"/"caste"/"varg"/"hum ... hain", so "st" or "sc" elsewhere in a sentence isn't misread.
+CATEGORY_NAMES = {"general": "General", "obc": "OBC", "ebc": "EBC", "sc": "SC", "st": "ST"}
+_CAT = r"(general|obc|ebc|sc|st)"
+CATEGORY_PHRASE = re.compile(
+    rf"\b{_CAT}\s+(category|caste|varg|jaati|jati)\b"
+    rf"|\b(category|caste|varg|jaati|jati)\s*(?:is|hai|:|-)?\s*{_CAT}\b"
+    rf"|\bhum\s+{_CAT}\s+(hain|hai|hu|hoon)\b"
+)
+
+
 def facts_from_grammar(message: str) -> dict:
     text = message.lower()
     found: dict = {}
+    category = CATEGORY_PHRASE.search(text)
+    if category:
+        word = next(group for group in category.groups() if group in CATEGORY_NAMES)
+        found["caste_category"] = CATEGORY_NAMES[word]
     female, male = bool(FEMALE_GRAMMAR.search(text)), bool(MALE_GRAMMAR.search(text))
     if female != male:  # only when the grammar points one way
         found["gender"] = "female" if female else "male"

@@ -27,11 +27,25 @@ python -m ingest.extract_rules   # Nemotron Super: eligibility text -> rules -> 
 python -m db.load                # load into PostgreSQL + embeddings (needs DATABASE_URL)
 ```
 
-## Run the API
+## Run locally
+
+One command (Windows) starts both servers in their own windows and opens the app:
 
 ```bash
-uvicorn api.main:app --reload    # http://localhost:8000/docs for interactive docs
-pytest                           # unit tests
+powershell -ExecutionPolicy Bypass -File dev.ps1
+```
+
+Or start them yourself, in two terminals:
+
+```bash
+.venv\Scripts\python.exe -m uvicorn api.main:app --port 8000   # backend — http://localhost:8000/docs
+cd web && npm install && npm run dev                           # frontend — http://localhost:5173
+```
+
+The frontend needs the backend running: without it every request fails with a 502.
+
+```bash
+pytest                           # backend unit tests
 ```
 
 Checks:

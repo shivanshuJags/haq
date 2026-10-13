@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "haq-api",
+      "runtimeExecutable": "C:\\Users\\shiva\\Documents\\My Study\\haq\\.venv\\Scripts\\python.exe",
+      "runtimeArgs": ["-m", "uvicorn", "api.main:app", "--port", "8000", "--app-dir", "C:\\Users\\shiva\\Documents\\My Study\\haq"],
+      "port": 8000
+    },
+    {
+      "name": "haq-web",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "C:\\Users\\shiva\\Documents\\My Study\\haq\\web", "run", "dev"],
+      "port": 5173
+    }
+  ]
+}

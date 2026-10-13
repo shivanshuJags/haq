@@ -225,6 +225,9 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Latency: chat replies now ~1–4s (was 6–15s) — Nano thinking off + "grounded extraction" (`core/grounded.py`): every fact needs a quote from the message that code verifies, numbers must appear in the quote, code does all unit maths (lakh/hazaar/month/week/bigha), Hindi-grammar safety net for gender/student
 - [x] Results stream (`POST /api/results/stream`, NDJSON start → card/progress → done): results page opens after the rules engine, cards appear as Ultra finishes each, live total + progress bar
 - [x] One choice question at a time (gender / category / occupation) so quick-reply buttons match the question
+- [x] Follow-up questions are fixed templates in both languages (no model — instant, never off-topic); income never offers ranges
+- [x] Tapped quick replies are understood in code (`OPTION_VALUES`, ~0.2s); safety nets for category phrases and capitalisation
+- [x] `dev.ps1` starts backend + frontend together; README "Run locally"
 
 ### US-702 · Live deployment · P0 · To do · Oct 27
 **As a** judge, **I want** a public demo URL, **so that** I can try Haq myself.

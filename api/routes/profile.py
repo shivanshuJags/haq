@@ -55,7 +55,7 @@ def profile_turn(turn: ProfileTurn) -> ProfileReply:
             asking = missing[:1]
         else:
             asking = [name for name in missing[:2] if name not in CHOICE_FIELDS] or missing[:1]
-        follow_up = follow_up_question(asking, message, language)
+        follow_up = follow_up_question(asking, language)
 
     return ProfileReply(
         profile=profile,

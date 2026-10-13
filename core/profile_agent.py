@@ -42,7 +42,11 @@ Rules:
 - India: "BC"/"backward class" -> "OBC"; "extremely backward" -> "EBC"; "dalit" -> "SC"; "adivasi" -> "ST".
 - region: Indian state in English, e.g. "UP" -> "Uttar Pradesh".
 - A person in school/college: occupation "student" AND is_student true. "BA"/"BSc"/"B.Com" -> education_level "graduate".
-- Occupation words: "kisan"/"kheti" -> "farmer"; "majdoor"/"mazdoori" -> "unorganised_worker"; "berozgaar"/"out of work" -> "unemployed".
+- Occupation words: "kisan"/"kheti" -> "farmer"; "majdoor"/"mazdoor"/"mazdoori" -> "unorganised_worker";
+  "berozgaar"/"out of work" -> "unemployed"; "naukri"/"job"/"employed" -> "salaried_employee";
+  "apna kaam"/"business"/"self-employed" -> "self_employed".
+- Short yes/no answers ("Haan", "Nahi", "Yes", "No") to our question set THAT field to true/false (quote the word).
+- "Purush" -> male; "Mahila"/"stree" -> female.
 - If they are answering our question (see "They are answering"), a bare answer belongs to THAT field.
 - needs: one short English sentence on the help they want, or null.
 - Extract EVERY stated fact — check each field in the list above against the message.
@@ -71,18 +75,65 @@ Message: "I'm a dad of three, 40, out of work, and I get £300 a week from my pa
  ], "needs": null}}
 """
 
-FOLLOW_UP_PROMPT = """You are Haq, a friendly assistant that helps people find government benefits.
-Write ONE short follow-up question, addressed directly to the person ("you" / "aap"), that asks for ALL of these:
-{fields}
+# Follow-up questions are fixed templates, not generated: we always know exactly which fact we
+# need, so a template is instant, never drifts off-topic, and its quick-reply buttons always match.
+# (The AI's job is understanding the ANSWER — see extract_profile.)
+# Each entry: (question, quick-reply options). Numbers (age, income, land) get no options on purpose:
+# a range like "₹0–2L" can't be checked against an exact income limit.
+QUESTIONS: dict[str, dict[str, tuple[str, list[str]]]] = {
+    "hinglish": {
+        "region": ("Aap kis rajya mein rehte hain?", []),
+        "age": ("Aapki umar kitni hai?", []),
+        "gender": ("Aap purush hain ya mahila?", ["Purush", "Mahila", "Transgender"]),
+        "annual_family_income": ("Aapke poore parivaar ki saal bhar ki kamaai lagbhag kitni hai? (jaise: 80 hazaar, 1.5 lakh)", []),
+        "caste_category": ("Aapki category kya hai?", ["General", "OBC", "EBC", "SC", "ST"]),
+        "occupation": ("Aap mukhya roop se kya karte hain?", ["Student", "Kisan", "Mazdoor", "Naukri", "Apna kaam", "Berozgaar"]),
+        "land_acres": ("Aapke naam par kitni kheti ki zameen hai? (bigha ya acre mein; nahi hai to 0)", []),
+        "has_children": ("Kya aapke bachche hain?", ["Haan", "Nahi"]),
+        "personal_annual_income": ("Aap khud kitna kamaate hain? (mahine ya saal ka)", []),
+        "savings": ("Aapke paas lagbhag kitni bachat (savings) hai?", []),
+        "has_disability": ("Kya aapko koi viklangta ya lambi bimari hai?", ["Haan", "Nahi"]),
+    },
+    "english": {
+        "region": ("Which state do you live in?", []),
+        "age": ("How old are you?", []),
+        "gender": ("What is your gender?", ["Male", "Female", "Transgender"]),
+        "annual_family_income": ("Roughly how much does your whole household earn in a year?", []),
+        "caste_category": ("What is your social category?", ["General", "OBC", "EBC", "SC", "ST"]),
+        "occupation": ("What do you mainly do?", ["Student", "Employed", "Self-employed", "Unemployed", "Carer", "Retired"]),
+        "land_acres": ("How much farm land is in your name? (0 if none)", []),
+        "has_children": ("Do you have children?", ["Yes", "No"]),
+        "personal_annual_income": ("How much do you earn, roughly? (per week, month or year)", []),
+        "savings": ("Roughly how much do you have in savings?", []),
+        "has_disability": ("Do you have a disability or long-term health condition?", ["Yes", "No"]),
+    },
+}
 
-- Write it in {language}. Under 30 words, warm and simple. No greeting, don't repeat what they said.
-- Use everyday words. Never show technical names like "annual_family_income".
-- Briefly say why it helps only if it fits naturally (e.g. "kai scholarships income par depend karti hain").
-- If an item is a choice (e.g. category, gender), give its 2–5 quick-reply options; otherwise [].
-Return ONLY JSON: {{"question": "...", "options": ["...", "..."]}}
-"""
+# What each quick-reply button means. A tapped button is understood in code — instantly and
+# exactly — without asking the model.
+OPTION_VALUES: dict[str, dict[str, object]] = {
+    "gender": {"purush": "male", "male": "male", "mahila": "female", "female": "female", "transgender": "transgender"},
+    "caste_category": {"general": "General", "obc": "OBC", "ebc": "EBC", "sc": "SC", "st": "ST"},
+    "occupation": {
+        "student": "student", "kisan": "farmer", "mazdoor": "unorganised_worker", "naukri": "salaried_employee",
+        "employed": "salaried_employee", "apna kaam": "self_employed", "self-employed": "self_employed",
+        "berozgaar": "unemployed", "unemployed": "unemployed", "carer": "carer", "retired": "retired",
+    },
+    "has_children": {"haan": True, "yes": True, "nahi": False, "no": False},
+    "has_disability": {"haan": True, "yes": True, "nahi": False, "no": False},
+}
 
-# How to describe each field to the model when asking about it
+
+def quick_reply_value(message: str, answering: list[str] | None):
+    """If the message is exactly one of our buttons for the field just asked, return (field, value)."""
+    if not answering or len(answering) != 1:
+        return None
+    field = answering[0]
+    value = OPTION_VALUES.get(field, {}).get(message.strip().lower())
+    return (field, value) if value is not None else None
+
+
+# How to describe each field to the model when the person is answering it
 FIELD_LABELS = {
     "region": "which Indian state they live in",
     "age": "their age",
@@ -153,6 +204,11 @@ FIELDS_TEXT = _field_list()
 def extract_profile(message: str, known: Profile, country: Country, answering: list[str] | None = None) -> Profile:
     """Read the new message and return the known profile updated with any new facts.
     `answering` = the fields our last follow-up question asked about, so short answers map correctly."""
+    tapped = quick_reply_value(message, answering)
+    if tapped:
+        field, value = tapped
+        return known.merged_with(Profile(**{field: value}))
+
     context = f"Profile so far: {known.model_dump_json(exclude_none=True)}\n\n"
     if answering:
         asked = "; ".join(f"{name} ({FIELD_LABELS.get(name, name)})" for name in answering)
@@ -174,11 +230,11 @@ def extract_profile(message: str, known: Profile, country: Country, answering: l
     return known.merged_with(Profile(**update))
 
 
-def follow_up_question(fields: list[str], last_message: str, language: Language) -> FollowUp:
-    wanted = "\n".join(f"- {FIELD_LABELS.get(name, name)}" for name in fields)
-    raw = chat_json(MODEL, [
-        {"role": "system", "content": FOLLOW_UP_PROMPT.format(fields=wanted, language=LANGUAGE_INSTRUCTIONS[language])},
-        {"role": "user", "content": f"The person's last message: {last_message}"},
-    ], schema=FollowUp, max_tokens=300, temperature=0.3,
-       thinking=False)  # a short question doesn't need step-by-step reasoning
-    return FollowUp.model_validate(raw)
+def follow_up_question(fields: list[str], language: Language) -> FollowUp:
+    """One question for one or two missing facts. Choice fields are always asked alone
+    (see api/routes/profile.py), so their options belong to the whole question."""
+    templates = QUESTIONS[language]
+    parts = [templates[name] for name in fields if name in templates]
+    question = " ".join(text for text, _ in parts)
+    options = parts[0][1] if len(parts) == 1 else []
+    return FollowUp(question=question, options=options)
