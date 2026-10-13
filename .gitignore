@@ -9,6 +9,7 @@ __pycache__/
 # Raw API dumps are large and re-downloadable; processed data is committed
 data/raw/
 data/rules_cache/
+data/embedding_cache/
 
 # Editors / OS
 .vscode/

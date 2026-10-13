@@ -10,10 +10,7 @@
 """
 from dataclasses import dataclass
 
-from pgvector import Vector
-
 from core.catalog import Scheme, catalog
-from core.db import pooled
 from core.eligibility import Assessment, assess
 from core.embeddings import embed_query
 from core.profile import Country, Profile
@@ -21,14 +18,6 @@ from core.profile import Country, Profile
 UNKNOWN_PENALTY = 0.02   # per unconfirmed rule
 TOP_OVERALL = 15
 TOP_STATE = 5
-
-# Only ids + similarity come back from the database; everything else is in memory (core/catalog.py)
-SIMILARITY_SQL = """
-SELECT id, 1 - (embedding <=> %(vector)s) AS similarity
-FROM schemes
-WHERE country = %(country)s
-  AND (regions IS NULL OR %(region)s::text = ANY(regions))
-"""
 
 
 @dataclass
@@ -80,22 +69,17 @@ def search_query(profile: Profile, country: Country) -> str:
 
 def find_candidates(profile: Profile, country: Country) -> tuple[list[Candidate], dict]:
     """Returns (shortlist for Ultra, stats about how many schemes were checked)."""
-    schemes = catalog()
-    vector = Vector(embed_query(search_query(profile, country)))
-    with pooled() as conn:
-        rows = conn.execute(SIMILARITY_SQL, {
-            "vector": vector, "country": country, "region": profile.region,
-        }).fetchall()
+    # Similarity to every national + state scheme, computed in memory (core/catalog.py)
+    rows = catalog().similar(embed_query(search_query(profile, country)), country, profile.region)
 
     kept: list[Candidate] = []
     failed = 0
-    for row in rows:
-        scheme = schemes[row["id"]]
+    for scheme, similarity in rows:
         assessment = assess(scheme.rules, profile)
         if assessment.status == "fail":
             failed += 1
             continue
-        kept.append(Candidate(scheme, float(row["similarity"]), assessment))
+        kept.append(Candidate(scheme, similarity, assessment))
 
     kept.sort(key=lambda c: c.score, reverse=True)
     shortlist = kept[:TOP_OVERALL]

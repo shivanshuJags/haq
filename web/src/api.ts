@@ -1,8 +1,12 @@
 // Small typed client for the Haq API — like an Angular service wrapping HttpClient.
 import type { Country, Language, Profile, ProfileReply, ProfileTurn, RescueOutcome, StreamEvent } from './types'
 
+// Where the API lives. Locally it's empty: Vite proxies /api to localhost:8000.
+// In production (Vercel) set VITE_API_URL to the backend's URL, e.g. https://xxxx.nebius.cloud
+const API_URL = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
+
 async function post<T>(path: string, body: unknown): Promise<T> {
-  const response = await fetch(path, {
+  const response = await fetch(API_URL + path, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
@@ -36,7 +40,7 @@ export async function streamResults(
   language: Language,
   onEvent: (event: StreamEvent) => void,
 ): Promise<void> {
-  const response = await fetch('/api/results/stream', {
+  const response = await fetch(API_URL + '/api/results/stream', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ country, profile, language }),

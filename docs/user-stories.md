@@ -229,9 +229,14 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Tapped quick replies are understood in code (`OPTION_VALUES`, ~0.2s); safety nets for category phrases and capitalisation
 - [x] `dev.ps1` starts backend + frontend together; README "Run locally"
 
-### US-702 · Live deployment · P0 · To do · Oct 27
+### US-702 · Live deployment · P0 · In progress
 **As a** judge, **I want** a public demo URL, **so that** I can try Haq myself.
-- [ ] Backend on Nebius Serverless Endpoint
+- [x] Backend container (`Dockerfile`, 441 MB) — tested locally: ready in ~1s, chat / results stream / Rejection Rescue all pass
+- [x] No database at runtime: catalog snapshot (`db/snapshot.py` → `data/snapshot/`) shipped in the image; similarity computed in memory with numpy (Neon free tier took 10–56s to connect)
+- [x] Frontend reads the API location from `VITE_API_URL`; backend CORS from `ALLOWED_ORIGINS`
+- [x] Step-by-step guide: `docs/deploy.md`
+- [ ] Push image to a registry (user's Docker Hub account)
+- [ ] Backend on Nebius Serverless Endpoint (console; CLI is Linux/macOS only)
 - [ ] Frontend on Vercel
 - [ ] Demo works end to end on the live URL
 

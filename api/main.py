@@ -5,6 +5,7 @@ Run locally from the project root:
 
 Then open http://localhost:8000/docs for interactive API docs.
 """
+import os
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
@@ -12,7 +13,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.routes import profile, rescue, results
 from core.catalog import catalog
-from core.db import pool
 
 
 @asynccontextmanager
@@ -21,9 +21,6 @@ async def lifespan(app: FastAPI):
     # so the first user doesn't wait for it.
     catalog()
     yield
-    # Runs when the server stops (or --reload restarts it): close DB connections,
-    # otherwise the pool's background threads keep the old process alive on Windows.
-    pool().close()
 
 
 app = FastAPI(
@@ -36,7 +33,9 @@ app = FastAPI(
 # Allow the React dev server (Vite runs on port 5173) to call this API from the browser
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    # Local dev origins + the deployed frontend URL(s), e.g. ALLOWED_ORIGINS=https://haq.vercel.app
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"]
+    + [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()],
     allow_methods=["*"],
     allow_headers=["*"],
 )

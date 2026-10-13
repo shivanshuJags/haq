@@ -35,7 +35,9 @@ JSON_FENCE = re.compile(r"```(?:json)?\s*(.*?)```", re.DOTALL)
 
 @lru_cache  # create the client once and reuse it
 def client() -> OpenAI:
-    return OpenAI(api_key=config.NEBIUS_API_KEY, base_url=config.NEBIUS_BASE_URL)
+    # The SDK's default timeout is 10 minutes (plus retries) — far too long for a web app.
+    # 2 minutes covers Ultra's longest answers; a stuck request then fails and is retried.
+    return OpenAI(api_key=config.NEBIUS_API_KEY, base_url=config.NEBIUS_BASE_URL, timeout=120, max_retries=2)
 
 
 def model_id(name: str) -> str:

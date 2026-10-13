@@ -25,6 +25,7 @@ python -m ingest.uk              # UK benefits from the GOV.UK Content API   -> 
 python -m ingest.india           # UP, Bihar + central schemes from myScheme -> data/processed/india.json
 python -m ingest.extract_rules   # Nemotron Super: eligibility text -> rules -> data/processed/rules.json
 python -m db.load                # load into PostgreSQL + embeddings (needs DATABASE_URL)
+python -m db.snapshot            # catalog snapshot the API runs from -> data/snapshot/
 ```
 
 ## Run locally

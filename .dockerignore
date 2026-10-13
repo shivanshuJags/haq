@@ -1,0 +1,12 @@
+.env
+.venv
+data/*
+!data/snapshot
+web
+docs
+ingest
+scripts
+tests
+.git
+.claude
+**/__pycache__
