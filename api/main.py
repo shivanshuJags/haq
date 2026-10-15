@@ -30,12 +30,26 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Allow the React dev server (Vite runs on port 5173) to call this API from the browser
+def parse_origins(raw: str) -> list[str]:
+    """ALLOWED_ORIGINS="https://haq.vercel.app, https://other.app" -> clean list.
+    Browsers send the origin with no trailing slash and compare it exactly, so tidy up
+    the usual copy-paste slips: spaces, quotes, a trailing "/"."""
+    origins = []
+    for item in raw.split(","):
+        origin = item.strip().strip("'\"").strip().rstrip("/")
+        if origin:
+            origins.append(origin)
+    return origins
+
+
+# Local dev origins (Vite on port 5173) + the deployed frontend URL(s) from the environment
+ALLOWED_ORIGINS = ["http://localhost:5173", "http://127.0.0.1:5173"] + parse_origins(
+    os.environ.get("ALLOWED_ORIGINS", "")
+)
+
 app.add_middleware(
     CORSMiddleware,
-    # Local dev origins + the deployed frontend URL(s), e.g. ALLOWED_ORIGINS=https://haq.vercel.app
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"]
-    + [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -47,4 +61,5 @@ app.include_router(rescue.router)
 
 @app.get("/api/health", tags=["system"])
 def health() -> dict:
-    return {"status": "ok", "schemes": len(catalog())}
+    # Allowed origins are public URLs, not secrets — showing them makes CORS problems easy to diagnose
+    return {"status": "ok", "schemes": len(catalog()), "allowed_origins": ALLOWED_ORIGINS}
