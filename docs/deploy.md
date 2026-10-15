@@ -1,73 +1,67 @@
 # Deploying Haq
 
-Two pieces:
+Two pieces, both on free plans:
 
 | Piece | Where | What it is |
 |---|---|---|
-| Backend (FastAPI) | **Nebius Serverless Endpoint** | The `Dockerfile` in the repo root. Contains the code + the catalog snapshot (`data/snapshot/`), so it never needs the database at runtime. |
-| Frontend (React) | **Vercel** | The `web/` folder, a static site. Calls the backend via `VITE_API_URL`. |
+| Backend (FastAPI) | **Render** — free web service, Docker | The repo's `Dockerfile`: code + catalog snapshot (`data/snapshot/`). Never needs the database at runtime. |
+| Frontend (React) | **Vercel** — free | The `web/` folder, a static site. Calls the backend via `VITE_API_URL`. |
 
-## 0. Before you start
+All AI runs on **NVIDIA Nemotron via Nebius Token Factory** — the hosting choice doesn't change that.
 
-Refresh the catalog snapshot whenever the scheme data or rules change:
+Tested with Render's free limits (`docker run --memory=512m --cpus=0.1`): starts in ~30s,
+peak memory ~125 MB of 512 MB, chat / results / Rejection Rescue all work.
+
+## 0. Before deploying
+
+Refresh the snapshot if scheme data or rules changed, and commit it:
 
 ```bash
 python -m db.snapshot
 ```
 
-## 1. Build and push the backend image
+Push everything to GitHub (`data/snapshot/` must be in the repo — Render builds from it).
 
-The image has no secrets (keys are passed as environment variables), and the data inside is public
-government information, so a public registry is fine. Docker Hub is the simplest from Windows:
+## 1. Backend → Render
 
-```bash
-docker build -t <your-dockerhub-user>/haq-api:latest .
-docker login
-docker push <your-dockerhub-user>/haq-api:latest
-```
+1. Sign up at render.com with your GitHub account (the free plan needs no card).
+2. **New + → Web Service** → connect your GitHub repo.
+3. Settings:
+   - **Name:** `haq-api`
+   - **Language / Runtime:** **Docker** (Render finds the `Dockerfile` in the repo root)
+   - **Branch:** `main`, **Root directory:** empty
+   - **Instance type:** **Free**
+4. **Environment variables:**
+   - `NEBIUS_API_KEY` = your Token Factory key
+   - `NEBIUS_BASE_URL` = `https://api.tokenfactory.nebius.com/v1/`
+   - `ALLOWED_ORIGINS` = your Vercel URL (add after step 2, e.g. `https://haq.vercel.app`)
+5. **Advanced → Health check path:** `/api/health`
+6. **Create Web Service.** The first build takes ~5 minutes (see Logs). Render sets `PORT` itself;
+   the Dockerfile already listens on it.
+7. Check: `https://haq-api.onrender.com/api/health` → `{"status":"ok","schemes":976}`
 
-Test it locally first:
+Render redeploys automatically on every push to `main`.
 
-```bash
-docker run -p 8000:8000 --env-file .env <your-dockerhub-user>/haq-api:latest
-# then open http://localhost:8000/api/health
-```
+**Free plan behaviour:** the service sleeps after 15 minutes without traffic and takes about a minute
+to wake (Render shows a loading page). Open the URL once before a demo or judging.
 
-(Alternative: Nebius Container Registry, `cr.<region>.nebius.cloud/...` — needs the Nebius CLI
-credential helper or a service-account token. See https://docs.nebius.com/container-registry/quickstart)
+## 2. Frontend → Vercel
 
-## 2. Create the Nebius Serverless Endpoint (web console)
+1. vercel.com → sign in with GitHub → **Add New → Project** → import the repo.
+2. **Root directory:** `web`. Framework: Vite (auto-detected).
+3. **Environment variable:** `VITE_API_URL` = `https://haq-api.onrender.com` (your Render URL, no trailing slash).
+4. Deploy. Copy the Vercel URL into Render's `ALLOWED_ORIGINS` (Render restarts the service).
 
-Console → **AI Services → Endpoints → Create endpoint**:
+## 3. Check the live app
 
-- **Name:** `haq-api`
-- **Image:** `docker.io/<your-dockerhub-user>/haq-api:latest`
-- **Platform / preset:** a CPU platform, smallest preset (the API needs no GPU; ~1 GB RAM is plenty)
-- **Container port:** `8000`
-- **Environment variables:**
-  - `NEBIUS_API_KEY` = your Token Factory key (prefer a secret if offered)
-  - `NEBIUS_BASE_URL` = `https://api.tokenfactory.nebius.com/v1/`
-  - `ALLOWED_ORIGINS` = your Vercel URL (add after step 3, e.g. `https://haq.vercel.app`)
-- **Authentication:** **none / public**. The browser calls this API directly, so a token would be
-  visible to everyone anyway.
+Open the Vercel URL and run: India chat → results, UK chat → results, Rejection Rescue with a sample letter.
+A CORS error in the browser console means `ALLOWED_ORIGINS` doesn't exactly match the Vercel URL.
 
-Creation takes ~5 minutes. Copy the `https://...` URL from **Public endpoints**, then check:
+---
 
-```bash
-curl https://<endpoint-url>/api/health
-```
+## Other hosts
 
-Docs: https://docs.nebius.com/serverless/endpoints/manage
-
-## 3. Deploy the frontend on Vercel
-
-1. Push the repo to GitHub.
-2. vercel.com → **Add New → Project** → import the repo.
-3. **Root directory:** `web`. Framework: Vite (auto-detected).
-4. **Environment variable:** `VITE_API_URL` = the Nebius endpoint URL from step 2 (no trailing slash).
-5. Deploy. Then put the Vercel URL into the endpoint's `ALLOWED_ORIGINS` and restart the endpoint.
-
-## 4. Check the live app
-
-Open the Vercel URL and run the three demo flows: India chat → results, UK chat → results,
-Rejection Rescue with a sample letter.
+- **Nebius Serverless Endpoint** (AI Cloud credits, billed per second): push the image to a registry,
+  then Console → AI Services → Endpoints → Create endpoint, container port `8000`, smallest CPU preset,
+  same env vars, authentication none. Docs: https://docs.nebius.com/serverless/endpoints/manage
+- **Hugging Face Spaces:** Docker Spaces now need a paid PRO plan.

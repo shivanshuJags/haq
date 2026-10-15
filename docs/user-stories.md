@@ -235,8 +235,9 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] No database at runtime: catalog snapshot (`db/snapshot.py` → `data/snapshot/`) shipped in the image; similarity computed in memory with numpy (Neon free tier took 10–56s to connect)
 - [x] Frontend reads the API location from `VITE_API_URL`; backend CORS from `ALLOWED_ORIGINS`
 - [x] Step-by-step guide: `docs/deploy.md`
-- [ ] Push image to a registry (user's Docker Hub account)
-- [ ] Backend on Nebius Serverless Endpoint (console; CLI is Linux/macOS only)
+- [x] Decision: backend on **Render free web service** (Nebius AI Cloud is paid; Hugging Face Docker Spaces now need PRO). All AI still runs on Token Factory, which meets the hackathon rule
+- [x] Tested under Render's free limits (512 MB, 0.1 CPU): starts in ~30s, peak ~125 MB, all features pass
+- [ ] Backend on Render (user's account)
 - [ ] Frontend on Vercel
 - [ ] Demo works end to end on the live URL
 
