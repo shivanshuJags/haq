@@ -54,11 +54,14 @@ Verdicts:
 fit (how realistic this match is):
 - "strong": the scheme is clearly aimed at someone like this person.
 - "possible": they may well qualify, pending a few checks.
-- "weak": only fits if something unusual and unmentioned is true (e.g. scheme is for a religious minority,
-  for children of construction workers, for PhD researchers, for people in a specific institution) — nothing in the
-  profile suggests it.
+- "weak": only fits if something unusual and unmentioned is true — nothing in the profile suggests it. E.g. the
+  scheme is for a religious minority, children of construction workers, PhD researchers, a specific institution,
+  or depends on a life event the person hasn't mentioned: pregnancy or a new baby, a bereavement, being a guardian
+  of someone else's child, a terminal illness.
 
 Rules:
+- Where they live is CONFIRMED (they chose it in the app — see "Lives in"). Treat a residence requirement for that
+  country/state as met. Only the finer points stay unknown (e.g. "England only", years of residence, immigration status).
 - Never assume facts about the person that aren't in their profile. Missing fact -> "unknown", not "not_met".
 - The "Code checks" were computed exactly; trust "pass" results.
 - reasons: 2–5 items, the requirements that matter most. criterion = 1–3 words (e.g. "Income", "Age", "Category").
@@ -71,9 +74,16 @@ Rules:
 """
 
 
-def describe_profile(profile: Profile) -> str:
+COUNTRY_NAMES = {"UK": "the United Kingdom", "IN": "India"}
+
+
+def describe_profile(profile: Profile, country: Country) -> str:
+    where = COUNTRY_NAMES[country] + (f", {profile.region}" if profile.region else "")
     facts = profile.model_dump(exclude_none=True, exclude_defaults=True)
-    return "\n".join(f"- {name}: {value}" for name, value in facts.items()) or "- (nothing known)"
+    facts.pop("region", None)
+    lines = [f"- Lives in: {where} (confirmed — chosen in the app)"]
+    lines += [f"- {name}: {value}" for name, value in facts.items()]
+    return "\n".join(lines)
 
 
 def judge(candidate: Candidate, profile: Profile, country: Country, language: Language) -> Verdict | None:
@@ -82,7 +92,7 @@ def judge(candidate: Candidate, profile: Profile, country: Country, language: La
     checks = "\n".join(f"- {c.criterion}: {c.status} ({c.detail})" for c in candidate.assessment.checks) or "- none"
     other = "\n".join(f"- {c}" for c in scheme.rules.other_conditions) or "- none"
     user_message = f"""PERSON
-{describe_profile(profile)}
+{describe_profile(profile, country)}
 
 SCHEME: {scheme.name}
 Summary: {scheme.summary or ''}

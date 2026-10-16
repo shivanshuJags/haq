@@ -237,9 +237,10 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Step-by-step guide: `docs/deploy.md`
 - [x] Decision: backend on **Render free web service** (Nebius AI Cloud is paid; Hugging Face Docker Spaces now need PRO). All AI still runs on Token Factory, which meets the hackathon rule
 - [x] Tested under Render's free limits (512 MB, 0.1 CPU): starts in ~30s, peak ~125 MB, all features pass
-- [ ] Backend on Render (user's account)
-- [ ] Frontend on Vercel
-- [ ] Demo works end to end on the live URL
+- [x] Backend on Render: https://haq-api.onrender.com (`ALLOWED_ORIGINS` set on Render)
+- [x] Frontend on Vercel: https://haq-alpha.vercel.app (`VITE_API_URL` set on Vercel)
+- [x] Demo works end to end on the live URL (Oct 15): India Bihar student ₹68,000/yr · 17 schemes (results page in ~16s, done in ~30s); UK single mum £14,780 · 11 schemes; Rejection Rescue (UK PIP) in 14s
+- [x] Quality fixes after live test: Ultra told the chosen country/state is confirmed residence; unmentioned life events (pregnancy, bereavement, guardianship) → weak fit; +0.03 score per confirmed rule; UK uses all 20 shortlist slots; tool/guidance pages excluded (`NOT_BENEFITS`) — Sarah now: Universal Credit eligible, Child Benefit shortlisted
 
 ---
 

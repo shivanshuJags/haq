@@ -15,9 +15,20 @@ from core.eligibility import Assessment, assess
 from core.embeddings import embed_query
 from core.profile import Country, Profile
 
-UNKNOWN_PENALTY = 0.02   # per unconfirmed rule
-TOP_OVERALL = 15
-TOP_STATE = 5
+UNKNOWN_PENALTY = 0.02   # per rule we couldn't confirm
+PASS_BONUS = 0.03        # per rule the person clearly meets (e.g. "has children" for Child Benefit)
+SHORTLIST = 20           # schemes sent to Nemotron Ultra
+TOP_STATE = 5            # of those, reserved for state schemes (India) so national ones can't crowd them out
+
+# Pages in the data that are tools or guidance, not benefits someone can claim
+NOT_BENEFITS = {
+    "uk:benefits-calculators",
+    "uk:bills-benefits",
+    "uk:support-visit-benefit-claim",
+    "uk:universal-credit-reviews",
+    "uk:when-someone-dies",
+    "uk:check-if-youre-eligible-for-warm-home-discount",  # duplicate of the Warm Home Discount page
+}
 
 
 @dataclass
@@ -28,7 +39,8 @@ class Candidate:
 
     @property
     def score(self) -> float:
-        return self.similarity - UNKNOWN_PENALTY * self.assessment.unknown_count
+        passes = sum(check.status == "pass" for check in self.assessment.checks)
+        return self.similarity - UNKNOWN_PENALTY * self.assessment.unknown_count + PASS_BONUS * passes
 
     @property
     def is_state_scheme(self) -> bool:
@@ -75,6 +87,8 @@ def find_candidates(profile: Profile, country: Country) -> tuple[list[Candidate]
     kept: list[Candidate] = []
     failed = 0
     for scheme, similarity in rows:
+        if scheme.id in NOT_BENEFITS:
+            continue
         assessment = assess(scheme.rules, profile)
         if assessment.status == "fail":
             failed += 1
@@ -82,8 +96,13 @@ def find_candidates(profile: Profile, country: Country) -> tuple[list[Candidate]
         kept.append(Candidate(scheme, similarity, assessment))
 
     kept.sort(key=lambda c: c.score, reverse=True)
-    shortlist = kept[:TOP_OVERALL]
-    shortlist += [c for c in kept[TOP_OVERALL:] if c.is_state_scheme][:TOP_STATE]
+    if profile.region:
+        # India with a state: best overall + reserved slots for the best state schemes not already in
+        shortlist = kept[: SHORTLIST - TOP_STATE]
+        shortlist += [c for c in kept[SHORTLIST - TOP_STATE :] if c.is_state_scheme][:TOP_STATE]
+    else:
+        # UK (or India without a state): no state schemes to protect, so use every slot
+        shortlist = kept[:SHORTLIST]
 
     stats = {"checked": len(rows), "ruled_out": failed, "possible": len(kept), "shortlisted": len(shortlist)}
     return shortlist, stats
