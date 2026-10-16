@@ -244,12 +244,18 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ---
 
+### US-703 · UI improvements (user's list) · P1 · To do · near the end (agreed Oct 16)
+- [ ] Collect the user's UI change list, then implement (along with PWA install + smaller footer from US-701)
+
+---
+
 ## Epic 8 — Hackathon submission
 
-### US-801 · Repository ready for judges · P0 · To do · Oct 28
-- [ ] Public GitHub repo, MIT licence visible
-- [ ] README: setup, architecture diagram, how Nemotron Nano/Super/Ultra are used, Token Factory benefits, Nebius services used
-- [ ] Data attribution section
+### US-801 · Repository ready for judges · P0 · In progress
+- [ ] Public GitHub repo, MIT licence visible (check repo visibility)
+- [x] README: live links, problem, features, Nemotron Nano/Super/Ultra table with Token Factory IDs and why, Token Factory benefits, Mermaid architecture, request flow, design decisions, stack, structure, local setup, data rebuild, "built during the hackathon", limitations
+- [x] Data attribution section
+- [ ] Add the demo video link and 2–3 screenshots
 
 ### US-802 · Demo video · P0 · To do · Oct 29
 - [ ] Under 3 minutes, public on YouTube
