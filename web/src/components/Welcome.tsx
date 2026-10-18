@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { fetchHighlights } from '../api'
 import { COUNTRIES, LANGUAGE_NAMES, countryConfig } from '../config/countries'
 import { t } from '../i18n'
+import { Dots } from './Dots'
 import type { Country, Highlights, Language, SchemeLink } from '../types'
 
 interface Props {
@@ -45,15 +46,17 @@ export function Welcome({ onStart, onRescue }: Props) {
   const [country, setCountry] = useState<Country>(COUNTRIES[0].code)
   const [region, setRegion] = useState<string>('')
   const [language, setLanguage] = useState<Language>(COUNTRIES[0].languages[0])
-  // Remember which country/state the lists belong to, so old lists never show for a new choice
   const [showAllPopular, setShowAllPopular] = useState(false)
+  // Remember which country/state the lists belong to, so old lists never show for a new choice
   const [loaded, setLoaded] = useState<{ key: string; data: Highlights } | null>(null)
+  const [failedKey, setFailedKey] = useState<string | null>(null)
 
   const config = countryConfig(country)
   const strings = t(language)
   const chosenState = config.states?.find((state) => state.name === region)
   const key = `${country}|${region}`
   const highlights = loaded?.key === key ? loaded.data : null
+  const loadingLists = !highlights && failedKey !== key
 
   // Reload the welcome lists when the country or state changes (like an Angular effect on a signal).
   // `ignore` drops a slow answer that arrives after the user already picked something else.
@@ -61,7 +64,7 @@ export function Welcome({ onStart, onRescue }: Props) {
     let ignore = false
     fetchHighlights(country, region || null)
       .then((data) => !ignore && setLoaded({ key: `${country}|${region}`, data }))
-      .catch(() => {}) // the lists are extra; the app works without them
+      .catch(() => !ignore && setFailedKey(`${country}|${region}`)) // the lists are extra; the app works without them
     return () => {
       ignore = true
     }
@@ -155,6 +158,8 @@ export function Welcome({ onStart, onRescue }: Props) {
         </button>
         <p className="mt-2 text-center text-xs text-muted">{strings.moreCountries}</p>
       </section>
+
+      {loadingLists && <Dots label={strings.loadingSchemes} />}
 
       {/* Numbers */}
       {highlights && (

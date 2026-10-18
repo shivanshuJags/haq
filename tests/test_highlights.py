@@ -21,3 +21,15 @@ def test_recent_is_dated_newest_first():
     for country in ("IN", "UK"):
         dates = [item.date for item in highlights(country, None).recent]
         assert dates and dates == sorted(dates, reverse=True)
+
+
+def test_answers_are_cached_and_sent_with_cache_headers():
+    from fastapi.testclient import TestClient
+
+    from api.main import app
+
+    assert highlights("IN", "Bihar") is highlights("IN", "Bihar")  # worked out once, then from memory
+    with TestClient(app) as client:
+        response = client.get("/api/highlights", params={"country": "UK"})
+    assert response.status_code == 200
+    assert "max-age=3600" in response.headers["cache-control"]

@@ -19,11 +19,23 @@ async function post<T>(path: string, body: unknown): Promise<T> {
 }
 
 /** What the welcome screen shows for a country (and Indian state): counts, categories, popular and new schemes. */
-export async function fetchHighlights(country: Country, region: string | null): Promise<Highlights> {
-  const query = new URLSearchParams({ country, ...(region ? { region } : {}) })
-  const response = await fetch(`${API_URL}/api/highlights?${query}`)
-  if (!response.ok) throw new Error(`/api/highlights failed with ${response.status}`)
-  return response.json() as Promise<Highlights>
+// The lists only change when the backend is redeployed, so each country/state is fetched once per visit.
+// We keep the *promise*, so two quick requests for the same place share one network call
+// (like shareReplay(1) on an RxJS Observable). The browser also caches it for an hour (Cache-Control).
+const highlightsCache = new Map<string, Promise<Highlights>>()
+
+export function fetchHighlights(country: Country, region: string | null): Promise<Highlights> {
+  const query = new URLSearchParams({ country, ...(region ? { region } : {}) }).toString()
+  let request = highlightsCache.get(query)
+  if (!request) {
+    request = fetch(`${API_URL}/api/highlights?${query}`).then((response) => {
+      if (!response.ok) throw new Error(`/api/highlights failed with ${response.status}`)
+      return response.json() as Promise<Highlights>
+    })
+    request.catch(() => highlightsCache.delete(query)) // a failed call may be retried later
+    highlightsCache.set(query, request)
+  }
+  return request
 }
 
 export async function sendProfileTurn(turn: ProfileTurn): Promise<ProfileReply> {

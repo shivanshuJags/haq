@@ -183,7 +183,7 @@ export default function App() {
         {screen === 'chat' && (
           <div className="mx-auto flex min-h-0 w-full max-w-2xl flex-1 flex-col">
             <ProfileChips profile={profile} country={country} strings={strings} onRemove={removeFact} />
-            <p className="px-4 pt-3 text-xs text-muted">🔒 {strings.privacy}</p>
+            <p className="hide-when-typing px-4 pt-3 text-xs text-muted">🔒 {strings.privacy}</p>
             <Chat
               messages={messages}
               busy={busy}
@@ -217,7 +217,11 @@ export default function App() {
         {screen !== 'chat' && <Footer strings={strings} />}
       </main>
 
-      {screen === 'chat' && <Footer strings={strings} compact />}
+      {screen === 'chat' && (
+        <div className="hide-when-typing">
+          <Footer strings={strings} compact />
+        </div>
+      )}
     </div>
   )
 }

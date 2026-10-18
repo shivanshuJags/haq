@@ -15,6 +15,7 @@ const marathi: Strings = {
   schemesCount: (n: number) => `${n.toLocaleString('en-IN')} सरकारी योजना`,
   schemesSplit: (national: number, state: number) =>
     state ? `${national} केंद्राच्या · ${state} तुमच्या राज्याच्या` : `${national} केंद्र योजना`,
+  loadingSchemes: 'योजना लोड होत आहेत…',
   browseCategories: 'वर्गानुसार पहा',
   categoryHint: 'सुरू करण्यासाठी एखाद्या वर्गावर टॅप करा',
   popularHeading: 'लोकप्रिय योजना',

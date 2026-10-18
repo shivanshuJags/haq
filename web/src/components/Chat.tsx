@@ -19,12 +19,21 @@ interface Props {
 
 export function Chat({ messages, busy, canShowResults, strings, onSend, onSkip, onShowResults }: Props) {
   const [draft, setDraft] = useState('')
-  const bottomRef = useRef<HTMLDivElement>(null)
+  const listRef = useRef<HTMLDivElement>(null)
 
-  // After every new message, scroll the newest one into view (like ngAfterViewChecked + scrollIntoView)
+  // Keep the newest message in view: after every message, and when the phone keyboard opens or closes.
+  // Scroll only the message list — scrollIntoView() would also scroll the whole page up on phones.
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
+    const list = listRef.current
+    list?.scrollTo({ top: list.scrollHeight, behavior: 'smooth' })
   }, [messages, busy])
+
+  useEffect(() => {
+    const viewport = window.visualViewport
+    const toBottom = () => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })
+    viewport?.addEventListener('resize', toBottom)
+    return () => viewport?.removeEventListener('resize', toBottom)
+  }, [])
 
   const lastMessage = messages[messages.length - 1]
   const quickReplies = !busy && lastMessage?.role === 'haq' ? lastMessage.options ?? [] : []
@@ -40,7 +49,7 @@ export function Chat({ messages, busy, canShowResults, strings, onSend, onSkip, 
 
   return (
     <div className="flex min-h-0 flex-1 flex-col">
-      <div className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
+      <div ref={listRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-4">
         {messages.map((message, index) => (
           <Bubble key={index} message={message} />
         ))}
@@ -50,7 +59,6 @@ export function Chat({ messages, busy, canShowResults, strings, onSend, onSkip, 
             {strings.thinking}
           </div>
         )}
-        <div ref={bottomRef} />
       </div>
 
       <div className="border-t border-line bg-white px-4 pb-4 pt-3">

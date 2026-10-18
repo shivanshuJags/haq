@@ -15,6 +15,7 @@ const hindi: Strings = {
   schemesCount: (n: number) => `${n.toLocaleString('en-IN')} सरकारी योजनाएँ`,
   schemesSplit: (national: number, state: number) =>
     state ? `${national} केंद्र की · ${state} आपके राज्य की` : `${national} केंद्र की योजनाएँ`,
+  loadingSchemes: 'योजनाएँ लोड हो रही हैं…',
   browseCategories: 'श्रेणी के अनुसार देखें',
   categoryHint: 'किसी श्रेणी पर टैप करके शुरू करें',
   popularHeading: 'लोकप्रिय योजनाएँ',

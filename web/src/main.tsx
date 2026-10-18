@@ -2,6 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import { fitToVisibleScreen } from './viewport'
+
+fitToVisibleScreen()
 
 // PWA: register the service worker in production builds only (in dev it would cache Vite's hot-reload files)
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {

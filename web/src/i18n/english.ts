@@ -14,6 +14,7 @@ const english = {
   schemesCount: (n: number) => `${n.toLocaleString()} government schemes`,
   schemesSplit: (national: number, state: number) =>
     state ? `${national} national · ${state} from your state` : `${national} national schemes`,
+  loadingSchemes: 'Loading schemes…',
   browseCategories: 'Browse by category',
   categoryHint: 'Tap a category to start with it',
   popularHeading: 'Popular schemes',

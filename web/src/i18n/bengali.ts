@@ -15,6 +15,7 @@ const bengali: Strings = {
   schemesCount: (n: number) => `${n.toLocaleString('en-IN')}টি সরকারি প্রকল্প`,
   schemesSplit: (national: number, state: number) =>
     state ? `${national}টি কেন্দ্রের · ${state}টি আপনার রাজ্যের` : `${national}টি কেন্দ্রের প্রকল্প`,
+  loadingSchemes: 'প্রকল্প লোড হচ্ছে…',
   browseCategories: 'বিভাগ অনুযায়ী দেখুন',
   categoryHint: 'শুরু করতে একটি বিভাগে ট্যাপ করুন',
   popularHeading: 'জনপ্রিয় প্রকল্প',

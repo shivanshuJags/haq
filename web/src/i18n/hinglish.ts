@@ -15,6 +15,7 @@ const hinglish: Strings = {
   schemesCount: (n: number) => `${n.toLocaleString('en-IN')} sarkari yojanayein`,
   schemesSplit: (national: number, state: number) =>
     state ? `${national} kendra ki · ${state} aapke rajya ki` : `${national} kendra ki yojanayein`,
+  loadingSchemes: 'Yojanayein load ho rahi hain…',
   browseCategories: 'Category se dekhein',
   categoryHint: 'Kisi category par tap karke shuru karein',
   popularHeading: 'Lokpriya yojanayein',

@@ -8,6 +8,7 @@
 There is no reliable public feed of *upcoming* policies, so we only show dated, official facts.
 """
 from collections import Counter
+from functools import lru_cache
 
 from pydantic import BaseModel
 
@@ -71,6 +72,9 @@ def _link(scheme, date: str | None = None) -> SchemeLink:
                       source_url=scheme.source_url, is_state_scheme=bool(scheme.regions), date=date)
 
 
+# The catalog only changes on a redeploy, so each country/state is worked out once per server start
+# (~0.2 s over ~1,000 schemes) and then answered from memory. Bounded: `region` comes from the URL.
+@lru_cache(maxsize=64)
 def highlights(country: str, region: str | None) -> Highlights:
     data = catalog()
     # National schemes + the person's state (same rule as the search)
