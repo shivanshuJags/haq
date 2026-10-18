@@ -54,6 +54,8 @@ export function combinedChecklist(cards: ResultCard[]): ChecklistItem[] {
     .sort((a, b) => b.schemes.length - a.schemes.length || a.document.localeCompare(b.document))
 }
 
-export function checklistAsText(items: ChecklistItem[], title: string): string {
-  return [title, '', ...items.map((item) => `☐ ${item.document}  (${item.schemes.length})`)].join('\n')
+// `done` = documents the person already ticked off; they keep their tick in the copy
+export function checklistAsText(items: ChecklistItem[], title: string, done: Set<string> = new Set()): string {
+  const line = (item: ChecklistItem) => `${done.has(item.document) ? '☑' : '☐'} ${item.document}  (${item.schemes.length})`
+  return [title, '', ...items.map(line)].join('\n')
 }

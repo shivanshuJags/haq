@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { sendRescue } from '../api'
+import { COUNTRIES, countryConfig } from '../config/countries'
 import { t } from '../i18n'
 import { SAMPLE_LETTERS } from '../samples'
-import type { Country, RescueOutcome } from '../types'
+import type { Country, Language, RescueOutcome } from '../types'
 import { Loading } from './Loading'
 
 const MAX_PHOTO_SIDE = 1600 // px — plenty to read text, keeps uploads small
@@ -27,9 +28,16 @@ function photoToDataUrl(file: File): Promise<string> {
 
 interface Props {
   initialCountry: Country
+  initialLanguage: Language
 }
 
-export function RescueView({ initialCountry }: Props) {
+// Keep the chosen language if the country offers it, otherwise that country's default
+function languageFor(country: Country, preferred: Language): Language {
+  const { languages } = countryConfig(country)
+  return languages.includes(preferred) ? preferred : languages[0]
+}
+
+export function RescueView({ initialCountry, initialLanguage }: Props) {
   const [country, setCountry] = useState<Country>(initialCountry)
   const [text, setText] = useState('')
   const [photo, setPhoto] = useState<string | null>(null)
@@ -37,7 +45,7 @@ export function RescueView({ initialCountry }: Props) {
   const [error, setError] = useState<string | null>(null)
   const [outcome, setOutcome] = useState<RescueOutcome | null>(null)
 
-  const language = country === 'IN' ? 'hinglish' : 'english'
+  const language = languageFor(country, initialLanguage)
   const strings = t(language)
   const r = strings.rescue
 
@@ -70,7 +78,7 @@ export function RescueView({ initialCountry }: Props) {
   }
 
   if (busy) return <Loading steps={r.working} />
-  if (outcome) return <RescueResult outcome={outcome} country={country} onAnother={reset} />
+  if (outcome) return <RescueResult outcome={outcome} language={language} onAnother={reset} />
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-6">
@@ -78,15 +86,15 @@ export function RescueView({ initialCountry }: Props) {
       <p className="mt-2 leading-relaxed text-ink">{r.intro}</p>
 
       <div className="mt-5 inline-flex rounded-xl border border-line bg-white p-1">
-        {(['IN', 'UK'] as Country[]).map((option) => (
+        {COUNTRIES.map((option) => (
           <button
-            key={option}
-            onClick={() => setCountry(option)}
+            key={option.code}
+            onClick={() => setCountry(option.code)}
             className={`rounded-lg px-4 py-1.5 text-sm font-medium ${
-              country === option ? 'bg-brand text-white' : 'text-muted hover:text-ink'
+              country === option.code ? 'bg-brand text-white' : 'text-muted hover:text-ink'
             }`}
           >
-            {option === 'IN' ? '₹ India' : '£ United Kingdom'}
+            {option.symbol} {option.name}
           </button>
         ))}
       </div>
@@ -145,8 +153,12 @@ const VERDICT_STYLE = {
   unclear: 'bg-paper text-ink',
 }
 
-function RescueResult({ outcome, country, onAnother }: { outcome: RescueOutcome; country: Country; onAnother: () => void }) {
-  const r = t(country === 'IN' ? 'hinglish' : 'english').rescue
+function RescueResult({ outcome, language, onAnother }: {
+  outcome: RescueOutcome
+  language: Language
+  onAnother: () => void
+}) {
+  const r = t(language).rescue
   const result = outcome.rescue
   const [letter, setLetter] = useState(result.appeal_letter)
   const [copied, setCopied] = useState(false)

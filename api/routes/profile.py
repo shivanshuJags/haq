@@ -6,6 +6,7 @@ it has so far with every message, and gets the updated profile back.
 from fastapi import APIRouter
 from pydantic import BaseModel, Field
 
+from core.languages import ascii_digits
 from core.privacy import redact
 from core.profile import MAX_FOLLOW_UP_ROUNDS, Country, Profile, missing_fields
 from core.profile_agent import FollowUp, Language, detect_language, extract_profile, follow_up_question
@@ -18,6 +19,9 @@ CHOICE_FIELDS = {"gender", "caste_category", "occupation", "has_children", "has_
 PRIVACY_NOTE = {
     "hinglish": "Aapka number hata diya gaya hai. Haq ko Aadhaar, PAN ya bank details ki zaroorat nahi hai.",
     "english": "We removed that number. Haq never needs ID numbers (Aadhaar, PAN, National Insurance) or bank details.",
+    "hindi": "आपका नंबर हटा दिया गया है। Haq को आधार, PAN या बैंक विवरण की ज़रूरत नहीं है।",
+    "marathi": "तुमचा नंबर काढून टाकला आहे. Haq ला आधार, PAN किंवा बँक तपशीलांची गरज नाही.",
+    "bengali": "আপনার নম্বরটি সরিয়ে দেওয়া হয়েছে। Haq-এর আধার, PAN বা ব্যাংকের তথ্যের দরকার নেই।",
 }
 
 
@@ -42,7 +46,8 @@ class ProfileReply(BaseModel):
 
 @router.post("/profile", response_model=ProfileReply)
 def profile_turn(turn: ProfileTurn) -> ProfileReply:
-    message, removed = redact(turn.message)
+    # "२० साल" / "১.৫ লাখ" -> ASCII digits first, so ID-number removal and number checks see real digits
+    message, removed = redact(ascii_digits(turn.message))
     language = detect_language(message, turn.country, turn.language)
     profile = extract_profile(message, turn.profile, turn.country, turn.answering)
 

@@ -21,8 +21,22 @@ def test_income_never_offers_ranges():
         assert QUESTIONS[language]["annual_family_income"][1] == []
 
 
-def test_every_question_exists_in_both_languages():
-    assert QUESTIONS["hinglish"].keys() == QUESTIONS["english"].keys()
+def test_every_question_exists_in_every_language():
+    from core.languages import INSTRUCTIONS
+    assert set(QUESTIONS) == set(INSTRUCTIONS)  # a language needs templates AND a model instruction
+    for language in QUESTIONS:
+        assert QUESTIONS[language].keys() == QUESTIONS["english"].keys(), language
+
+
+def test_indian_language_buttons_are_understood():
+    assert extract_profile("महिला", Profile(), "IN", answering=["gender"]).gender == "female"
+    assert extract_profile("शेतकरी", Profile(), "IN", answering=["occupation"]).occupation == "farmer"
+    assert extract_profile("হ্যাঁ", Profile(), "IN", answering=["has_children"]).has_children is True
+
+
+def test_indian_digits_become_ascii():
+    from core.languages import ascii_digits
+    assert ascii_digits("मेरी उम्र २० साल, आय ১.৫ লাখ") == "मेरी उम्र 20 साल, आय 1.5 লাখ"
 
 
 def test_every_button_has_a_meaning():

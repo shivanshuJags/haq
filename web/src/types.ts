@@ -2,7 +2,8 @@
 // If the backend changes a field, change it here too.
 
 export type Country = 'UK' | 'IN'
-export type Language = 'hinglish' | 'english'
+// Must match core/languages.py on the backend
+export type Language = 'english' | 'hinglish' | 'hindi' | 'marathi' | 'bengali'
 
 export interface Profile {
   region?: string | null
@@ -127,6 +128,27 @@ export interface RescueOutcome {
   rescue: Rescue
   scheme_source_url: string | null
   scheme_apply_url: string | null
+}
+
+// GET /api/highlights (core/highlights.py)
+export interface SchemeLink {
+  id: string
+  name: string
+  summary: string | null
+  source_url: string
+  is_state_scheme: boolean
+  date: string | null
+}
+
+export interface Highlights {
+  country: Country
+  region: string | null
+  schemes: number
+  national: number
+  state: number
+  categories: { name: string; count: number }[]
+  popular: SchemeLink[]
+  recent: SchemeLink[]
 }
 
 export interface Progress {

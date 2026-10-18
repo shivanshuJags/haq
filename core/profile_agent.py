@@ -7,11 +7,11 @@ Extraction stays accurate because every fact must carry a quote from the message
 which code verifies, and code does all the arithmetic (see core/grounded.py).
 """
 import re
-from typing import Literal
 
 from pydantic import BaseModel
 
 from core.grounded import Extraction, facts_to_update
+from core.languages import INSTRUCTIONS, Language
 from core.llm import chat_json
 from core.profile import Country, Profile
 
@@ -41,6 +41,9 @@ Rules:
   Words also show gender: mum/mom/mother/wife/widow/maa -> female; dad/father/husband/papa -> male (for the person applying).
 - India: "BC"/"backward class" -> "OBC"; "extremely backward" -> "EBC"; "dalit" -> "SC"; "adivasi" -> "ST".
 - region: Indian state in English, e.g. "UP" -> "Uttar Pradesh".
+- Messages may be in Hindi, Marathi or Bengali script. Quote the original words exactly, but write enum values
+  (gender, caste_category, occupation…) and region in English as listed. Never guess a state or category that
+  isn't stated.
 - A person in school/college: occupation "student" AND is_student true. "BA"/"BSc"/"B.Com" -> education_level "graduate".
 - Occupation words: "kisan"/"kheti" -> "farmer"; "majdoor"/"mazdoor"/"mazdoori" -> "unorganised_worker";
   "berozgaar"/"out of work" -> "unemployed"; "naukri"/"job"/"employed" -> "salaried_employee";
@@ -107,20 +110,73 @@ QUESTIONS: dict[str, dict[str, tuple[str, list[str]]]] = {
         "savings": ("Roughly how much do you have in savings?", []),
         "has_disability": ("Do you have a disability or long-term health condition?", ["Yes", "No"]),
     },
+    "hindi": {
+        "region": ("आप किस राज्य में रहते हैं?", []),
+        "age": ("आपकी उम्र कितनी है?", []),
+        "gender": ("आप पुरुष हैं या महिला?", ["पुरुष", "महिला", "ट्रांसजेंडर"]),
+        "annual_family_income": ("आपके पूरे परिवार की साल भर की कमाई लगभग कितनी है? (जैसे: 80 हज़ार, 1.5 लाख)", []),
+        "caste_category": ("आपकी श्रेणी (कैटेगरी) क्या है?", ["सामान्य", "OBC", "EBC", "SC", "ST"]),
+        "occupation": ("आप मुख्य रूप से क्या करते हैं?", ["छात्र", "किसान", "मज़दूर", "नौकरी", "अपना काम", "बेरोज़गार"]),
+        "land_acres": ("आपके नाम पर कितनी खेती की ज़मीन है? (बीघा या एकड़ में; नहीं है तो 0)", []),
+        "has_children": ("क्या आपके बच्चे हैं?", ["हाँ", "नहीं"]),
+        "personal_annual_income": ("आप खुद कितना कमाते हैं? (महीने या साल का)", []),
+        "savings": ("आपके पास लगभग कितनी बचत है?", []),
+        "has_disability": ("क्या आपको कोई दिव्यांगता या लंबी बीमारी है?", ["हाँ", "नहीं"]),
+    },
+    "marathi": {
+        "region": ("तुम्ही कोणत्या राज्यात राहता?", []),
+        "age": ("तुमचे वय किती आहे?", []),
+        "gender": ("तुम्ही पुरुष आहात की स्त्री?", ["पुरुष", "स्त्री", "ट्रान्सजेंडर"]),
+        "annual_family_income": ("तुमच्या संपूर्ण कुटुंबाचे वार्षिक उत्पन्न साधारण किती आहे? (उदा. 80 हजार, 1.5 लाख)", []),
+        "caste_category": ("तुमचा प्रवर्ग (कॅटेगरी) कोणता आहे?", ["सर्वसाधारण", "OBC", "EBC", "SC", "ST"]),
+        "occupation": ("तुम्ही मुख्यतः काय करता?", ["विद्यार्थी", "शेतकरी", "मजूर", "नोकरी", "स्वतःचा व्यवसाय", "बेरोजगार"]),
+        "land_acres": ("तुमच्या नावावर किती शेतजमीन आहे? (एकर मध्ये; नसल्यास 0)", []),
+        "has_children": ("तुम्हाला मुले आहेत का?", ["हो", "नाही"]),
+        "personal_annual_income": ("तुम्ही स्वतः किती कमावता? (महिन्याचे किंवा वर्षाचे)", []),
+        "savings": ("तुमच्याकडे साधारण किती बचत आहे?", []),
+        "has_disability": ("तुम्हाला काही अपंगत्व किंवा दीर्घ आजार आहे का?", ["हो", "नाही"]),
+    },
+    "bengali": {
+        "region": ("আপনি কোন রাজ্যে থাকেন?", []),
+        "age": ("আপনার বয়স কত?", []),
+        "gender": ("আপনি পুরুষ না মহিলা?", ["পুরুষ", "মহিলা", "ট্রান্সজেন্ডার"]),
+        "annual_family_income": ("আপনার পুরো পরিবারের বার্ষিক আয় মোটামুটি কত? (যেমন: 80 হাজার, 1.5 লাখ)", []),
+        "caste_category": ("আপনার শ্রেণী (ক্যাটেগরি) কী?", ["সাধারণ", "OBC", "EBC", "SC", "ST"]),
+        "occupation": ("আপনি মূলত কী করেন?", ["ছাত্র/ছাত্রী", "কৃষক", "শ্রমিক", "চাকরি", "নিজের ব্যবসা", "বেকার"]),
+        "land_acres": ("আপনার নামে কতটা চাষের জমি আছে? (একরে; না থাকলে 0)", []),
+        "has_children": ("আপনার কি সন্তান আছে?", ["হ্যাঁ", "না"]),
+        "personal_annual_income": ("আপনি নিজে কত আয় করেন? (মাসিক বা বার্ষিক)", []),
+        "savings": ("আপনার কাছে মোটামুটি কত সঞ্চয় আছে?", []),
+        "has_disability": ("আপনার কি কোনো প্রতিবন্ধকতা বা দীর্ঘমেয়াদি অসুখ আছে?", ["হ্যাঁ", "না"]),
+    },
 }
 
 # What each quick-reply button means. A tapped button is understood in code — instantly and
-# exactly — without asking the model.
+# exactly — without asking the model. Keys are lower-case button labels, in every language.
 OPTION_VALUES: dict[str, dict[str, object]] = {
-    "gender": {"purush": "male", "male": "male", "mahila": "female", "female": "female", "transgender": "transgender"},
-    "caste_category": {"general": "General", "obc": "OBC", "ebc": "EBC", "sc": "SC", "st": "ST"},
-    "occupation": {
-        "student": "student", "kisan": "farmer", "mazdoor": "unorganised_worker", "naukri": "salaried_employee",
-        "employed": "salaried_employee", "apna kaam": "self_employed", "self-employed": "self_employed",
-        "berozgaar": "unemployed", "unemployed": "unemployed", "carer": "carer", "retired": "retired",
+    "gender": {
+        "purush": "male", "male": "male", "पुरुष": "male", "পুরুষ": "male",
+        "mahila": "female", "female": "female", "महिला": "female", "स्त्री": "female", "মহিলা": "female",
+        "transgender": "transgender", "ट्रांसजेंडर": "transgender", "ट्रान्सजेंडर": "transgender", "ট্রান্সজেন্ডার": "transgender",
     },
-    "has_children": {"haan": True, "yes": True, "nahi": False, "no": False},
-    "has_disability": {"haan": True, "yes": True, "nahi": False, "no": False},
+    "caste_category": {
+        "general": "General", "सामान्य": "General", "सर्वसाधारण": "General", "সাধারণ": "General",
+        "obc": "OBC", "ebc": "EBC", "sc": "SC", "st": "ST",
+    },
+    "occupation": {
+        "student": "student", "छात्र": "student", "विद्यार्थी": "student", "ছাত্র/ছাত্রী": "student",
+        "kisan": "farmer", "किसान": "farmer", "शेतकरी": "farmer", "কৃষক": "farmer",
+        "mazdoor": "unorganised_worker", "मज़दूर": "unorganised_worker", "मजूर": "unorganised_worker", "শ্রমিক": "unorganised_worker",
+        "naukri": "salaried_employee", "employed": "salaried_employee", "नौकरी": "salaried_employee", "नोकरी": "salaried_employee", "চাকরি": "salaried_employee",
+        "apna kaam": "self_employed", "self-employed": "self_employed", "अपना काम": "self_employed",
+        "स्वतःचा व्यवसाय": "self_employed", "নিজের ব্যবসা": "self_employed",
+        "berozgaar": "unemployed", "unemployed": "unemployed", "बेरोज़गार": "unemployed", "बेरोजगार": "unemployed", "বেকার": "unemployed",
+        "carer": "carer", "retired": "retired",
+    },
+    "has_children": {"haan": True, "yes": True, "हाँ": True, "हो": True, "হ্যাঁ": True,
+                     "nahi": False, "no": False, "नहीं": False, "नाही": False, "না": False},
+    "has_disability": {"haan": True, "yes": True, "हाँ": True, "हो": True, "হ্যাঁ": True,
+                       "nahi": False, "no": False, "नहीं": False, "नाही": False, "না": False},
 }
 
 
@@ -157,19 +213,17 @@ HINGLISH_WORDS = {
 }
 
 
-Language = Literal["hinglish", "english"]
-
-LANGUAGE_INSTRUCTIONS = {
-    "hinglish": "Hinglish (Hindi written in Latin script, like 'Aapki umar kitni hai?')",
-    "english": "simple English",
-}
+LANGUAGE_INSTRUCTIONS = INSTRUCTIONS  # re-exported for core/verdict.py and core/rescue.py
 
 
 def detect_language(message: str, country: Country, previous: Language | None) -> Language:
     """Decide the reply language in code, so the model can't drift into the wrong one.
-    Short answers like "58, male" don't say much, so we keep the conversation's earlier language."""
+    A language the person picked (Hindi, Marathi, Bengali…) is kept as is. Between English and
+    Hinglish we follow how they write. Short answers like "58, male" keep the earlier language."""
     if country == "UK":
         return "english"
+    if previous and previous not in ("english", "hinglish"):
+        return previous
     words = set(message.lower().replace(",", " ").replace(".", " ").replace("?", " ").split())
     hinglish_hits = len(words & HINGLISH_WORDS)
     if hinglish_hits >= 2:

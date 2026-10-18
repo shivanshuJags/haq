@@ -107,6 +107,10 @@ def to_record(content: dict, categories: list[str]) -> dict:
         "source": "GOV.UK",
         "license": "Open Government Licence v3.0",
         "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "meta": {
+            # when GOV.UK last changed the guidance, for "recently updated"
+            "updated": (content.get("public_updated_at") or "")[:10] or None,
+        },
     }
 
 

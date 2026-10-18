@@ -26,13 +26,13 @@ export function DocumentChecklist({ cards, strings }: Props) {
   }
 
   async function copy() {
-    await navigator.clipboard.writeText(checklistAsText(items, strings.checklistTitle))
+    await navigator.clipboard.writeText(checklistAsText(items, strings.checklistTitle, done))
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
 
   function download() {
-    const blob = new Blob([checklistAsText(items, strings.checklistTitle)], { type: 'text/plain;charset=utf-8' })
+    const blob = new Blob([checklistAsText(items, strings.checklistTitle, done)], { type: 'text/plain;charset=utf-8' })
     const url = URL.createObjectURL(blob)
     Object.assign(document.createElement('a'), { href: url, download: 'haq-documents.txt' }).click()
     URL.revokeObjectURL(url)

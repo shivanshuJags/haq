@@ -244,6 +244,12 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ---
 
+### US-704 · Welcome screen like myScheme · P1 · Done (Oct 18)
+- [x] Country dropdown from config (`web/src/config/countries.ts`) — add a country in one place
+- [x] All Indian states/UTs; ★ marks states with their own scheme data (Bihar, UP), others get national schemes
+- [x] Language picker: Hinglish, English, हिंदी, मराठी, বাংলা (UI + chat questions + answers)
+- [x] Scheme counts, categories (tap → chat starts with that need), popular schemes, recently launched/updated — real data only (`GET /api/highlights`)
+
 ### US-703 · UI improvements (user's list) · P1 · To do · near the end (agreed Oct 16)
 - [ ] Collect the user's UI change list, then implement (along with PWA install + smaller footer from US-701)
 
@@ -272,6 +278,6 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 
 ## Epic 9 — Stretch
 
-### US-901 · Hindi answers · P2 · To do
+### US-901 · Hindi answers · P2 · Done (Oct 18 — Hindi, Marathi, Bengali; Tamil/Telugu tested, not good enough yet)
 ### US-902 · Voice input · P2 · To do
 ### US-903 · Download my results as PDF · P2 · To do

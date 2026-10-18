@@ -69,13 +69,19 @@ Rules:
 - Where they live is CONFIRMED (they chose it in the app — see "Lives in"). Treat a residence requirement for that
   country/state as met. Only the finer points stay unknown (e.g. "England only", years of residence, immigration status).
 - Never assume facts about the person that aren't in their profile. Missing fact -> "unknown", not "not_met".
+- Read the whole scheme, not just the eligibility list: a scheme can be clearly FOR one group (e.g. a student hostel
+  or scholarship, an internship, a scheme for farmers or for one trade) without the list repeating it. If the profile
+  shows the person is not in that group (e.g. occupation is "unorganised_worker" and they aren't a student), verdict
+  "not_eligible". If the profile doesn't say either way, "need_more_info" with a "weak" fit.
 - The "Code checks" were computed exactly; trust "pass" results.
 - reasons: 2–5 items, the requirements that matter most. criterion = 1–3 words (e.g. "Income", "Age", "Category").
   explanation = one short sentence to the person.
 - benefit: what they get, with the amount if the text states it. yearly_amount: money paid TO the person per year in
   {currency} (cash, stipend, pension, allowance, scholarship), only when the text gives a clear figure — convert monthly
   to yearly and use the person's details (e.g. number of children). Null for insurance cover, loans, subsidies on
-  purchases, one-off grants, or when unclear. Never guess an amount.
+  purchases, one-off grants, or when unclear. Null too for money that only starts at an age the person hasn't
+  reached (e.g. a pension "after 60" for a 35-year-old, which they pay into now) — say when it starts in `benefit`.
+  Never guess an amount.
 - next_step (US-305, "almost eligible"): for "likely_eligible" or "need_more_info" with a strong or possible fit, the single
   most useful thing the person can DO to become eligible or prove it — specific and practical (which certificate, from
   which office; which form). Null for "eligible", "not_eligible", or when nothing they can do would help.
@@ -133,6 +139,10 @@ def _judge(candidate: Candidate, profile: Profile, country: Country, language: L
 
 SCHEME: {scheme.name}
 Summary: {scheme.summary or ''}
+Tags (who it is for): {', '.join((scheme.meta or {}).get('tags') or []) or 'none'}
+
+Overview (official text):
+{(sections.get('overview') or '')[:MAX_SECTION_CHARS // 2] if sections.get('eligibility') else '(see below)'}
 
 Eligibility (official text):
 {(sections.get('eligibility') or sections.get('overview') or '')[:MAX_SECTION_CHARS]}

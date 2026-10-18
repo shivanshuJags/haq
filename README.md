@@ -24,7 +24,7 @@ need them most have the least time to read official guidance written for lawyers
 
 ## What Haq does
 
-1. **Tell it about yourself in your own words** — English or Hinglish, as you'd talk to a person.
+1. **Pick your country, state and language, then tell it about yourself in your own words** — English, Hinglish, Hindi, Marathi or Bengali, as you'd talk to a person. The welcome screen shows popular and recently launched schemes and browsable categories (no AI, from `GET /api/highlights`).
    *"Main 20 saal ki hoon, BA kar rahi hoon, hum OBC hain, ghar ki income 1.5 lakh hai."*
 2. **It asks only what's missing** (at most 3 short questions, with tap-to-answer buttons).
 3. **It checks ~1,000 official schemes** and shows what you're likely entitled to, with:
@@ -133,7 +133,7 @@ Results page opens in seconds and fills in as each verdict arrives.
 
 | Layer | Tech |
 |---|---|
-| Frontend | React 19, TypeScript, Vite, Tailwind CSS — mobile-first, English + Hinglish UI |
+| Frontend | React 19, TypeScript, Vite, Tailwind CSS — mobile-first, UI in English, Hinglish, Hindi, Marathi, Bengali; countries in `web/src/config/countries.ts` |
 | Backend | Python 3.13, FastAPI, Pydantic, NumPy, NDJSON streaming |
 | AI | NVIDIA Nemotron 3 Nano / Super / Ultra on Nebius Token Factory (OpenAI-compatible API) |
 | Data | GOV.UK Content API, myScheme.gov.in; PostgreSQL + pgvector (Neon) |

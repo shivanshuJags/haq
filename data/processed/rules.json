@@ -10540,6 +10540,34 @@
     ],
     "confidence": "high"
   },
+  "in:jros": {
+    "age_min": null,
+    "age_max": null,
+    "genders": null,
+    "caste_categories": null,
+    "marital_status": null,
+    "residence": null,
+    "income_max": null,
+    "personal_income_max": null,
+    "savings_max": null,
+    "bpl_required": null,
+    "occupations": null,
+    "is_student": null,
+    "education_levels": null,
+    "disability_required": null,
+    "disability_min_percent": null,
+    "has_children": null,
+    "is_pregnant": null,
+    "is_carer": null,
+    "receives_benefit": null,
+    "land_holding_max_acres": null,
+    "other_conditions": [
+      "Applicant must be a reputed and registered Jute Entrepreneur/Manufacturer, Exporter, Merchant Trader, NGO, Cooperative Society, Federation, PSU/Organization of the Central/State Government, or any other firm/agency engaged in the product identification and marketing of Jute Diversified Products (JDPs) for at least the last three years.",
+      "Applicant must establish a Jute Retail Outlet (JRO) in metro cities, State/UT capitals, tourist destinations, or religious places with high footfall, or any other location with maximum footfall, with a minimum space of 150 sq. ft.",
+      "Applicant must ensure that at least 50% of the JDPs sold through the JRO are procured from Jute Artisans, WSHGs, Micro & Small Jute Manufacturers, and JRCPC beneficiaries."
+    ],
+    "confidence": "high"
+  },
   "in:jrpsa": {
     "age_min": null,
     "age_max": null,
@@ -28845,17 +28873,20 @@
     "receives_benefit": null,
     "land_holding_max_acres": null,
     "other_conditions": [
-      "Must have worked as an employee and paid Class 1 National Insurance contributions, usually in the last 2 to 3 years (NI credits can count for one of these years).",
-      "Not eligible if self‑employed and only paid Class 2 NIC, unless working as a share fisherman or volunteer development worker.",
-      "Must be 18 or over and under State Pension age.",
-      "Must be resident in Great Britain.",
-      "Must not be working 16 or more hours per week.",
-      "Must not have an illness or disability that stops you from working.",
-      "Savings (own or partner's) do not affect eligibility.",
-      "If studying full‑time, eligible only if qualification is at Level 4 or below, no maintenance loan/grant/bursary, and can meet work‑related requirements agreed with work coach.",
-      "If studying part‑time, may be eligible (no further restrictions stated).",
-      "Cannot usually get JSA if involved in a trade dispute with employer.",
-      "Different rules apply in Northern Ireland."
+      "Must have worked as an employee and paid Class 1 National Insurance contributions (usually in the last 2–3 years).",
+      "Not eligible if self‑employed and only paid Class 2 NICs, unless working as a share fisherman or volunteer development worker.",
+      "Must be aged 18 or over.",
+      "Must be under the State Pension age.",
+      "Must reside in Great Britain (England, Scotland, Wales).",
+      "Must not work 16 or more hours per week.",
+      "Must not be involved in a trade dispute with employer.",
+      "Must not have an illness or disability that prevents you from working.",
+      "Savings (your own or your partner’s) do not affect eligibility.",
+      "To qualify, you must usually have paid Class 1 NICs for the previous 2 tax years; NI credits can count for one of those years.",
+      "If you previously received New Style JSA for the full 182‑day entitlement, you can claim again only after at least 12 weeks since the last entitlement ended and only if the new claim is in a different benefit year.",
+      "If you work while claiming, your earnings reduce the JSA amount.",
+      "If studying part‑time you may be eligible; if studying full‑time you may be eligible only if the course is at Level 4 or below, you receive no maintenance loan/grant/bursary, and you can meet the work‑related requirements agreed with your work coach.",
+      "You may claim Universal Credit alongside New Style JSA; JSA counts as income for UC and reduces the UC amount."
     ],
     "confidence": "high"
   },
@@ -29186,18 +29217,17 @@
     "receives_benefit": null,
     "land_holding_max_acres": null,
     "other_conditions": [
-      "You must live in England, Scotland or Wales.",
-      "You must have reached State Pension age (the age varies depending on your date of birth).",
-      "If you have a partner, you must include them on the application; you are eligible if either both you and your partner have reached State Pension age, or one of you is receiving Housing Benefit for people over State Pension age.",
-      "A partner is defined as a husband, wife, or civil partner you live with, or someone you live with as a couple without being married or in a civil partnership.",
-      "If you are from the EU, Switzerland, Norway, Iceland or Liechtenstein, you normally need settled or pre‑settled status under the EU Settlement Scheme (the deadline to apply was 30 June 2021 for most people, though you may still be able to apply).",
-      "You cannot apply for Pension Credit if you are already outside Great Britain; you can continue to receive it while away for up to 4 weeks (or up to 26 weeks for approved medical treatment or convalescence under specific conditions).",
-      "You cannot receive Pension Credit if you are moving away from Great Britain permanently.",
-      "If you have more than £10,000 in savings and investments, each £500 over £10,000 is treated as £1 of weekly income for the assessment.",
-      "Certain benefits such as Adult Disability Payment, Attendance Allowance, Child Benefit, Christmas Bonus, Council Tax Reduction, Disability Living Allowance, Housing Benefit, Pension Age Disability Payment, Personal Independence Payment, Scottish Adult Disability Living Allowance, and social fund payments like Winter Fuel Payment are not counted as income.",
-      "If you have deferred a personal, workplace or State pension, the amount you would expect to receive is still counted as income."
+      "Must reside in England, Scotland, or Wales.",
+      "Must have reached State Pension age (the exact age depends on your date of birth).",
+      "If you have a partner, you are eligible if either both you and your partner have reached State Pension age, or one of you is receiving Housing Benefit for people over State Pension age.",
+      "If you are from the EU, Switzerland, Norway, Iceland, or Liechtenstein, you generally need settled or pre‑settled status under the EU Settlement Scheme (application deadline was 30 June 2021, with possible later applications).",
+      "Savings and investments over £10,000 reduce the amount of Pension Credit (every £500 over £10,000 counts as £1 weekly income) but do not disqualify you.",
+      "You cannot apply for Pension Credit if you are already outside Great Britain; you can continue to receive it for up to 4 weeks abroad (or up to 4 additional weeks if due to a close relative’s death), and up to 26 weeks if abroad for approved medical treatment or convalescence.",
+      "You cannot receive Pension Credit if you move away from Great Britain permanently.",
+      "Deferred personal or workplace pensions, and deferred State Pension, are counted as income for the assessment.",
+      "Certain benefits (e.g., Adult Disability Payment, Attendance Allowance, Child Benefit, Housing Benefit, etc.) are not counted as income for Pension Credit."
     ],
-    "confidence": "medium"
+    "confidence": "high"
   },
   "uk:pip": {
     "age_min": 16,
@@ -29515,11 +29545,13 @@
     "receives_benefit": null,
     "land_holding_max_acres": null,
     "other_conditions": [
-      "Eligible if you are out of work, working (including self‑employed or part‑time), or unable to work due to a health condition.",
-      "Special provisions allow 16‑17 year olds with health conditions, caring responsibilities, pregnancy, parental responsibility, etc., to claim.",
-      "Students may be eligible under certain conditions (e.g., living with an eligible partner, responsible for a child, at State Pension age, holding a migration notice, under 21 without parental support, part‑time study without a student loan, or having limited capability for work with specific disability benefits)."
+      "Must live in the UK.",
+      "Must be under State Pension age.",
+      "If aged 16-17, may qualify only if meeting specific conditions: having a health condition/disability with medical evidence, caring for someone receiving a health/disability benefit, nearing end of life, being responsible for a child, living with a partner who is eligible for Universal Credit, being pregnant and expecting a baby within 11 weeks, having had a baby in the last 15 weeks, or lacking parental support.",
+      "Full-time students may qualify only if meeting any of the listed student conditions: partner eligible for Universal Credit, responsible for a child, having reached State Pension age with partner below State Pension age, having received a Migration Notice, being 21 or under studying up to A level or equivalent without parental support, studying part-time or on a course with no student loan/finance, or having a disability/health condition with certain benefits (PIP, DLA, Attendance Allowance, Armed Forces Independence Payment, ADP, CDP, PADP, SADLA).",
+      "Armed forces personnel stationed abroad may apply using a specific address."
     ],
-    "confidence": "high"
+    "confidence": "medium"
   },
   "uk:universal-credit-reviews": {
     "age_min": null,

@@ -1,9 +1,10 @@
 // Small typed client for the Haq API — like an Angular service wrapping HttpClient.
-import type { Country, Language, Profile, ProfileReply, ProfileTurn, RescueOutcome, StreamEvent } from './types'
+import type { Country, Highlights, Language, Profile, ProfileReply, ProfileTurn, RescueOutcome, StreamEvent } from './types'
 
 // Where the API lives. Locally it's empty: Vite proxies /api to localhost:8000.
 // In production (Vercel) set VITE_API_URL to the backend's URL, e.g. https://xxxx.nebius.cloud
 const API_URL = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '')
+
 
 async function post<T>(path: string, body: unknown): Promise<T> {
   const response = await fetch(API_URL + path, {
@@ -17,11 +18,19 @@ async function post<T>(path: string, body: unknown): Promise<T> {
   return response.json() as Promise<T>
 }
 
-export function sendProfileTurn(turn: ProfileTurn): Promise<ProfileReply> {
+/** What the welcome screen shows for a country (and Indian state): counts, categories, popular and new schemes. */
+export async function fetchHighlights(country: Country, region: string | null): Promise<Highlights> {
+  const query = new URLSearchParams({ country, ...(region ? { region } : {}) })
+  const response = await fetch(`${API_URL}/api/highlights?${query}`)
+  if (!response.ok) throw new Error(`/api/highlights failed with ${response.status}`)
+  return response.json() as Promise<Highlights>
+}
+
+export async function sendProfileTurn(turn: ProfileTurn): Promise<ProfileReply> {
   return post<ProfileReply>('/api/profile', turn)
 }
 
-export function sendRescue(request: {
+export async function sendRescue(request: {
   country: Country
   language: Language
   letter_text?: string

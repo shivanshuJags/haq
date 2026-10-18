@@ -10,6 +10,7 @@ Wrong facts can wrongly exclude people from benefits. So:
      ("900", "per_month"; "2", "bigha"); code converts to yearly amounts / acres.
 """
 import re
+import unicodedata
 from typing import Literal, get_args
 
 from pydantic import BaseModel, Field, ValidationError
@@ -78,6 +79,109 @@ def _match_choice(field: str, value):
     return value
 
 
+# --- Money read straight from the person's words -------------------------------------------------
+# Nano gets spoken amounts wrong: "dedh lakh" -> 1 (should be 1.5), "15 hazaar mahina" -> 15,000 a
+# YEAR (should be 1.8 lakh). So when the quote itself states the amount, code reads number, scale and
+# period from it. Words in Latin, Devanagari (Hindi/Marathi) and Bengali script.
+def _table(groups: dict) -> dict[str, float]:
+    """{value: "word word ..."} -> {word: value}, in the same Unicode form as _tokens() produces."""
+    return {unicodedata.normalize("NFC", word): value for value, words in groups.items() for word in words.split()}
+
+
+CARDINALS = _table({
+    1: "one ek एक এক", 2: "two do दो दोन দুই", 3: "three teen तीन তিন", 4: "four char chaar चार চার",
+    5: "five paanch panch पाँच पांच पाच পাঁচ", 6: "six chhe chhah छह छः सहा ছয়", 7: "seven saat सात সাত",
+    8: "eight aath आठ আট", 9: "nine nau नौ नऊ নয়", 10: "ten das दस दहा দশ",
+})
+HALVES = _table({1.5: "dedh dhedh डेढ़ डेढ दीड দেড়", 2.5: "dhai dhaai ढाई अडीच আড়াই"})
+# "sava 2" = 2.25, "saadhe 3" = 3.5, "paune 2" = 1.75
+MODIFIERS = _table({0.25: "sava savaa सवा সওয়া", 0.5: "saadhe sadhe saade साढ़े साढे साडे সাড়ে",
+                    -0.25: "paune पौने পৌনে"})
+SCALES = _table({
+    100_000: "lakh lac lakhs lacs लाख লাখ", 1_000: "hazaar hazar hajar thousand k हज़ार हजार হাজার",
+    10_000_000: "crore karod करोड़ करोड কোটি",
+})
+PERIODS = _table({
+    12: "month monthly mahina mahine mahinay maah pm महीना महीने माह मासिक प्रतिमाह महिना महिने महिन्याला दरमहा "
+        "মাস মাসে মাসিক",
+    52: "week weekly hafta hafte हफ्ता हफ़्ता हफ्ते सप्ताह आठवडा आठवड्याला সপ্তাহ সপ্তাহে",
+})
+_TOKEN = re.compile(r"[^\s,.!?।()/:;\"']+")
+_DIGITS = re.compile(r"[₹£$]?(\d+(?:\.\d+)?)(k)?")
+
+
+def _tokens(text: str) -> list[str]:
+    text = unicodedata.normalize("NFC", text.lower())
+    text = re.sub(r"(?<=\d),(?=\d)", "", text)  # 1,50,000 -> 150000 (before commas split tokens)
+    return _TOKEN.findall(text)
+
+
+def spoken_amount(quote: str) -> float | None:
+    """The amount a short quote states, before any per-month/per-week maths: "1.5 lakh" -> 150000,
+    "डेढ़ लाख" -> 150000, "15 hazaar" -> 15000, "saadhe 3 lakh" -> 350000. None if unclear."""
+    tokens = _tokens(quote)
+    numbers: list[tuple[int, float]] = []  # (token index, number)
+    i = 0
+    while i < len(tokens):
+        token = tokens[i]
+        digits = _DIGITS.fullmatch(token)
+        if digits:
+            numbers.append((i, float(digits.group(1)) * (1000 if digits.group(2) else 1)))
+        elif token in HALVES:
+            numbers.append((i, HALVES[token]))
+        elif token in MODIFIERS and i + 1 < len(tokens):
+            nxt = _DIGITS.fullmatch(tokens[i + 1])
+            base = float(nxt.group(1)) if nxt else CARDINALS.get(tokens[i + 1])
+            if base is not None:
+                numbers.append((i + 1, base + MODIFIERS[token]))
+                i += 1
+        elif token in CARDINALS:
+            numbers.append((i, CARDINALS[token]))
+        i += 1
+    if len(numbers) != 1:
+        return None  # nothing, or several numbers ("20 saal ... 2 lakh") — let the model's value decide
+    index, number = numbers[0]
+    following = tokens[index + 1:index + 3]
+    scale = next((SCALES[word] for word in following if word in SCALES), 1)
+    return number * scale
+
+
+def spoken_period(text: str) -> int | None:
+    """12 for monthly, 52 for weekly, None if the words don't say."""
+    return next((PERIODS[token] for token in _tokens(text) if token in PERIODS), None)
+
+
+def repair_money_quote(fact: Fact, message: str) -> Fact | None:
+    """Nano sometimes misspells the start of a quote ("bachet dedh lakh" for "bachat dedh lakh").
+    For money only, keep the longest ending of the quote that IS in the message and still states the
+    amount — code reads the amount from those words, so nothing is guessed."""
+    words = fact.quote.split()
+    for start in range(1, len(words)):
+        tail = " ".join(words[start:])
+        if is_grounded(tail, message) and spoken_amount(tail) is not None:
+            return fact.model_copy(update={"quote": tail})
+    return None
+
+
+def money_from_words(fact: Fact, message: str) -> int | None:
+    """Yearly amount (or savings total) computed from the person's own words, or None."""
+    amount = spoken_amount(fact.quote)
+    if amount is None:
+        return None
+    if fact.field == "savings":
+        return int(round(amount))  # a total, not per year
+    # The period may sit just outside the quote ("mahine ke | 15 hazaar", "15 hazaar | har mahine"):
+    # look a few words either side, but never past a comma or full stop (that's another fact)
+    text, quote = _normalise(message), _normalise(fact.quote)
+    start = text.find(quote)
+    before = re.split(r"[,.।]", text[max(0, start - 20):start])[-1] if start > 0 else ""
+    after = re.split(r"[,.।]", text[start + len(quote):][:25])[0] if start >= 0 else ""
+    period = spoken_period(f"{before} {fact.quote} {after}")
+    if period is None:
+        period = {"per_month": 12, "per_week": 52}.get(fact.unit, 1)
+    return int(round(amount * period))
+
+
 def convert(fact: Fact):
     """Do the arithmetic in code, never in the model."""
     if fact.field in MONEY_FIELDS:
@@ -95,8 +199,9 @@ def convert(fact: Fact):
 
 # Safety net for facts the fast model sometimes misses, but which certain Hindi phrasings
 # state unambiguously. Only used when the model didn't give the field itself.
-FEMALE_GRAMMAR = re.compile(r"\b(saal|varsh|sal) ki (hoon|hu|hun)\b|\b(rahi|karti|padhti|chuki) (hoon|hu|hun)\b")
-MALE_GRAMMAR = re.compile(r"\b(saal|varsh|sal) ka (hoon|hu|hun)\b|\b(raha|karta|padhta|chuka) (hoon|hu|hun)\b")
+# "20 saal ki hoon", "35 saal ka mazdoor hoon" (one word may sit in between), "kamati hoon"
+FEMALE_GRAMMAR = re.compile(r"\b(saal|varsh|sal) ki (\w+ )?(hoon|hu|hun)\b|\b(rahi|karti|padhti|chuki|kamati) (hoon|hu|hun)\b")
+MALE_GRAMMAR = re.compile(r"\b(saal|varsh|sal) ka (\w+ )?(hoon|hu|hun)\b|\b(raha|karta|padhta|chuka|kamata) (hoon|hu|hun)\b")
 STUDYING = re.compile(
     r"\b(ba|bsc|b\.?sc|bcom|b\.?com|ma|msc|mcom|btech|b\.?tech|mbbs|iti|polytechnic|diploma|class \d+|\d+(th|vi|vee) class)\b"
     r".{0,25}\b(kar|padh)\s*(rahi|raha)\b"
@@ -139,14 +244,17 @@ def facts_to_update(extraction: Extraction, message: str) -> tuple[dict, list[st
     for fact in extraction.facts:
         if fact.field not in Profile.model_fields or fact.field == "needs":
             continue
+        if not is_grounded(fact.quote, message) and fact.field in MONEY_FIELDS:
+            fact = repair_money_quote(fact, message) or fact
         if not is_grounded(fact.quote, message):
             rejected.append(f"{fact.field}={fact.value!r} (quote not in message: {fact.quote!r})")
             continue
-        if not number_in_quote(fact.value, fact.quote):
+        from_words = money_from_words(fact, message) if fact.field in MONEY_FIELDS else None
+        if from_words is None and not number_in_quote(fact.value, fact.quote):
             rejected.append(f"{fact.field}={fact.value!r} (number not in quote: {fact.quote!r})")
             continue
         try:
-            value = convert(fact)
+            value = from_words if from_words is not None else convert(fact)
             if fact.field == "receives_benefits" and not isinstance(value, list):
                 value = [str(value)]
             if fact.field in MONEY_FIELDS and value == 0:

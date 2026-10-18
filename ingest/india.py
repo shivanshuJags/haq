@@ -167,6 +167,7 @@ def to_record(raw: dict, search_fields: dict, group: str) -> dict:
             "target_beneficiaries": labels(basic.get("targetBeneficiaries")),
             "tags": basic.get("tags") or [],
             "close_date": basic.get("schemeCloseDate"),
+            "open_date": (basic.get("schemeOpenDate") or "")[:10] or None,  # launch date, for "recently launched"
         },
     }
 
