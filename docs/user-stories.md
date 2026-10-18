@@ -139,7 +139,7 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Totals: `total_yearly` (eligible + likely) and `potential_yearly` (+ need more info)
 - [x] Fast enough: DB connection pool + in-memory catalog (`core/db.py`, `core/catalog.py`) — candidates ~1.5s warm; Ultra ~8–15s
 - [x] Frontend: cards, totals, progress while Ultra works (US-701)
-- [ ] Known: Ultra's verdict can vary between runs (likely ↔ need_more_info), which changes the total. Consider temperature/consistency check before demo
+- [x] Stability: same profile + scheme + language → cached verdict (in-memory LRU, `core/verdict.py`); measured Ultra is ~stable on identical input, variance came from changing inputs. Repeat search ~2s
 
 ### US-302 · Why am I eligible? · P0 · Backend done
 **As** Priya, **I want** to see why I qualify, **so that** I can trust the result.
@@ -151,7 +151,7 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 ### US-303 · What documents do I need? · P0 · Backend done
 **As** Ramesh, **I want** a list of documents for each scheme, **so that** I carry the right papers.
 - [x] Documents list on each card (cleaned of HTML entities)
-- [ ] Combined, de-duplicated checklist across all eligible schemes (P1)
+- [x] Combined, de-duplicated checklist across eligible/likely schemes — `web/src/documents.ts` (keyword canonical names, notes filtered), tick-off, copy, download
 - [x] Frontend (links inside document names are clickable)
 
 ### US-304 · How do I apply? · P0 · Backend done
@@ -159,10 +159,10 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Application steps (`how_to_apply` markdown) + `apply_url` when available
 - [x] Frontend
 
-### US-305 · Almost eligible · P1 · To do · Oct 23–24
+### US-305 · Almost eligible · P1 · Done
 **As** Priya, **I want** to know which schemes I could get with one more step, **so that** I can unlock more benefits.
-- [ ] Shows schemes that fail on only one fixable criterion (e.g. missing certificate)
-- [ ] Says exactly what to do to become eligible
+- [x] Results split into "You likely qualify" and "One step away" (need_more_info)
+- [x] Ultra gives one practical `next_step` per card (e.g. which certificate from which office) — shown as 🔓 Next step
 
 ---
 
@@ -220,8 +220,8 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 - [x] Results: total hero (+ "up to"), scheme cards with verdict, amount, ✓/✗/? reasons, to-confirm, documents, how to apply (markdown), apply + source links, weak matches collapsed
 - [x] UI follows the conversation language (English / Hinglish)
 - [x] Verified in browser at 375px (Priya: Bihar Post-Matric Scholarship on top, ₹70,520/yr; Sarah: Universal Credit £12,393/yr), no horizontal overflow
-- [ ] Installable as a PWA (manifest + icons + service worker)
-- [ ] Polish: footer takes ~90px on phones — make it smaller / scroll with content
+- [x] Installable as a PWA: `manifest.webmanifest`, हक़ icons (192/512/maskable/apple), `sw.js` (never caches /api) — verify install on the live site after deploy
+- [x] Footer scrolls with the content; chat gets a one-line version
 - [x] Latency: chat replies now ~1–4s (was 6–15s) — Nano thinking off + "grounded extraction" (`core/grounded.py`): every fact needs a quote from the message that code verifies, numbers must appear in the quote, code does all unit maths (lakh/hazaar/month/week/bigha), Hindi-grammar safety net for gender/student
 - [x] Results stream (`POST /api/results/stream`, NDJSON start → card/progress → done): results page opens after the rules engine, cards appear as Ultra finishes each, live total + progress bar
 - [x] One choice question at a time (gender / category / occupation) so quick-reply buttons match the question

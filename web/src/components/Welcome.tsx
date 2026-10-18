@@ -13,7 +13,7 @@ export function Welcome({ onStart, onRescue }: Props) {
   const [country, setCountry] = useState<Country | null>(null)
 
   return (
-    <div className="mx-auto flex min-h-full max-w-md flex-col justify-center px-6 py-10">
+    <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-6 py-10">
       <h1 className="text-5xl font-bold tracking-tight text-brand">Haq</h1>
       <p className="mt-1 text-sm font-medium text-accent">हक़ · what's yours</p>
       <p className="mt-6 text-lg leading-relaxed text-ink">

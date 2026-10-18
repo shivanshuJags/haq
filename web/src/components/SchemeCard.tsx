@@ -67,6 +67,16 @@ export function SchemeCard({ card, currency, strings }: Props) {
           ))}
         </ul>
 
+        {/* US-305: the one action that could make them eligible */}
+        {card.next_step && (
+          <div className="mt-4 flex gap-3 rounded-xl border border-accent bg-accent-soft p-3 text-sm">
+            <span aria-hidden>🔓</span>
+            <p>
+              <span className="font-semibold">{strings.nextStep}:</span> {card.next_step}
+            </p>
+          </div>
+        )}
+
         {card.to_confirm.length > 0 && (
           <div className="mt-4 rounded-xl bg-accent-soft/60 p-3 text-sm">
             <p className="font-semibold">{strings.toConfirm}</p>

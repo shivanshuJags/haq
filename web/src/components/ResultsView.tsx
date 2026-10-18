@@ -1,5 +1,6 @@
 import { formatMoney, type Strings } from '../i18n'
 import type { Progress, Results } from '../types'
+import { DocumentChecklist } from './DocumentChecklist'
 import { SchemeCard } from './SchemeCard'
 
 interface Props {
@@ -13,6 +14,8 @@ export function ResultsView({ results, progress, strings, onStartOver }: Props) 
   const { cards, other_cards, currency } = results
   const showRange = results.potential_yearly > results.total_yearly
   const percent = progress.checking ? Math.round((progress.judged / progress.checking) * 100) : 0
+  const qualified = cards.filter((card) => card.verdict !== 'need_more_info')
+  const almost = cards.filter((card) => card.verdict === 'need_more_info')
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-6">
@@ -45,16 +48,43 @@ export function ResultsView({ results, progress, strings, onStartOver }: Props) 
         )}
       </section>
 
-      <div className="mt-6 space-y-4">
-        {cards.map((card) => (
-          <SchemeCard key={card.id} card={card} currency={currency} strings={strings} />
-        ))}
-        {/* Placeholder card while we wait for the first result */}
-        {!progress.finished && cards.length === 0 && (
-          <div className="h-48 animate-pulse rounded-2xl border border-line bg-white" aria-hidden />
-        )}
-        {progress.finished && cards.length === 0 && <p className="text-center text-muted">{strings.noneFound}</p>}
-      </div>
+      {/* 1. Schemes they likely qualify for */}
+      {qualified.length > 0 && (
+        <>
+          <h2 className="mt-8 text-xs font-semibold uppercase tracking-wide text-muted">✅ {strings.qualifyHeading}</h2>
+          <div className="mt-3 space-y-4">
+            {qualified.map((card) => (
+              <SchemeCard key={card.id} card={card} currency={currency} strings={strings} />
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* Placeholder card while we wait for the first result */}
+      {!progress.finished && cards.length === 0 && (
+        <div className="mt-6 h-48 animate-pulse rounded-2xl border border-line bg-white" aria-hidden />
+      )}
+      {progress.finished && cards.length === 0 && <p className="mt-6 text-center text-muted">{strings.noneFound}</p>}
+
+      {/* 2. One combined document list for those schemes — shown once the results are in */}
+      {progress.finished && (
+        <div className="mt-6">
+          <DocumentChecklist cards={qualified} strings={strings} />
+        </div>
+      )}
+
+      {/* 3. Almost eligible: they need to check something or take one step */}
+      {almost.length > 0 && (
+        <>
+          <h2 className="mt-8 text-xs font-semibold uppercase tracking-wide text-muted">🔓 {strings.almostHeading}</h2>
+          <p className="mt-1 text-sm text-muted">{strings.almostHint}</p>
+          <div className="mt-3 space-y-4">
+            {almost.map((card) => (
+              <SchemeCard key={card.id} card={card} currency={currency} strings={strings} />
+            ))}
+          </div>
+        </>
+      )}
 
       {other_cards.length > 0 && (
         <details className="mt-6 rounded-2xl border border-line bg-white p-4">

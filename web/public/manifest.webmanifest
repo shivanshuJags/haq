@@ -1,0 +1,17 @@
+{
+  "name": "Haq — benefits you're entitled to",
+  "short_name": "Haq",
+  "description": "Find the government benefits you're entitled to, how to claim them, and help with rejections. Powered by NVIDIA Nemotron.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8faf9",
+  "theme_color": "#0f766e",
+  "lang": "en",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

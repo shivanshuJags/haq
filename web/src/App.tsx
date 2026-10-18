@@ -163,9 +163,12 @@ export default function App() {
             </button>
           </div>
         )}
+
+        {/* Full disclaimer scrolls with the page; the chat keeps its space with a one-line version below */}
+        {screen !== 'chat' && <Footer strings={strings} />}
       </main>
 
-      <Footer strings={strings} />
+      {screen === 'chat' && <Footer strings={strings} compact />}
     </div>
   )
 }

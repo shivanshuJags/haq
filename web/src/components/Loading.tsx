@@ -12,7 +12,7 @@ export function Loading({ steps }: { steps: string[] }) {
   }, [steps])
 
   return (
-    <div className="mx-auto flex min-h-full max-w-md flex-col justify-center px-6 py-10">
+    <div className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-6 py-10">
       <div className="h-12 w-12 animate-spin rounded-full border-4 border-brand-soft border-t-brand" />
       <ol className="mt-8 space-y-3" role="status" aria-live="polite">
         {steps.map((text, index) => (

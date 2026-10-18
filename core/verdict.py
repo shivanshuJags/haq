@@ -7,7 +7,10 @@ criterion in plain words, so the person can see WHY (US-302).
 Each scheme is judged in its own call (in parallel), so one slow or failed answer
 never blocks the rest.
 """
+import json
+from collections import OrderedDict
 from concurrent.futures import ThreadPoolExecutor, as_completed
+from threading import Lock
 from typing import Iterator, Literal
 
 from pydantic import BaseModel, Field
@@ -38,6 +41,9 @@ class Verdict(BaseModel):
     benefit: str = Field(description="One line: what they would get, with the amount if the text states it")
     yearly_amount: int | None = Field(description="Estimated value per year in local currency, only if the text gives a clear number; else null")
     to_confirm: list[str] = Field(description="Things the person should check or provide; empty if none")
+    next_step: str | None = Field(
+        description="If not clearly eligible yet: the ONE most useful concrete action that could make them eligible "
+                    "(e.g. 'Get an income certificate from your tehsildar'). Null if eligible or if no action can help.")
 
 
 SYSTEM_PROMPT = """You are Haq's eligibility checker. Decide whether ONE person qualifies for ONE government scheme,
@@ -70,7 +76,10 @@ Rules:
   {currency} (cash, stipend, pension, allowance, scholarship), only when the text gives a clear figure — convert monthly
   to yearly and use the person's details (e.g. number of children). Null for insurance cover, loans, subsidies on
   purchases, one-off grants, or when unclear. Never guess an amount.
-- Write criterion, explanation, benefit and to_confirm in {language}.
+- next_step (US-305, "almost eligible"): for "likely_eligible" or "need_more_info" with a strong or possible fit, the single
+  most useful thing the person can DO to become eligible or prove it — specific and practical (which certificate, from
+  which office; which form). Null for "eligible", "not_eligible", or when nothing they can do would help.
+- Write criterion, explanation, benefit, to_confirm and next_step in {language}.
 """
 
 
@@ -86,7 +95,35 @@ def describe_profile(profile: Profile, country: Country) -> str:
     return "\n".join(lines)
 
 
+# Same person + same scheme + same language -> the same answer, instantly.
+# Keeps results stable when someone runs the same search again (and makes it free and fast).
+# In memory only: it holds profiles of the anonymous facts people typed, never IDs (those are
+# redacted earlier), and is lost on restart. Bounded so it can't grow forever.
+CACHE_SIZE = 5000
+_cache: OrderedDict[str, Verdict] = OrderedDict()
+_cache_lock = Lock()
+
+
+def _cache_key(candidate: Candidate, profile: Profile, country: Country, language: Language) -> str:
+    return json.dumps([candidate.scheme.id, profile.model_dump(exclude_none=True), country, language], sort_keys=True)
+
+
 def judge(candidate: Candidate, profile: Profile, country: Country, language: Language) -> Verdict | None:
+    key = _cache_key(candidate, profile, country, language)
+    with _cache_lock:
+        if key in _cache:
+            _cache.move_to_end(key)
+            return _cache[key]
+    verdict = _judge(candidate, profile, country, language)
+    if verdict is not None:  # never cache failures — let the next request retry
+        with _cache_lock:
+            _cache[key] = verdict
+            if len(_cache) > CACHE_SIZE:
+                _cache.popitem(last=False)  # drop the least recently used
+    return verdict
+
+
+def _judge(candidate: Candidate, profile: Profile, country: Country, language: Language) -> Verdict | None:
     scheme = candidate.scheme
     sections = scheme.sections
     checks = "\n".join(f"- {c.criterion}: {c.status} ({c.detail})" for c in candidate.assessment.checks) or "- none"

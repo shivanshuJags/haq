@@ -44,6 +44,7 @@ class ResultCard(BaseModel):
     benefit: str
     yearly_amount: int | None
     to_confirm: list[str]
+    next_step: str | None
     documents: list[str]
     how_to_apply: str
     apply_url: str | None
@@ -85,6 +86,7 @@ def build_card(candidate: Candidate, verdict: Verdict) -> ResultCard:
         benefit=verdict.benefit,
         yearly_amount=verdict.yearly_amount,
         to_confirm=verdict.to_confirm,
+        next_step=verdict.next_step if verdict.verdict != "eligible" else None,
         documents=documents_list(scheme.sections.get("documents") or ""),
         how_to_apply=clean_text(scheme.sections.get("how_to_apply") or ""),
         apply_url=scheme.apply_url,

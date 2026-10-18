@@ -73,6 +73,7 @@ export interface ResultCard {
   benefit: string
   yearly_amount: number | null
   to_confirm: string[]
+  next_step: string | null
   documents: string[]
   how_to_apply: string
   apply_url: string | null

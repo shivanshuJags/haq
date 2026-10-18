@@ -31,6 +31,21 @@ NOT_BENEFITS = {
 }
 
 
+PEOPLE = {"Individual", "Family", "All"}
+BUSINESSES = {"Business Entity", "Industries", "Enterprise", "MSME"}
+BUSINESS_OCCUPATIONS = {"entrepreneur", "self_employed"}
+
+
+def is_for_this_person(scheme: Scheme, profile: Profile) -> bool:
+    """myScheme says who a scheme is for. Schemes only for state governments, institutions or NGOs
+    (e.g. "Construction of Hostels" — money to BUILD hostels) aren't something a person can apply for.
+    Business schemes count only for people who run a business."""
+    targets = set((scheme.meta or {}).get("target_beneficiaries") or [])
+    if not targets or targets & PEOPLE:
+        return True
+    return bool(targets & BUSINESSES) and profile.occupation in BUSINESS_OCCUPATIONS
+
+
 @dataclass
 class Candidate:
     scheme: Scheme
@@ -87,7 +102,7 @@ def find_candidates(profile: Profile, country: Country) -> tuple[list[Candidate]
     kept: list[Candidate] = []
     failed = 0
     for scheme, similarity in rows:
-        if scheme.id in NOT_BENEFITS:
+        if scheme.id in NOT_BENEFITS or not is_for_this_person(scheme, profile):
             continue
         assessment = assess(scheme.rules, profile)
         if assessment.status == "fail":
