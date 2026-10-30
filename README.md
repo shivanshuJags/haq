@@ -9,9 +9,13 @@ All reasoning runs on **NVIDIA Nemotron 3 (Nano, Super, Ultra) via Nebius Token 
 |---|---|
 | 🌐 Live app | **https://haq-alpha.vercel.app** |
 | ⚙️ Live API | https://haq-api.onrender.com · [interactive docs](https://haq-api.onrender.com/docs) |
-| 🎬 Demo video | _link coming soon_ |
+| 🎬 Demo video | **https://youtu.be/QRJ4wIwsSAU** |
 
 > The free backend sleeps after 15 minutes without visitors. If the first answer is slow, it is waking up (about a minute).
+
+| Welcome | Results | Document checklist | Rejection Rescue |
+|---|---|---|---|
+| ![Welcome screen: country, state and language](docs/screenshots/welcome.png) | ![Results with yearly amount and explained schemes](docs/screenshots/results.png) | ![One combined document checklist](docs/screenshots/checklist.png) | ![Drafted appeal letter](docs/screenshots/rejection-rescue.png) |
 
 ---
 

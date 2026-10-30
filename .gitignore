@@ -16,3 +16,6 @@ data/embedding_cache/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Rendered demo video (large; upload to YouTube instead)
+/video/

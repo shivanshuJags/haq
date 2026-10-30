@@ -11,7 +11,7 @@ Deadline: **Oct 30, 2026, 10:30 PM IST**. Fill the form yourself; the text below
 | Live demo | https://haq-alpha.vercel.app |
 | API (optional field) | https://haq-api.onrender.com/docs |
 | Repository | https://github.com/shivanshuJags/haq (public, MIT) |
-| Video | _YouTube link after upload_ |
+| Video | https://youtu.be/QRJ4wIwsSAU |
 | City | _only if you attended a Builders & Brews event_ |
 
 ## Tagline (one line)
