@@ -52,6 +52,7 @@ export interface ProfileReply {
   ready: boolean
   language: Language
   privacy_note: string | null
+  retry: boolean // we didn't understand and asked again
 }
 
 export type Verdict = 'eligible' | 'likely_eligible' | 'need_more_info'

@@ -36,7 +36,7 @@ export default function App() {
 
   // A new screen should start at the top, not wherever the chat was scrolled to
   useEffect(() => {
-    mainRef.current?.scrollTo({ top: 0 })
+    mainRef.current?.scrollTo({ top: 0, left: 0 })
   }, [screen])
 
   // Each chat/search gets a number. Going back bumps it, so a reply or results stream that is still
@@ -96,7 +96,7 @@ export default function App() {
       const newMessages: ChatMessage[] = []
       if (reply.privacy_note) newMessages.push({ role: 'note', text: reply.privacy_note })
       if (reply.follow_up) {
-        setRounds((current) => current + 1)
+        if (!reply.retry) setRounds((current) => current + 1) // asking again after a mistyped message isn't a new round
         newMessages.push({ role: 'haq', text: reply.follow_up.question, options: reply.follow_up.options })
       }
       setMessages((current) => [...current, ...newMessages])
@@ -177,7 +177,15 @@ export default function App() {
         </header>
       )}
 
-      <main ref={mainRef} className="flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto">
+      <main
+        ref={mainRef}
+        // overflow-x-hidden stops the user scrolling sideways, but phones can still shift it (e.g. bringing a
+        // focused input into view) and the page then looks cut off on the right — so undo any sideways shift
+        onScroll={(event) => {
+          if (event.currentTarget.scrollLeft) event.currentTarget.scrollLeft = 0
+        }}
+        className="flex min-h-0 flex-1 flex-col overflow-x-hidden overflow-y-auto"
+      >
         {screen === 'welcome' && <Welcome onStart={start} onRescue={openRescue} />}
 
         {screen === 'chat' && (

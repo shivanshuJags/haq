@@ -14,25 +14,26 @@ Country = Literal["UK", "IN"]
 
 class Profile(BaseModel):
     region: str | None = Field(None, description="Indian state, e.g. 'Bihar'; null for UK")
-    age: int | None = None
+    # Sensible ranges: a wrong reading ("-20", "500 saal") is rejected instead of kept
+    age: int | None = Field(None, ge=0, le=120)
     gender: Gender | None = None
     caste_category: Caste | None = Field(None, description="India only")
     marital_status: MaritalStatus | None = None
     residence: Residence | None = None
 
-    annual_family_income: int | None = Field(None, description="Whole household, per year, local currency")
-    personal_annual_income: int | None = Field(None, description="The person alone, per year, local currency")
-    savings: int | None = Field(None, description="Savings and investments, local currency")
+    annual_family_income: int | None = Field(None, ge=0, description="Whole household, per year, local currency")
+    personal_annual_income: int | None = Field(None, ge=0, description="The person alone, per year, local currency")
+    savings: int | None = Field(None, ge=0, description="Savings and investments, local currency")
     has_bpl_card: bool | None = Field(None, description="India: holds a Below Poverty Line / Antyodaya card")
-    land_acres: float | None = Field(None, description="Farm land owned, in acres")
+    land_acres: float | None = Field(None, ge=0, description="Farm land owned, in acres")
 
     occupation: Occupation | None = None
     is_student: bool | None = None
     education_level: str | None = Field(None, description="e.g. 'class 10', 'class 12', 'graduate', 'postgraduate'")
     has_disability: bool | None = None
-    disability_percent: int | None = None
+    disability_percent: int | None = Field(None, ge=0, le=100)
     has_children: bool | None = None
-    children_count: int | None = Field(None, description="Number of children they look after")
+    children_count: int | None = Field(None, ge=0, le=30, description="Number of children they look after")
     is_pregnant: bool | None = None
     is_carer: bool | None = None
     receives_benefits: list[str] = Field(default_factory=list, description="Schemes/benefits already received")

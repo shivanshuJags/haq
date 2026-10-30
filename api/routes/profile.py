@@ -25,6 +25,35 @@ PRIVACY_NOTE = {
 }
 
 
+# When a message tells us nothing ("sdfsdf", "hello", "-20"), say so instead of moving on
+NOT_UNDERSTOOD = {
+    "hinglish": "Lagta hai message galti se type ho gaya 😊 Apne baare mein bataiye — jaise umar, kya karte hain, "
+                "ghar ki income, aur kis cheez mein madad chahiye.",
+    "english": "Looks like that message was typed by mistake 😊 Tell me about yourself — for example your age, "
+               "what you do, your income, and what you need help with.",
+    "hindi": "लगता है संदेश ग़लती से टाइप हो गया 😊 अपने बारे में बताइए — जैसे उम्र, आप क्या करते हैं, "
+             "घर की आमदनी, और किस चीज़ में मदद चाहिए।",
+    "marathi": "संदेश चुकून टाइप झाला असे दिसते 😊 तुमच्याबद्दल सांगा — जसे वय, तुम्ही काय करता, "
+               "घरचे उत्पन्न, आणि कशासाठी मदत हवी आहे.",
+    "bengali": "মনে হচ্ছে বার্তাটি ভুল করে টাইপ হয়েছে 😊 নিজের সম্পর্কে বলুন — যেমন বয়স, কী কাজ করেন, "
+               "পরিবারের আয়, আর কোন বিষয়ে সাহায্য চান।",
+}
+SORRY = {
+    "hinglish": "Maaf kijiye, ye samajh nahi aaya 😊",
+    "english": "Sorry, I didn't understand that 😊",
+    "hindi": "माफ़ कीजिए, यह समझ नहीं आया 😊",
+    "marathi": "माफ करा, हे समजले नाही 😊",
+    "bengali": "দুঃখিত, বুঝতে পারলাম না 😊",
+}
+# "I don't know" is a real answer: move on, like the Skip button (which sends "skip")
+SKIP_WORDS = {"skip", "pata nahi", "nahi pata", "pta nahi", "malum nahi", "maloom nahi", "don't know", "dont know",
+              "not sure", "पता नहीं", "नहीं पता", "मालूम नहीं", "माहीत नाही", "জানি না"}
+
+
+def is_skip(message: str) -> bool:
+    return message.strip().lower().strip(".!?। ") in SKIP_WORDS
+
+
 class ProfileTurn(BaseModel):
     country: Country
     message: str = Field(min_length=1, max_length=2000)
@@ -42,6 +71,7 @@ class ProfileReply(BaseModel):
     ready: bool = Field(description="True when it's time to show results")
     language: Language = Field(description="Send back as `language` next turn")
     privacy_note: str | None = None
+    retry: bool = Field(False, description="True when we didn't understand and asked again — not a new round")
 
 
 @router.post("/profile", response_model=ProfileReply)
@@ -50,6 +80,16 @@ def profile_turn(turn: ProfileTurn) -> ProfileReply:
     message, removed = redact(ascii_digits(turn.message))
     language = detect_language(message, turn.country, turn.language)
     profile = extract_profile(message, turn.profile, turn.country, turn.answering)
+
+    if profile == turn.profile and not is_skip(message):
+        # Nothing understood: ask again (the same question, if we had asked one) instead of moving on
+        if turn.answering:
+            again = follow_up_question(turn.answering, language)
+            follow_up = FollowUp(question=f"{SORRY[language]} {again.question}", options=again.options)
+        else:
+            follow_up = FollowUp(question=NOT_UNDERSTOOD[language])
+        return ProfileReply(profile=profile, follow_up=follow_up, asking=turn.answering, ready=False,
+                            language=language, privacy_note=PRIVACY_NOTE[language] if removed else None, retry=True)
 
     missing = missing_fields(profile, turn.country, turn.asked)
     follow_up, asking = None, []

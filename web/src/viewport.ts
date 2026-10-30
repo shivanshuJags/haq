@@ -21,10 +21,11 @@ export function fitToVisibleScreen(): void {
     root.style.setProperty('--app-height', `${viewport.height}px`)
     // A keyboard takes at least a quarter of the screen; smaller changes are browser toolbars
     root.classList.toggle('keyboard-open', viewport.height < tallest * 0.75)
-    if (window.scrollY !== 0) window.scrollTo(0, 0) // iPhone slides the page up; put it back
+    if (window.scrollX || window.scrollY) window.scrollTo(0, 0) // phones slide the page up or sideways; put it back
   }
 
   viewport.addEventListener('resize', update)
   viewport.addEventListener('scroll', update)
+  window.addEventListener('scroll', update)
   update()
 }
