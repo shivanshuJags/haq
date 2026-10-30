@@ -58,4 +58,27 @@ Running notes for the hackathon feedback section (US-803). Add to this as we bui
   (SC scholarship) from a generic letter; telling it to return null when ambiguous fixed that.
 
 **Nemotron 3.5 Lightning**
-- Available; slower than Super/Ultra on our first single test (2.8s). Re-check with more samples.
+- Available; slower than Super/Ultra on our first single test (2.8s). With thinking it extracted profiles
+  accurately but broke the JSON format 3/4 times, so we stayed with Nano for chat.
+
+## Lessons from real-user testing (Oct 18–30)
+
+What we saw once real messages hit the live app, and how we handled each in code:
+
+- **Nano (no thinking) invents facts with real quotes.** For "Main student hoon" it returned gender=female and
+  education=graduate, quoting "student hoon" — copied from an example in our prompt. The quote was genuine, so a
+  "quote must be in the message" check passed. Fix: for gender, education and "unemployed", the quote must contain
+  a word that actually states it (in 5 languages).
+- **Spoken numbers.** "dedh lakh" came back as 1 (should be 1.5), "15 hazaar mahina" as ₹15,000 a *year*,
+  "-20" as age 20. Fix: code reads number, scale (lakh/hazaar/crore) and period (month/week, in Hindi, Marathi,
+  Bengali too) from the quote itself; impossible values (age outside 0–120, negative money) are rejected.
+- **Occasional empty output.** For "Main 60 saal ki vidhwa hoon, BPL card hai" Nano returned no facts in 2 of 3
+  runs. Fix: a small grammar safety net (age phrases, widow, Hindi/Marathi gender grammar) — and when nothing at
+  all is understood, the app asks again instead of moving on.
+- **Ultra counted future money as income today** (a pension "after 60" for a 35-year-old) and once judged a
+  student hostel "eligible" for a labourer because the eligibility list didn't repeat "student". Fix: two prompt
+  rules, plus giving Ultra the scheme's overview and tags.
+- **Indian languages.** Hindi, Marathi and Bengali answers were good (Marathi slightly Hindi-mixed). Tamil got
+  the state and category wrong and Telugu mixed scripts and leaked instructions, so we didn't ship those two.
+- **Latency in production.** Chat ~2–3 s, first results ~2 s (rules engine), full Ultra results 12–16 s for 20
+  schemes in parallel, Rejection Rescue 7–12 s including photo OCR — fast enough for a phone UX with streaming.

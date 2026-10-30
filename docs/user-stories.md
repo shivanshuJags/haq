@@ -258,19 +258,19 @@ When a story is finished, tick its acceptance criteria and set its status to Don
 ## Epic 8 — Hackathon submission
 
 ### US-801 · Repository ready for judges · P0 · In progress
-- [ ] Public GitHub repo, MIT licence visible (check repo visibility)
+- [x] Public GitHub repo, MIT licence visible (checked Oct 30)
 - [x] README: live links, problem, features, Nemotron Nano/Super/Ultra table with Token Factory IDs and why, Token Factory benefits, Mermaid architecture, request flow, design decisions, stack, structure, local setup, data rebuild, "built during the hackathon", limitations
 - [x] Data attribution section
 - [ ] Add the demo video link and 2–3 screenshots
 
-### US-802 · Demo video · P0 · To do · Oct 29
+### US-802 · Demo video · P0 · In progress · Oct 30 (script: `docs/demo-script.md`)
 - [ ] Under 3 minutes, public on YouTube
 - [ ] Shows: problem → UK demo → India switch → Rejection Rescue → architecture → close
 
-### US-803 · Submission form · P0 · To do · Oct 30
+### US-803 · Submission form · P0 · In progress · Oct 30 (text: `docs/submission.md`)
 - [ ] Track: Best Apps & Agents
 - [ ] Description, demo URL, video URL, repo URL
-- [ ] Feedback on Nebius Token Factory and NVIDIA models (from `docs/feedback.md`)
+- [x] Feedback on Nebius Token Factory and NVIDIA models (from `docs/feedback.md`)
 - [ ] City (if attended a Builders & Brews event)
 - [ ] Submitted before 10:30 PM IST
 
