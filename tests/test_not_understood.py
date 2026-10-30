@@ -45,3 +45,20 @@ def test_impossible_numbers_are_rejected():
     update, rejected = facts_to_update(extraction, message)
     assert "age" not in update and len(rejected) == 2
     assert Profile(age=35).age == 35
+
+
+def test_a_real_sentence_is_not_called_a_typo(monkeypatch):
+    monkeypatch.setattr(route, "extract_profile", lambda message, known, *args: known)
+    reply = turn("mere ghar mein bahut pareshani chal rahi hai")
+    assert reply["retry"] is True
+    assert reply["follow_up"]["question"].startswith("Maaf kijiye")
+    assert "galti se type" not in reply["follow_up"]["question"]
+
+
+def test_unemployed_must_be_said():
+    from core.grounded import Extraction, Fact, facts_to_update
+    message = "I'm 31, a single mum of two, earning £900 a month"
+    wrong = Extraction(facts=[Fact(field="occupation", value="unemployed", quote="earning £900 a month")])
+    assert "occupation" not in facts_to_update(wrong, message)[0]
+    said = Extraction(facts=[Fact(field="occupation", value="unemployed", quote="out of work")])
+    assert facts_to_update(said, "I'm 40 and out of work")[0]["occupation"] == "unemployed"

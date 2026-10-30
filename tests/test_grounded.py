@@ -77,9 +77,14 @@ def test_grammar_fills_what_the_model_missed():
 
 
 def test_grammar_never_overrides_the_model_or_guesses():
+    # The model's answer (with words that prove it) wins over the grammar guess ("rahi" = female)
+    extraction = Extraction(facts=[Fact(field="gender", value="male", quote="main ladka hoon")])
+    update, _ = facts_to_update(extraction, "main ladka hoon, padh rahi hoon")
+    assert update["gender"] == "male"
+    # ...but "papa" proves nothing about the person — the grammar ("padh rahi hoon") decides
     extraction = Extraction(facts=[Fact(field="gender", value="male", quote="papa")])
     update, _ = facts_to_update(extraction, "papa kisan hain, main padh rahi hoon")
-    assert update["gender"] == "male"  # model's answer kept
+    assert update["gender"] == "female"
     update, _ = facts_to_update(Extraction(facts=[]), "main kisan hoon UP se")
     assert "gender" not in update  # "hoon" alone says nothing about gender
 
@@ -87,7 +92,7 @@ def test_grammar_never_overrides_the_model_or_guesses():
 def test_invalid_value_is_dropped():
     extraction = Extraction(facts=[Fact(field="gender", value="robot", quote="31 year old")])
     update, rejected = facts_to_update(extraction, MESSAGE)
-    assert update == {}
+    assert "gender" not in update  # (the age safety net still reads "31 year old" from the message)
     assert rejected
 
 
@@ -156,3 +161,46 @@ def test_grammar_with_a_word_in_between():
     assert facts_from_grammar("Main 35 saal ka mazdoor hoon")["gender"] == "male"
     assert facts_from_grammar("20 saal ki student hoon")["gender"] == "female"
     assert facts_from_grammar("15 hazaar kamata hoon")["gender"] == "male"
+
+
+def test_gender_and_education_need_words_that_say_so():
+    from core.grounded import quote_shows
+    # Nano's real mistake: "student hoon" proves neither gender nor education level
+    message = "Main student hoon, ghar ki income 1 lakh"
+    extraction = Extraction(facts=[
+        Fact(field="gender", value="female", quote="student hoon"),
+        Fact(field="education_level", value="graduate", quote="student hoon"),
+        Fact(field="occupation", value="student", quote="student hoon"),
+    ])
+    update, rejected = facts_to_update(extraction, message)
+    assert "gender" not in update and "education_level" not in update
+    assert update["occupation"] == "student" and len(rejected) == 2
+    for quote in ("20 saal ki hoon", "BA kar rahi hoon", "single mum", "Mahila", "female", "मैं 20 साल की हूँ",
+                  "मी 45 वर्षांचा", "আমি ছাত্রী", "widow"):
+        assert quote_shows("gender", quote), quote
+    for quote in ("BA kar rahi hoon", "class 10 pass", "बीए", "graduate", "ITI", "12th"):
+        assert quote_shows("education_level", quote), quote
+    for quote in ("student hoon", "reject hua hai", "kisan hoon"):
+        assert not quote_shows("gender", quote), quote
+    assert not quote_shows("education_level", "I want to be a teacher")
+
+
+def test_grammar_in_hindi_and_marathi_script():
+    from core.grounded import facts_from_grammar
+    assert facts_from_grammar("मैं 62 साल का किसान हूँ")["gender"] == "male"
+    assert facts_from_grammar("मैं कॉलेज में पढ़ रही हूँ")["gender"] == "female"
+    assert facts_from_grammar("मी 45 वर्षांचा शेतकरी आहे")["gender"] == "male"
+    assert facts_from_grammar("मी 30 वर्षांची आहे")["gender"] == "female"
+    assert "gender" not in facts_from_grammar("मैं किसान हूँ")
+
+
+def test_age_and_widow_safety_net():
+    from core.grounded import facts_from_grammar
+    assert facts_from_grammar("Main 60 saal ki vidhwa hoon, BPL card hai") == {"gender": "female", "age": 60, "marital_status": "widowed"}
+    assert facts_from_grammar("I'm 67 years old")["age"] == 67
+    assert facts_from_grammar("मैं 62 साल का किसान हूँ")["age"] == 62
+    assert facts_from_grammar("मी 45 वर्षांचा शेतकरी आहे")["age"] == 45
+    assert facts_from_grammar("আমি 20 বছরের ছাত্রী")["age"] == 20
+    assert "age" not in facts_from_grammar("10 saal se kheti kar raha hoon")  # years of farming, not age
+    assert "age" not in facts_from_grammar("main 20 saal ki hoon, papa 50 saal ke hain")  # two ages: unclear
+    assert "gender" not in facts_from_grammar("I'm widowed")  # could be anyone

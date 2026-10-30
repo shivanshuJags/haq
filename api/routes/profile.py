@@ -26,17 +26,19 @@ PRIVACY_NOTE = {
 
 
 # When a message tells us nothing ("sdfsdf", "hello", "-20"), say so instead of moving on
-NOT_UNDERSTOOD = {
-    "hinglish": "Lagta hai message galti se type ho gaya 😊 Apne baare mein bataiye — jaise umar, kya karte hain, "
-                "ghar ki income, aur kis cheez mein madad chahiye.",
-    "english": "Looks like that message was typed by mistake 😊 Tell me about yourself — for example your age, "
-               "what you do, your income, and what you need help with.",
-    "hindi": "लगता है संदेश ग़लती से टाइप हो गया 😊 अपने बारे में बताइए — जैसे उम्र, आप क्या करते हैं, "
-             "घर की आमदनी, और किस चीज़ में मदद चाहिए।",
-    "marathi": "संदेश चुकून टाइप झाला असे दिसते 😊 तुमच्याबद्दल सांगा — जसे वय, तुम्ही काय करता, "
-               "घरचे उत्पन्न, आणि कशासाठी मदत हवी आहे.",
-    "bengali": "মনে হচ্ছে বার্তাটি ভুল করে টাইপ হয়েছে 😊 নিজের সম্পর্কে বলুন — যেমন বয়স, কী কাজ করেন, "
-               "পরিবারের আয়, আর কোন বিষয়ে সাহায্য চান।",
+TYPO = {
+    "hinglish": "Lagta hai message galti se type ho gaya 😊",
+    "english": "Looks like that message was typed by mistake 😊",
+    "hindi": "लगता है संदेश ग़लती से टाइप हो गया 😊",
+    "marathi": "संदेश चुकून टाइप झाला असे दिसते 😊",
+    "bengali": "মনে হচ্ছে বার্তাটি ভুল করে টাইপ হয়েছে 😊",
+}
+TELL_ME = {
+    "hinglish": "Apne baare mein bataiye — jaise umar, kya karte hain, ghar ki income, aur kis cheez mein madad chahiye.",
+    "english": "Tell me about yourself — for example your age, what you do, your income, and what you need help with.",
+    "hindi": "अपने बारे में बताइए — जैसे उम्र, आप क्या करते हैं, घर की आमदनी, और किस चीज़ में मदद चाहिए।",
+    "marathi": "तुमच्याबद्दल सांगा — जसे वय, तुम्ही काय करता, घरचे उत्पन्न, आणि कशासाठी मदत हवी आहे.",
+    "bengali": "নিজের সম্পর্কে বলুন — যেমন বয়স, কী কাজ করেন, পরিবারের আয়, আর কোন বিষয়ে সাহায্য চান।",
 }
 SORRY = {
     "hinglish": "Maaf kijiye, ye samajh nahi aaya 😊",
@@ -87,7 +89,9 @@ def profile_turn(turn: ProfileTurn) -> ProfileReply:
             again = follow_up_question(turn.answering, language)
             follow_up = FollowUp(question=f"{SORRY[language]} {again.question}", options=again.options)
         else:
-            follow_up = FollowUp(question=NOT_UNDERSTOOD[language])
+            # One or two words ("sdfsdf", "hello") is most likely a slip; a real sentence we couldn't read isn't
+            opener = TYPO[language] if len(message.split()) <= 2 else SORRY[language]
+            follow_up = FollowUp(question=f"{opener} {TELL_ME[language]}")
         return ProfileReply(profile=profile, follow_up=follow_up, asking=turn.answering, ready=False,
                             language=language, privacy_note=PRIVACY_NOTE[language] if removed else None, retry=True)
 

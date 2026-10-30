@@ -202,6 +202,11 @@ def convert(fact: Fact):
 # "20 saal ki hoon", "35 saal ka mazdoor hoon" (one word may sit in between), "kamati hoon"
 FEMALE_GRAMMAR = re.compile(r"\b(saal|varsh|sal) ki (\w+ )?(hoon|hu|hun)\b|\b(rahi|karti|padhti|chuki|kamati) (hoon|hu|hun)\b")
 MALE_GRAMMAR = re.compile(r"\b(saal|varsh|sal) ka (\w+ )?(hoon|hu|hun)\b|\b(raha|karta|padhta|chuka|kamata) (hoon|hu|hun)\b")
+# The same in Hindi script ("62 साल का किसान हूँ", "पढ़ रही हूँ") and Marathi ("४५ वर्षांचा" / "वर्षांची").
+# Indian scripts: no \b (marks like ा ी aren't "word" characters), so words are matched by spaces.
+_HOON = "(हूँ|हूं|हू)"
+SCRIPT_FEMALE = re.compile(unicodedata.normalize("NFC", rf"(साल|वर्ष) की (\S+ )?{_HOON}|(रही|करती|पढ़ती|कमाती|चुकी) {_HOON}|वर्षांची"))
+SCRIPT_MALE = re.compile(unicodedata.normalize("NFC", rf"(साल|वर्ष) का (\S+ )?{_HOON}|(रहा|करता|पढ़ता|कमाता|चुका) {_HOON}|वर्षांचा"))
 STUDYING = re.compile(
     r"\b(ba|bsc|b\.?sc|bcom|b\.?com|ma|msc|mcom|btech|b\.?tech|mbbs|iti|polytechnic|diploma|class \d+|\d+(th|vi|vee) class)\b"
     r".{0,25}\b(kar|padh)\s*(rahi|raha)\b"
@@ -228,13 +233,86 @@ def facts_from_grammar(message: str) -> dict:
     if category:
         word = next(group for group in category.groups() if group in CATEGORY_NAMES)
         found["caste_category"] = CATEGORY_NAMES[word]
-    female, male = bool(FEMALE_GRAMMAR.search(text)), bool(MALE_GRAMMAR.search(text))
+    script = unicodedata.normalize("NFC", text)
+    female = bool(FEMALE_GRAMMAR.search(text) or SCRIPT_FEMALE.search(script))
+    male = bool(MALE_GRAMMAR.search(text) or SCRIPT_MALE.search(script))
     if female != male:  # only when the grammar points one way
         found["gender"] = "female" if female else "male"
     if STUDYING.search(text):
         found["occupation"] = "student"
         found["is_student"] = True
+    # Nano sometimes returns nothing at all for a clear message ("Main 60 saal ki vidhwa hoon")
+    ages = stated_ages(script)
+    if len(ages) == 1:  # only when one age is stated ("20 saal ki, papa 50 saal ke" is ambiguous)
+        found["age"] = ages.pop()
+    if WIDOWED.search(script):
+        found["marital_status"] = "widowed"
+    if WIDOW_FEMALE.search(script):  # "widow"/"vidhwa" is a woman; "widowed" could be anyone
+        found.setdefault("gender", "female")
     return found
+
+
+# Only phrasings that state an AGE: "60 saal ki/ka", "31 years old", "aged 67", "umar 40", "62 साल का",
+# "४५ वर्षांचा", "২০ বছরের", "বয়স ৪০" (digits are ASCII by now). Not "10 saal se kheti" (10 years of farming).
+AGE_PHRASE = re.compile(
+    r"\b(\d{1,3})\s*(?:saal|sal|varsh)\s+(?:ki|ka|ke)\b|\b(\d{1,3})\s*(?:years?|yrs?)[\s-]old\b"
+    r"|\baged?\s+(?:of\s+)?(\d{1,3})\b|\b(?:umar|umr|umra|age)\s*(?:is|hai|:)?\s*(\d{1,3})\b"
+    r"|(\d{1,3})\s*(?:साल|वर्ष)\s+(?:का|की|के)|(?:उम्र|उमर|वय)\s*(?:है|:)?\s*(\d{1,3})|(\d{1,3})\s*वर्षांच"
+    r"|(\d{1,3})\s*বছরের|বয়স\s*(\d{1,3})", re.IGNORECASE)
+WIDOWED = re.compile(r"\b(widow|widowed|vidhwa|vidhva|bewa)\b|विधवा|বিধবা", re.IGNORECASE)
+WIDOW_FEMALE = re.compile(r"\b(widow|vidhwa|vidhva|bewa)\b|विधवा|বিধবা", re.IGNORECASE)
+
+
+def stated_ages(text: str) -> set[int]:
+    ages = set()
+    for match in AGE_PHRASE.finditer(text):
+        number = int(next(group for group in match.groups() if group))
+        if 0 < number <= 120:
+            ages.add(number)
+    return ages
+
+
+# Some facts need more than "the quote is in the message": the quote must actually SAY it.
+# Nano once gave gender=female and education=graduate with the quote "student hoon" (copied from the
+# prompt's example) — the words are real, but they prove neither. Latin words need word boundaries;
+# Indian scripts are matched as plain text.
+_LATIN_GENDER = (r"female|male|woman|women|man|men|girl|boy|lady|gentleman|mother|mum|mom|father|dad|wife|husband|"
+                 r"widow|widower|daughter|son|transgender|trans|mahila|purush|aurat|aadmi|mard|stree|ladki|ladka|"
+                 r"vidhwa|vidhva|beti|beta|(saal|varsh|sal) k[ai]|(rahi|raha|karti|karta|padhti|padhta|chuki|chuka|"
+                 r"kamati|kamata|sakti|sakta|hui|hua) (hoon|hu|hun)|she|he|her|his")
+_SCRIPT_GENDER = ("महिला", "पुरुष", "स्त्री", "औरत", "आदमी", "लड़की", "लड़का", "लडकी", "लडका", "विधवा", "छात्रा", "छात्र",
+                  "बेटी", "बेटा", "पत्नी", "पति", "की हूँ", "का हूँ", "की हूं", "का हूं", "रही हूँ", "रहा हूँ", "रही हूं",
+                  "रहा हूं", "करती", "करता", "कमाती", "कमाता", "ट्रांसजेंडर", "वर्षांची", "वर्षांचा", "करते", "करतो",
+                  "मुलगी", "मुलगा", "साल का", "साल की", "वर्ष का", "वर्ष की", "মহিলা", "পুরুষ", "মেয়ে", "ছেলে", "ছাত্রী", "বিধবা", "স্ত্রী", "স্বামী")
+_LATIN_EDUCATION = (r"class|std|standard|grade|\d+\s*(th|st|nd|rd|vi|vee)|ba|b\.\s?a|bsc|b\.?\s?sc|bcom|b\.?\s?com|"
+                    r"m\.\s?a|msc|m\.?\s?sc|mcom|btech|b\.?\s?tech|mtech|bba|mba|bca|mca|mbbs|llb|phd|iti|polytechnic|"
+                    r"diploma|graduate|graduation|graduated|degree|post\s?graduate|pg|ug|matric|matriculation|inter|"
+                    r"intermediate|school|high school|gcse|a\s?levels?|university|padhai|padhi|padha|anpadh|illiterate")
+_SCRIPT_EDUCATION = ("बीए", "बी.ए", "बीएससी", "बीकॉम", "एमए", "कक्षा", "क्लास", "स्नातक", "ग्रेजुएट", "डिप्लोमा", "आईटीआई",
+                     "मैट्रिक", "इंटर", "वीं", "दसवी", "बारावी", "पदवी", "इयत्ता", "शाळा", "स्कूल", "पढ़", "अनपढ़",
+                     "স্নাতক", "শ্রেণি", "শ্রেণী", "ক্লাস", "বিএ", "মাধ্যমিক", "উচ্চমাধ্যমিক", "ডিপ্লোমা", "স্কুল")
+EVIDENCE = {
+    "gender": (re.compile(rf"\b({_LATIN_GENDER})\b", re.IGNORECASE), _SCRIPT_GENDER),
+    "education_level": (re.compile(rf"\b({_LATIN_EDUCATION})\b", re.IGNORECASE), _SCRIPT_EDUCATION),
+}
+
+
+# "Unemployed" can wrongly exclude someone from schemes for workers — it must be said, not inferred
+# (Nano gave occupation=unemployed for the quote "earning £900 a month").
+UNEMPLOYED_WORDS = re.compile(
+    r"\b(unemployed|jobless|out of work|no job|not working|lost my job|laid off|redundant|berozgaar|berozgar|"
+    r"berojgar|kaam nahi|naukri nahi)\b|बेरोजगार|बेरोज़गार|काम नहीं|नौकरी नहीं|नोकरी नाही|বেকার|কাজ নেই", re.IGNORECASE)
+
+
+def quote_shows(field: str, quote: str, value=None) -> bool:
+    """True when the quote contains a word that actually states this kind of fact (or none is needed)."""
+    if field == "occupation" and value == "unemployed":
+        return bool(UNEMPLOYED_WORDS.search(unicodedata.normalize("NFC", quote)))
+    if field not in EVIDENCE:
+        return True
+    latin, script_words = EVIDENCE[field]
+    text = unicodedata.normalize("NFC", quote)
+    return bool(latin.search(text)) or any(unicodedata.normalize("NFC", word) in text for word in script_words)
 
 
 def facts_to_update(extraction: Extraction, message: str) -> tuple[dict, list[str]]:
@@ -248,6 +326,9 @@ def facts_to_update(extraction: Extraction, message: str) -> tuple[dict, list[st
             fact = repair_money_quote(fact, message) or fact
         if not is_grounded(fact.quote, message):
             rejected.append(f"{fact.field}={fact.value!r} (quote not in message: {fact.quote!r})")
+            continue
+        if not quote_shows(fact.field, fact.quote, fact.value):
+            rejected.append(f"{fact.field}={fact.value!r} (quote doesn't say it: {fact.quote!r})")
             continue
         from_words = money_from_words(fact, message) if fact.field in MONEY_FIELDS else None
         if from_words is None and not number_in_quote(fact.value, fact.quote):
