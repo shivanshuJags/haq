@@ -75,6 +75,8 @@ def missing_fields(profile: Profile, country: Country, already_asked: list[str])
             continue  # asked before: the person skipped it or didn't know — don't nag
         if name == "occupation" and profile.is_student:
             continue
+        if name == "personal_annual_income" and profile.annual_family_income is not None:
+            continue  # they already told us an income ("earning £900 a month") — don't ask it again
         if getattr(profile, name) is None:
             missing.append(name)
     return missing

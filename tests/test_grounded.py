@@ -204,3 +204,11 @@ def test_age_and_widow_safety_net():
     assert "age" not in facts_from_grammar("10 saal se kheti kar raha hoon")  # years of farming, not age
     assert "age" not in facts_from_grammar("main 20 saal ki hoon, papa 50 saal ke hain")  # two ages: unclear
     assert "gender" not in facts_from_grammar("I'm widowed")  # could be anyone
+
+
+def test_a_minus_sign_is_not_the_number():
+    from core.grounded import number_in_quote
+    assert not number_in_quote(20, "-20")
+    assert not number_in_quote(20, "umar -20")
+    assert number_in_quote(20, "18-20 saal")  # a range still shows 20
+    assert number_in_quote(20, "20 saal")

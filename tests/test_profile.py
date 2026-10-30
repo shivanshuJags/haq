@@ -39,3 +39,10 @@ def test_does_not_ask_twice():
     missing = missing_fields(profile, "IN", already_asked=["age", "gender"])
     assert "age" not in missing
     assert "gender" not in missing
+
+
+def test_income_is_not_asked_twice():
+    from core.profile import Profile, missing_fields
+    # "earning £900 a month" sometimes lands in household income — then don't ask "how much do you earn?"
+    profile = Profile(age=31, has_children=True, annual_family_income=10800)
+    assert "personal_annual_income" not in missing_fields(profile, "UK", [])

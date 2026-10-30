@@ -62,6 +62,9 @@ def number_in_quote(value, quote: str) -> bool:
         return True
     text = quote.lower().replace(",", "")
     as_text = f"{value:g}"  # 1.5 -> "1.5", 80.0 -> "80"
+    # "-20" doesn't say 20 (a range like "18-20" does: there the dash follows a digit)
+    if value > 0 and re.search(rf"(?<![\d\s])\s*[-−–]\s*{re.escape(as_text)}(?![\d])|^\s*[-−–]\s*{re.escape(as_text)}", text):
+        return False
     if re.search(rf"(?<![\d.]){re.escape(as_text)}(?![\d])", text):
         return True
     return any(NUMBER_WORDS.get(word) == value for word in re.findall(r"[a-z]+", text))
